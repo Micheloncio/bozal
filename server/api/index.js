@@ -13,35 +13,7 @@ app.use(bodyParser({limit: '5mb'}))
 app.use(bodyParser.json())
 
 const historyData = new(require('./history/HistoryData'))
-const tagData = new(require('./tag/TagData'))
-
-const tagRouter = express.Router()
-
-
-
-tagRouter.route('/')
-    .post((req, res) => {
-        const { tag } = req.body
-
-        tagData.create(tag)
-            .then(_tag => {
-                res.json({
-                    status: 'OK',
-                    message: 'history created successfully',
-                    data: _tag
-                })
-            })
-            .catch(err => {
-                res.json({
-                    status: 'KO',
-                    message: err.message
-                })
-            })
-    })
-
-
-app.use('/tag',tagRouter)
-
+const tagLogic = new(require('./tag/TagLogic'))
 
 const historyRouter = express.Router()
 
@@ -49,10 +21,10 @@ historyRouter.route('/')
     .post((req, res) => {
         const { nameDog, photo, idDog, tag } = req.body
 
-        tagData.existTagByName(tag)
+        tagLogic.existTagByName(tag)
                 .then(_tag => {
                     if(!_tag)
-                        tagData.create(tag)
+                        tagLogic.create(tag)
                             .then(tagCreated)
                             .catch(err)
                 .catch(err)
