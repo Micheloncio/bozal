@@ -8,7 +8,7 @@ class TagLogic {
                     if (tag) {
                         resolve(true)
                     } else {
-                        return tagData.create(tag)
+                        return tagData.create(name.toLowerCase())
                             .then(() => resolve(true))
                     }
                 })
@@ -16,3 +16,5 @@ class TagLogic {
         })
     }
 }
+
+module.exports = TagLogic

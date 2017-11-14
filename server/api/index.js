@@ -21,14 +21,7 @@ historyRouter.route('/')
     .post((req, res) => {
         const { nameDog, photo, idDog, tag } = req.body
 
-        tagLogic.existTagByName(tag)
-                .then(_tag => {
-                    if(!_tag)
-                        tagLogic.create(tag)
-                            .then(tagCreated)
-                            .catch(err)
-                .catch(err)
-                })
+        tagLogic.createIfNotExistTag(tag)
 
 
         historyData.create(nameDog, photo, idDog, tag)
@@ -70,23 +63,6 @@ historyRouter.route('/last24hoursbytag/:tag')
     .get((req, res) => {
         const {tag} = req.params
         historyData.listLast24HoursByTag(tag)
-            .then(histories => {
-                res.json({
-                    status: 'OK',
-                    message: 'histories listed successfully',
-                    data: histories
-                })
-            })
-            .catch(err => {
-                res.json({
-                    status: 'KO',
-                    message: err.message
-                })
-            })
-    })
-historyRouter.route('/tags')
-    .get((req, res) => {
-        historyData.listTags()
             .then(histories => {
                 res.json({
                     status: 'OK',
