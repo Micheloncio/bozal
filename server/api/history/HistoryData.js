@@ -25,11 +25,12 @@ class HistoryData {
         })
     }
 
-    listLast24Hours() {
-        const _24hoursInMiliseconds = 86400000
+    listLastGivenHours(hours) {
+        const millis = hours * 60 * 60 * 1000
 
-        return History.find({ date:{$gt: (Date.now() - _24hoursInMiliseconds) }})
+        return History.find({ date:{$gt: (Date.now() - millis) }})
     }
+
     listLast24HoursByTag(_tag) {
          if(!_tag)
                 throw new Error('no tag provided')

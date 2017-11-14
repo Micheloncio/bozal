@@ -8,7 +8,7 @@ app.use(require('./cors'))
 
 const bodyParser = require('body-parser')
 
-app.use(bodyParser({limit: '5mb'}))
+app.use(bodyParser({ limit: '5mb' }))
 
 app.use(bodyParser.json())
 
@@ -22,16 +22,14 @@ historyRouter.route('/')
         const { nameDog, photo, idDog, tag } = req.body
 
         tagLogic.createIfNotExistTag(tag)
-
-
-        historyData.create(nameDog, photo, idDog, tag)
-            .then(history => {
-                res.json({
-                    status: 'OK',
-                    message: 'history created successfully',
-                    data: history
-                })
-            })
+            .then(() => historyData.create(nameDog, photo, idDog, tag)
+                .then(history => {
+                    res.json({
+                        status: 'OK',
+                        message: 'history created successfully',
+                        data: history
+                    })
+                }))
             .catch(err => {
                 res.json({
                     status: 'KO',
@@ -41,7 +39,7 @@ historyRouter.route('/')
     })
 
 historyRouter.route('/last24hours')
-	.get((req, res) => {
+    .get((req, res) => {
         historyData.listLast24Hours()
             .then(histories => {
                 res.json({
@@ -61,7 +59,7 @@ historyRouter.route('/last24hours')
 
 historyRouter.route('/last24hoursbytag/:tag')
     .get((req, res) => {
-        const {tag} = req.params
+        const { tag } = req.params
         historyData.listLast24HoursByTag(tag)
             .then(histories => {
                 res.json({
@@ -79,7 +77,7 @@ historyRouter.route('/last24hoursbytag/:tag')
     })
 
 
-app.use('/history',historyRouter)
+app.use('/history', historyRouter)
 
 console.log(`Connecting History API db on url ${process.env.DB_URL}`)
 
