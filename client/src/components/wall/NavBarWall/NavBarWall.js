@@ -11,18 +11,18 @@ class NavBarWall extends Component{
 		return (
 			<div className="container-fluid">
 				<div className="row">
-					<div className="col-md-2">
+					<div className="col-xs-12 col-sm-4 col-md-2">
 						<SignPosterLeft 
 							tag = {this.props.afterTag}
 							handlerAfterTag = {this.props.handlerAfterTag}
 						/>
 					</div>
-					<div className="col-md-2 col-md-offset-3">
+					<div className="col-xs-12 col-sm-4 col-md-2 col-sm-offset-0 col-md-offset-3">
 						<SignPosterCenter 
 							currentTag = {this.props.currentTag}
 						/>
 					</div>
-					<div className="col-md-2 col-md-offset-3">
+					<div className="col-xs-12 col-sm-4 col-md-2 col-sm-offset-0 col-md-offset-3">
 						<SignPosterRight 
 							tag = {this.props.nextTag}
 							handlerNextTag = {this.props.handlerNextTag}

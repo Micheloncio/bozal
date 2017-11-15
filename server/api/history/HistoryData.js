@@ -47,6 +47,28 @@ class HistoryData {
     listTags(){
         return History.find({}, 'tag -_id')
     }
+
+    addComent(_id, comment, idDog){
+        return new Promise((resolve, reject) => {
+            if (!_id)
+                throw new Error('no id provided')
+
+            if (!comment)
+                throw new Error('no comment provided')
+
+            if (!idDog)
+                throw new Error('no idDog provided')
+
+
+            const history = History.findOne({_id})
+
+            History.update({_id}, { comments:[{comment,idDog}]})
+
+            history.save()
+                .then(resolve)
+                .catch(reject)
+        })
+    }
 }
 
 module.exports = HistoryData

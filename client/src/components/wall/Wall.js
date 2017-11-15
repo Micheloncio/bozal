@@ -55,33 +55,37 @@ class Wall extends Component{
 		this.loadHistories(tagSaved)
 	}
 
+	handlerAddComment = () => {
+
+	}
+
 	render(){
 		return (
-			<div className="container-fluid backgroundWall">
-				<div className="containerSticky">
-					<NavBarWall 
-						currentTag = {this.state.currentTag}
-						nextTag = {this.state.nextTag}
-						afterTag = {this.state.afterTag}
-						handlerNextTag = {this.handlerNextTag}
-						handlerAfterTag = {this.handlerAfterTag}
-					/>
-				</div>
-				<div className="row">
-					<div className="col-md-4 col-md-offset-2">
-						<div className="container-fluid">
-							{this.state.histories.map((history) =>  ( 
-									<div className="row">
-										<div className="col-md-12">
-											<History 
-												nameDog = {history.nameDog}
-												imgDog = {history.photo}
-											/>
-										</div>
-									</div>
-									))
-							}
+			<div className="backgroundWall">
+				<div className="container-fluid containerSticky">
+					<div className="row">
+						<div className="col-xs-12 col-md-12">
+							<NavBarWall 
+								currentTag = {this.state.currentTag}
+								nextTag = {this.state.nextTag}
+								afterTag = {this.state.afterTag}
+								handlerNextTag = {this.handlerNextTag}
+								handlerAfterTag = {this.handlerAfterTag}
+							/>
 						</div>
+					</div>
+				</div>
+				<div className="container-fluid">
+					<div className="row">
+						{this.state.histories.map((history) =>  ( 
+									<div className="col-xs-12 col-sm-6 col-md-6">
+										<History 
+											nameDog = {history.nameDog}
+											imgDog = {history.photo}
+										/>
+									</div>
+								))
+						}
 					</div>
 				</div>
 			</div>
