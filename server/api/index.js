@@ -12,7 +12,7 @@ app.use(bodyParser({ limit: '5mb' }))
 
 app.use(bodyParser.json())
 
-const historyData = new(require('./history/HistoryData'))
+const historyLogic = new(require('./history/HistoryLogic'))
 const tagLogic = new(require('./tag/TagLogic'))
 
 const historyRouter = express.Router()
@@ -22,7 +22,7 @@ historyRouter.route('/')
         const { nameDog, photo, idDog, tag } = req.body
 
         tagLogic.createIfNotExistTag(tag)
-            .then(() => historyData.create(nameDog, photo, idDog, tag)
+            .then(() => historyLogic.create(nameDog, photo, idDog, tag)
                 .then(history => {
                     res.json({
                         status: 'OK',
@@ -40,7 +40,7 @@ historyRouter.route('/')
 
 historyRouter.route('/last24hours')
     .get((req, res) => {
-        historyData.listLast24Hours()
+        historyLogic.listLast24Hours()
             .then(histories => {
                 res.json({
                     status: 'OK',
@@ -60,7 +60,7 @@ historyRouter.route('/last24hours')
 historyRouter.route('/last24hoursbytag/:tag')
     .get((req, res) => {
         const { tag } = req.params
-        historyData.listLast24HoursByTag(tag)
+        historyLogic.listLast24HoursByTag(tag)
             .then(histories => {
                 res.json({
                     status: 'OK',
