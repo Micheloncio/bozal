@@ -1,0 +1,70 @@
+.containerTag{
+	display: inline-block;
+	position: sticky;
+	top:30px;
+	text-align: center;
+	transition:  0.3s ease-in-out 0s;
+}
+/**
+*IMAGES LOAD:
+*/
+
+.signPostLeft{
+	background-image: url('../../images/signpostleft.png');	
+	width: 173px;
+	height: 113px;
+}
+.signPostCenter{
+	background-image: url('../../images/hanging_poster.png');	
+	width: 165px;
+	height: 113px;
+}
+.signPostRight{
+	background-image: url('../../images/signpostright.png');	
+	width: 173px;
+	height: 113px;
+}
+
+/**
+*TEXT POSITIONS:
+*/
+.textTag{
+	position: absolute;
+	font-size: 24px;
+	font-weight: bold;
+	color:black;
+}
+
+.textTagCenter{
+	top: 50%;
+    left: 50%;
+    transform: translate(-50%, 5%);
+}
+
+
+.textTagRight{
+	top: 50%;
+    left: 50%;
+    transform: translate(-45%, -5%) rotate(-9deg);
+}
+
+.textTagLeft{
+	top: 50%;
+    left: 50%;
+    transform: translate(-55%, -5%) rotate(9deg);
+}
+
+/**
+*TRANSITIONS:
+*/
+
+.translateDown:hover{
+	transform: translate(0px, 20px);
+}
+
+.rotateLeft:hover{
+	transform: rotate(9deg);
+}
+.rotateRight:hover{
+	transform: rotate(-9deg);
+}

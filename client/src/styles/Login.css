@@ -1,0 +1,30 @@
+
+.centerContent{
+	text-align: center;
+}
+.borderLogin{
+	background: linear-gradient(#9DE048,#68CF11); 
+	width: 300px;
+	padding: 20px;
+	margin: auto;
+	border: 1px solid black;
+	border-radius: 10px
+}
+.tableLogin{
+	margin: auto;
+}
+
+.
+.labelLogin{
+	text-align: right;
+}
+
+.inputLogin{
+	margin-left: 10px;
+	width: 170px;
+	margin-top: 10px;
+}
+.btnalign{
+	margin-top: 10px;
+	margin-left: 180px;
+}

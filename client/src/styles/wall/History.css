@@ -1,0 +1,125 @@
+/**
+*POSITIONS:
+*/
+.positionStatic{
+	position: static;
+}
+
+.containerHistory{
+	position: absolute;
+	width: 370px;
+}
+.containerButtonsHistory{
+	position:absolute;
+	left:0px;
+}
+.containerFramePictureHistory{
+	position:absolute;
+	left:80px;
+}
+.framedPicturePosition{
+	position: absolute;
+    text-align: center;
+}
+.imgDogPosition{
+	position: relative;
+	z-index: -2;
+}
+
+.namePlatePosition{
+	position: absolute;
+	bottom: -10px;
+	left:20px;
+}
+.namePlateText{
+	position: absolute;
+	font-size: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/**
+*MARGINS:
+*/
+.marginButtonHistory{
+	display: block;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.marginHistory{
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+/**
+*TRANSITIONS:
+*/
+.borderButtonHistory{
+	border: none;
+	background: none;
+}
+
+.borderButtonHistory:focus{outline: none;}
+
+.buttonResize{transition:  0.3s ease-in-out 0s;}
+.buttonResize:hover{transform: scale(1.3);}
+
+/**
+*ANIMATIONS
+*/
+@keyframes beat {
+  from {
+	transform: scale(1);
+  }
+
+  to {
+	transform: scale(1.3);
+	background-image: url("../../images/like_red.png");
+  }
+}
+
+.toBeat{/*Palpitar*/
+	animation-duration: 0.5s;
+  	animation-name: beat;
+  	animation-iteration-count: infinite;
+  	animation-direction: alternate;
+}
+.toBeat:hover{
+	transform: scale(1.3) !important;
+	background-image: url("../../images/like_red.png");
+	animation-iteration-count: 0;
+}
+
+/**
+*IMAGES LOAD:
+*/
+.namePlate{
+	background-image: url("../../images/plate.png");
+	width: 215px;
+	height: 56px;
+}
+.like{
+	background-image: url("../../images/like.png");
+	width: 56px;
+	height: 47px;
+}
+.commentaries{
+	background-image: url('../../images/comment.png');	
+	width: 56px;
+	height: 41px;
+}
+.dislike{
+	background-image: url('../../images/dislike.png');	
+	width: 70px;
+	height: 63px;
+}
+.blackFrame{
+	position: absolute;
+	background-image: url('../../images/black_frame.png');
+	width: 512px;
+	height: 512px;
+	transform: scale(0.5);
+	margin-top: -128px;
+	margin-left: -256px;
+}

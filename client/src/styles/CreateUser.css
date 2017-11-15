@@ -1,0 +1,27 @@
+
+.centerContent{
+	text-align: center;
+}
+.borderCreateUser{
+	background: linear-gradient(#68CF11,white,white,white,white,white,white,#68CF11); 
+	width: 500px;
+	padding: 20px;
+	margin: auto;
+	border: 1px solid black;
+	border-radius: 10px
+}
+.tableCreateUser{
+	margin: auto;
+}
+
+.
+.labelCreateUser{
+	text-align: left;
+}
+
+.inputCreateUser{
+	margin-left: 10px;
+	width: 170px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
