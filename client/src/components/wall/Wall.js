@@ -12,16 +12,22 @@ class Wall extends Component{
 		super(props)
 
 		this.state = {
+			myDogProfile:{
+				id:'5a0c8cbadb862d35284ca890',
+				name: 'Lua'
+				},
 			histories:[],
-			currentTag: 'home',
-			nextTag: 'beach',
-			afterTag: 'mountain',
+			tags:{
+				currentTag: 'home',
+				nextTag: 'beach',
+				afterTag: 'mountain'
+			},
 			background: "backgroundWall backgroundHome"
 		}
 	}
 
 	componentWillMount(){
-		this.loadHistories(this.state.currentTag)
+		this.loadHistories(this.state.tags.currentTag)
 	}
 
 	loadHistories = (tag) => {
@@ -58,14 +64,16 @@ class Wall extends Component{
 	handlerNextTag =(e)=>{
 		e.preventDefault()
 
-		const newCurrentTag = this.state.nextTag
+		const newCurrentTag = this.state.tags.nextTag
 		
 		this.selectBackground(newCurrentTag)
 		
 		this.setState({
-			nextTag: this.state.afterTag,
-			afterTag: this.state.currentTag,
-			currentTag: newCurrentTag			
+			tags:{
+				nextTag: this.state.tags.afterTag,
+				afterTag: this.state.tags.currentTag,
+				currentTag: newCurrentTag			
+			}
 		})
 
 		this.loadHistories(newCurrentTag)
@@ -74,14 +82,16 @@ class Wall extends Component{
 	handlerAfterTag =(e)=>{
 		e.preventDefault()
 
-		let newCurrentTag = this.state.afterTag
+		let newCurrentTag = this.state.tags.afterTag
 
 		this.selectBackground(newCurrentTag)
 
 		this.setState({
-			afterTag: this.state.nextTag,
-			nextTag: this.state.currentTag,
-			currentTag: newCurrentTag
+			tags:{
+				afterTag: this.state.tags.nextTag,
+				nextTag: this.state.tags.currentTag,
+				currentTag: newCurrentTag	
+			}
 		})
 
 		this.loadHistories(newCurrentTag)
@@ -95,9 +105,7 @@ class Wall extends Component{
 					<div className="row">
 						<div className="col-xs-12 col-md-12">
 							<NavBarWall 
-								currentTag = {this.state.currentTag}
-								nextTag = {this.state.nextTag}
-								afterTag = {this.state.afterTag}
+								tags = {this.state.tags}
 								handlerNextTag = {this.handlerNextTag}
 								handlerAfterTag = {this.handlerAfterTag}
 							/>
@@ -109,10 +117,8 @@ class Wall extends Component{
 						{this.state.histories.map((history,index) =>  ( 
 									<div className="col-xs-12 col-sm-6 col-md-6" key={index}>
 										<History 
-											nameDog = {history.nameDog}
-											imgDog = {history.photo}
-											comments = {history.comments}
-											idHistory = {history._id}
+											history = {history}
+											myDogProfile = {this.state.myDogProfile}
 										/>
 									</div>
 								))

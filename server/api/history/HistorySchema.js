@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-var Dog = mongoose.model('Dog');
+const Dog = mongoose.model('Dog');
 
 const HistorySchema = new Schema({
 	idDog: String,
@@ -10,12 +10,12 @@ const HistorySchema = new Schema({
 	tag: [String],
 	date:{ type: Date, default: Date.now },
 	popularity: { type: Number, default: 0 },
-	likes: [{ type: Schema.ObjectId, ref: "Dog" }],
+	likes: [String],
 	comments:[{
 		comment: String,
 		dog: { type: Schema.ObjectId, ref: "Dog" } 
 	}],
-	dislikes: [{ type: Schema.ObjectId, ref: "Dog" }],
+	dislikes: [String],
 	photo: String
 })
 

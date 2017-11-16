@@ -13,18 +13,18 @@ class NavBarWall extends Component{
 				<div className="row">
 					<div className="col-xs-12 col-sm-4 col-md-2">
 						<SignPosterLeft 
-							tag = {this.props.afterTag}
+							tag = {this.props.tags.afterTag}
 							handlerAfterTag = {this.props.handlerAfterTag}
 						/>
 					</div>
 					<div className="col-xs-12 col-sm-4 col-md-2 col-sm-offset-0 col-md-offset-3">
 						<SignPosterCenter 
-							currentTag = {this.props.currentTag}
+							currentTag = {this.props.tags.currentTag}
 						/>
 					</div>
 					<div className="col-xs-12 col-sm-4 col-md-2 col-sm-offset-0 col-md-offset-3">
 						<SignPosterRight 
-							tag = {this.props.nextTag}
+							tag = {this.props.tags.nextTag}
 							handlerNextTag = {this.props.handlerNextTag}
 						/>
 					</div>

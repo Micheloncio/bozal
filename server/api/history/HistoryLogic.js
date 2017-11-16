@@ -13,6 +13,43 @@ class HistoryLogic {
 	addComent(idHistory, comment, idDog){
 		return historyData.addComent(idHistory, comment, idDog)
     }
+
+    addLikeIfNotIt(_id,idDog) {
+        return new Promise((resolve, reject) => {        
+            historyData.itsLiked(_id,idDog)
+                .then(like => {
+                    if (like) {
+                        resolve(true)
+                    } else {
+                        return historyData.addLike(_id, idDog)
+                            .then(() => resolve(true))
+                    }
+                })
+                .catch(reject)
+        })
+    }
+    addDislikeIfNotIt(_id,idDog) {
+        return new Promise((resolve, reject) => {        
+            historyData.itsDisliked(_id,idDog)
+                .then(like => {
+                    if (like) {
+                        resolve(true)
+                    } else {
+                        return historyData.addDislike(_id, idDog)
+                            .then(() => resolve(true))
+                    }
+                })
+                .catch(reject)
+        })
+    }
+
+    itsLiked(_id,idDog){
+    	return historyData.itsLiked(_id,idDog)
+    }
+    itsDisliked(_id,idDog){
+    	return historyData.itsDisliked(_id,idDog)
+    }
+
 }
 
 module.exports = HistoryLogic

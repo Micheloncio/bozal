@@ -28,8 +28,8 @@ class Commentaries extends Component{
 	}
 
 	addComment(){
-		HistoriesApi.addComment(this.props.idHistory, this.state.textbox, '5a0c8cbadb862d35284ca890')
-		this.updateComments(this.props.idHistory, this.state.textbox, 'Lua')
+		HistoriesApi.addComment(this.props.idHistory, this.state.textbox, this.props.myDogProfile.id)
+		this.updateComments(this.props.idHistory, this.state.textbox, this.props.myDogProfile.name)
 		this.setTextBox('')
 	}
 
@@ -42,11 +42,13 @@ class Commentaries extends Component{
 
 	updateComments = (_id,comment, name) => {
 		const comments = this.state.comments
+
 		const newComment = {
 			_id,
 			comment,
 			dog:{name}
 		}
+		
 		comments.push(newComment)
 		this.setComments(comments)
 	}

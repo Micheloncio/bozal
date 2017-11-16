@@ -36,20 +36,29 @@ class History extends Component{
 					<div className="container-fluid">
 						<div className="row">
 							<div className="col-xs-2 col-md-1 col-lg-1 col-xs-offset-0 col-md-offset-1 col-lg-offset-3">
-								<Like/>
+								<Like
+									idHistory = {this.props.history._id}
+									myIdDog = {this.props.myDogProfile.id}
+									likes = {this.props.history.likes}
+								/>
 								<BalloonCommentaries
 									handlerShowHideComment = {this.handlerShowHideComment}
 								/>
-								<Dislike/>
+								<Dislike
+									idHistory = {this.props.history._id}
+									myIdDog = {this.props.myDogProfile.id}
+								/>
 							</div>
 							<div className="col-xs-10 col-md-8 col-lg-6 col-xs-offset-0 col-md-offset-1 col-lg-offset-1">
 								<FramedPicture 
-									nameDog = {this.props.nameDog}
-									imgDog = {this.props.imgDog}
+
+									nameDog = {this.props.history.nameDog}
+									imgDog = {this.props.history.photo}
 								/>
 								<Commentaries
-									comments = {this.props.comments}
-									idHistory = {this.props.idHistory}
+									myDogProfile = {this.props.myDogProfile}
+									comments = {this.props.history.comments}
+									idHistory = {this.props.history._id}
 									show = {this.state.showComments}
 									handlerShowHideComment = {this.handlerShowHideComment}
 								/>

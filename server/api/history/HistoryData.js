@@ -40,17 +40,13 @@ class HistoryData {
             const tag = _tag.toLowerCase()
 
             History.find({tag})
-                .then(dogs=>{
-                    Dog.populate(dogs, {path: "comments.dog"})
+                .then(histories=>{
+                    Dog.populate(histories, {path: 'comments.dog', select:'name'})
                         .then(resolve)
                 })
                 .catch(reject)
 
         })
-    }
-
-    listTags(){
-        return History.find({}, 'tag -_id')
     }
 
     addComent(_id, comment, idDog){
@@ -68,6 +64,64 @@ class HistoryData {
             History.update(
                 {_id}, 
                 { $push: { comments: {comment, dog: idDog} } }
+                )
+                .then(resolve)
+                .catch(reject)
+        })
+    }
+    itsLiked(_id,idDog){
+        return new Promise((resolve, reject) => {
+            if (!_id)
+                throw new Error('no _id provided')
+
+            if (!idDog)
+                throw new Error('no idDog provided')
+
+            History.findOne({_id, likes: idDog},'likes')
+                .then(resolve)
+                .catch(reject)
+        })
+    }
+    addLike(_id, idDog){
+        return new Promise((resolve, reject) => {
+            if (!_id)
+                throw new Error('no id provided')
+
+            if (!idDog)
+                throw new Error('no idDog provided')
+
+            History.update(
+                {_id}, 
+                { $push: { likes: idDog } }
+                )
+                .then(resolve)
+                .catch(reject)
+        })
+    }
+    itsDisliked(_id,idDog){
+        return new Promise((resolve, reject) => {
+            if (!_id)
+                throw new Error('no _id provided')
+
+            if (!idDog)
+                throw new Error('no idDog provided')
+
+            History.findOne({_id, dislikes: idDog},'dislikes')
+                .then(resolve)
+                .catch(reject)
+        })
+    }
+    addDislike(_id, idDog){
+        return new Promise((resolve, reject) => {
+            if (!_id)
+                throw new Error('no id provided')
+
+            if (!idDog)
+                throw new Error('no idDog provided')
+
+            History.update(
+                {_id}, 
+                { $push: { dislikes: idDog } }
                 )
                 .then(resolve)
                 .catch(reject)

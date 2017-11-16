@@ -68,14 +68,90 @@ historyRouter.route('/')
 historyRouter.route('/addcomment')
     .post((req, res) => {
         const { idHistory, comment, idDog } = req.body
-            historyLogic.addComent(idHistory, comment, idDog)
-                .then(comment => {
+        historyLogic.addComent(idHistory, comment, idDog)
+            .then(comment => {
+                res.json({
+                    status: 'OK',
+                    message: 'comment created successfully',
+                    data: comment
+                })
+            })
+        .catch(err => {
+            res.json({
+                status: 'KO',
+                message: err.message
+            })
+        })
+    })
+
+historyRouter.route('/addlike')
+    .post((req, res) => {
+        const { idHistory, idDog } = req.body
+        historyLogic.addLikeIfNotIt(idHistory, idDog)
+            .then(like => {
+                res.json({
+                    status: 'OK',
+                    message: 'like pushed successfully',
+                    data: like
+                })
+            })
+        .catch(err => {
+            res.json({
+                status: 'KO',
+                message: err.message
+            })
+        })
+    })
+
+historyRouter.route('/adddislike')
+    .post((req, res) => {
+        const { idHistory, idDog } = req.body
+            historyLogic.addDislikeIfNotIt(idHistory, idDog)
+                .then(dislike => {
                     res.json({
                         status: 'OK',
-                        message: 'comment created successfully',
-                        data: comment
+                        message: 'like pushed successfully',
+                        data: dislike
                     })
                 })
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
+
+historyRouter.route('/itsliked/:idhistory/:iddog')
+    .get((req, res) => {
+        const { idhistory, iddog } = req.params
+        historyLogic.itsLiked(idhistory, iddog)
+            .then(liked => {
+                res.json({
+                    status: 'OK',
+                    message: 'liked true',
+                    data: liked
+                })
+            })
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
+
+historyRouter.route('/itsdisliked/:idhistory/:iddog')
+    .get((req, res) => {
+        const { idhistory, iddog } = req.params
+        historyLogic.itsDisliked(idhistory, iddog)
+            .then(disliked => {
+                res.json({
+                    status: 'OK',
+                    message: 'disliked true',
+                    data: disliked
+                })
+            })
             .catch(err => {
                 res.json({
                     status: 'KO',
