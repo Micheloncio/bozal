@@ -7,8 +7,11 @@ class HistoryLogic {
 	listLast24Hours() {
         return historyData.listLastGivenHours(24)
     }
-    listLast24HoursByTag(tag){
-    	return historyData.listLast24HoursByTag(tag)
+    listByTag(tag){
+    	return historyData.listByTag(tag)
+    }
+	addComent(idHistory, comment, idDog){
+		return historyData.addComent(idHistory, comment, idDog)
     }
 }
 

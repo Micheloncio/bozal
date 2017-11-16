@@ -1,4 +1,5 @@
 const History = require('./HistorySchema')
+const Dog = require('../dog/DogSchema')
 
 class HistoryData {
 	create(nameDog, photo, idDog, _tag) {
@@ -31,17 +32,21 @@ class HistoryData {
         return History.find({ date:{$gt: (Date.now() - millis) }})
     }
 
-    listLast24HoursByTag(_tag) {
-         if(!_tag)
-                throw new Error('no tag provided')
+    listByTag(_tag) {
+        return new Promise((resolve, reject) => {
+            if(!_tag)
+                    throw new Error('no tag provided')
 
-        const tag = _tag.toLowerCase()
+            const tag = _tag.toLowerCase()
 
-        const _24hoursInMiliseconds = 86400000
+            History.find({tag})
+                .then(dogs=>{
+                    Dog.populate(dogs, {path: "comments.dog"})
+                        .then(resolve)
+                })
+                .catch(reject)
 
-        return History.find({ date:{$gt: (Date.now() - _24hoursInMiliseconds)},
-                              tag
-                            })
+        })
     }
 
     listTags(){
@@ -60,11 +65,10 @@ class HistoryData {
                 throw new Error('no idDog provided')
 
 
-            const history = History.findOne({_id})
-
-            History.update({_id}, { comments:[{comment,idDog}]})
-
-            history.save()
+            History.update(
+                {_id}, 
+                { $push: { comments: {comment, dog: idDog} } }
+                )
                 .then(resolve)
                 .catch(reject)
         })

@@ -6,31 +6,28 @@
   	z-index:2;
 }
 
-.navbar-green{
-	background: linear-gradient(#9DE048,#68CF11); 
-	height: 75px;
+.navbar-white{
+	background-color: white; 
+
+	border:5px solid black;
 }
 .navbrand{
 	font-size: 24px;
-	padding-top: 25px !important;
-	color:white;
-	height: 74px;
+	color:black;
 }
 .navbrand:hover{
 	color: black;
 }
 .navlink{
 	font-size: 18px;
-	padding-top: 25px !important;
-	color:white;
-	height: 74px;
+	color:black;
 }
 
 .navlink:hover{
 	color:black;
-	background: linear-gradient(#68CF11, #9DE048) !important;
+	background: linear-gradient(#AEF57F, #95BD86) !important;
 }
 .navlink:focus{
 	color:black;
-	background: linear-gradient(#68CF11, #9DE048) !important;
+	background: linear-gradient(#AEF57F, #95BD86) !important;
 }

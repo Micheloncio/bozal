@@ -3,7 +3,8 @@ import React, {Component} from 'react'
 class Like extends Component{
 	render(){
 		return (
-			<button className="like borderButtonHistory marginButtonHistory toBeat">
+			<button className="like outlineNone borderButtonHistory 
+				marginButtonHistory toBeat">
 			</button>
 		)
 	}

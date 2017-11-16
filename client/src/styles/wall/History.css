@@ -1,3 +1,36 @@
+
+.verticalScroll{
+    height:250px;
+    overflow-y:auto;
+	border-bottom: 1px solid black;
+	text-align: left;
+	padding: 3px;
+}
+.areatext_Comentaries{
+	resize: none;
+	width: 100%;
+	height: 100px;
+	background-color: #f8f8f8;
+	color:black;
+	border-radius: 0px 0px 5px 5px;
+}
+
+/**
+*SHOW & HIDE COMMENTS:
+*/
+.hideComments{
+	display: none;
+}
+.showComments{
+	display: block;
+	font-size: 16px;
+	position: absolute;
+	background-color: white;
+	border:5px solid black;
+	border-radius: 10px;
+	width: 100%;
+	height: 360px;
+}
 /**
 *POSITIONS:
 */
@@ -9,6 +42,7 @@
 .imgDogPosition{
 	z-index: -2;
 }
+
 
 .namePlatePosition{
 	position: absolute;
@@ -43,8 +77,6 @@
 	border: none;
 	background: none;
 }
-
-.borderButtonHistory:focus{outline: none;}
 
 .buttonResize{transition:  0.3s ease-in-out 0s;}
 .buttonResize:hover{transform: scale(1.3);}
@@ -87,8 +119,9 @@
 	background-image: url("../../images/like.png");
 	width: 56px;
 	height: 47px;
+	filter: grayscale(0%);
 }
-.commentaries{
+.balloonCommentaries{
 	background-image: url('../../images/comment.png');	
 	width: 56px;
 	height: 41px;

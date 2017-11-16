@@ -5,9 +5,10 @@ body {
   background-color: #F5F5F5;
 }
 
-.cursorPointer{
-	cursor: pointer;
-}
-.cursorDefault{
-	cursor: default;
-}
+.cursorPointer{cursor: pointer;}
+
+.cursorDefault{cursor: default;}
+
+.outlineNone{outline: none;}
+
+.outlineGreen{outline: green outset 2px;}

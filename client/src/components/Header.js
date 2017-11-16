@@ -9,7 +9,7 @@ class Header extends Component {
 
 	render(){
 		return (
-			<nav className='navbar navbar-green navbar-fixed'>
+			<nav className='navbar navbar-white navbar-fixed'>
 				<div className="container-fluid">
 	               <div className="navbar-header">
 	               		<a className="navbar-brand navbrand" href="/">Yap Yap</a>

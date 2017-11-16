@@ -1,10 +1,18 @@
 .backgroundWall{
-	background-image: url('../../images/footprint.png');
-	background-repeat: repeat-y;
 	background-position: center;
-	margin-bottom: 50px;
-}
+	background-repeat: repeat-y;
+	padding-bottom: 120px;
 
+}
+.backgroundBeach{
+	background-image: url('../../images/beach.jpg');
+}
+.backgroundHome{
+	background: linear-gradient(white, skyblue, skyblue);
+}
+.backgroundMountain{
+	background: linear-gradient(#F7ECC0,#F4F8C0,#D4B682, #8F6215);
+}
 .containerSticky{
 	position: sticky;
 	top:25px;
@@ -12,4 +20,3 @@
 	z-index: 1;
 	height: 120px;
 }
-

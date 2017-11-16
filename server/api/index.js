@@ -12,8 +12,35 @@ app.use(bodyParser({ limit: '5mb' }))
 
 app.use(bodyParser.json())
 
+const dogLogic = new(require('./dog/DogLogic'))
 const historyLogic = new(require('./history/HistoryLogic'))
 const tagLogic = new(require('./tag/TagLogic'))
+
+const dogRouter = express.Router()
+
+dogRouter.route('/')
+    .post((req, res) => {
+        
+        const { name, idUser, idBreed, wheight,birdDate } = req.body
+        
+        dogLogic.create(name, idUser, idBreed, wheight,birdDate)
+            .then(dog => {
+                res.json({
+                    status: 'OK',
+                    message: 'dog created successfully',
+                    data: dog
+                })
+            })
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
+
+
+app.use('/dog', dogRouter)
 
 const historyRouter = express.Router()
 
@@ -30,6 +57,25 @@ historyRouter.route('/')
                         data: history
                     })
                 }))
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
+
+historyRouter.route('/addcomment')
+    .post((req, res) => {
+        const { idHistory, comment, idDog } = req.body
+            historyLogic.addComent(idHistory, comment, idDog)
+                .then(comment => {
+                    res.json({
+                        status: 'OK',
+                        message: 'comment created successfully',
+                        data: comment
+                    })
+                })
             .catch(err => {
                 res.json({
                     status: 'KO',
@@ -57,10 +103,10 @@ historyRouter.route('/last24hours')
     })
 
 
-historyRouter.route('/last24hoursbytag/:tag')
+historyRouter.route('/listByTag/:tag')
     .get((req, res) => {
         const { tag } = req.params
-        historyLogic.listLast24HoursByTag(tag)
+        historyLogic.listByTag(tag)
             .then(histories => {
                 res.json({
                     status: 'OK',

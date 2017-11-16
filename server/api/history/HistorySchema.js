@@ -2,19 +2,21 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
+var Dog = mongoose.model('Dog');
+
 const HistorySchema = new Schema({
 	idDog: String,
 	nameDog: String,
-	photo: String,
 	tag: [String],
 	date:{ type: Date, default: Date.now },
 	popularity: { type: Number, default: 0 },
-	like: { type: Number, default: 0 },
+	likes: [{ type: Schema.ObjectId, ref: "Dog" }],
 	comments:[{
 		comment: String,
-		idDog:String
+		dog: { type: Schema.ObjectId, ref: "Dog" } 
 	}],
-	dislike: { type: Number, default: 0 }
+	dislikes: [{ type: Schema.ObjectId, ref: "Dog" }],
+	photo: String
 })
 
 module.exports = mongoose.model('History', HistorySchema)

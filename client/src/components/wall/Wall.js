@@ -13,9 +13,10 @@ class Wall extends Component{
 
 		this.state = {
 			histories:[],
-			currentTag: 'mountain',
+			currentTag: 'home',
 			nextTag: 'beach',
-			afterTag: 'home'
+			afterTag: 'mountain',
+			background: "backgroundWall backgroundHome"
 		}
 	}
 
@@ -31,37 +32,65 @@ class Wall extends Component{
 			.catch()
 	}
 
-	handlerNextTag = () =>{
-		const tagSaved = this.state.nextTag
 
+	selectBackground(newCurrentTag){
+
+		switch(newCurrentTag){
+			case "home":
+				this.setBackground("backgroundWall backgroundHome")
+				break
+			case "beach":
+				this.setBackground("backgroundWall backgroundBeach")
+				break
+			case "mountain":
+				this.setBackground("backgroundWall backgroundMountain")
+				break
+			default:
+				this.setBackground("backgroundWall backgroundHome")
+				break
+		}		
+	}
+
+	setBackground =(background)=>{
+		this.setState({background})
+	}
+
+	handlerNextTag =(e)=>{
+		e.preventDefault()
+
+		const newCurrentTag = this.state.nextTag
+		
+		this.selectBackground(newCurrentTag)
+		
 		this.setState({
 			nextTag: this.state.afterTag,
 			afterTag: this.state.currentTag,
-			currentTag: tagSaved			
+			currentTag: newCurrentTag			
 		})
 
-		this.loadHistories(tagSaved)
+		this.loadHistories(newCurrentTag)
 	}
 
-	handlerAfterTag = () => {
-		let tagSaved = this.state.afterTag
+	handlerAfterTag =(e)=>{
+		e.preventDefault()
+
+		let newCurrentTag = this.state.afterTag
+
+		this.selectBackground(newCurrentTag)
 
 		this.setState({
 			afterTag: this.state.nextTag,
 			nextTag: this.state.currentTag,
-			currentTag: tagSaved
+			currentTag: newCurrentTag
 		})
 
-		this.loadHistories(tagSaved)
-	}
-
-	handlerAddComment = () => {
-
+		this.loadHistories(newCurrentTag)
 	}
 
 	render(){
 		return (
-			<div className="backgroundWall">
+			<div className={this.state.background}>
+
 				<div className="container-fluid containerSticky">
 					<div className="row">
 						<div className="col-xs-12 col-md-12">
@@ -77,11 +106,13 @@ class Wall extends Component{
 				</div>
 				<div className="container-fluid">
 					<div className="row">
-						{this.state.histories.map((history) =>  ( 
-									<div className="col-xs-12 col-sm-6 col-md-6">
+						{this.state.histories.map((history,index) =>  ( 
+									<div className="col-xs-12 col-sm-6 col-md-6" key={index}>
 										<History 
 											nameDog = {history.nameDog}
 											imgDog = {history.photo}
+											comments = {history.comments}
+											idHistory = {history._id}
 										/>
 									</div>
 								))
