@@ -6,6 +6,15 @@
 	text-align: center;
 	transition:  0.3s ease-in-out 0s;
 }
+.containerAddHistory{
+	display: inline-block;
+	position: sticky;
+	margin-top: -30px;
+	margin-bottom: -60px;
+	top:30px;
+	text-align: center;
+	transition:  0.3s ease-in-out 0s;
+}
 /**
 *IMAGES LOAD:
 */
@@ -28,6 +37,12 @@
 	height: 113px;
 	z-index: 1;
 }
+.addHistory{
+	background-image: url('../../images/hanging_poster.png');	
+	width: 165px;
+	height: 113px;
+	z-index: 1;
+}
 
 /**
 *TEXT POSITIONS:
@@ -38,7 +53,17 @@
 	font-weight: bold;
 	color:black;
 }
-
+.textAddHistory{
+	position: absolute;
+	font-size: 48px;
+	font-weight: bold;
+	color:black;
+}
+.textAddHistoryCenter{
+	top: 50%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+}
 .textTagCenter{
 	top: 50%;
     left: 50%;

@@ -12,19 +12,19 @@ const HistoriesApi = {
         	.then (res=> res.data.data)
     },
     addLike: function(idHistory,idDog){
-        return axios.post(this.baseUrl + '/addlike', { idHistory, idDog })
+        return axios.post(this.baseUrl + '/like', { idHistory, idDog })
         	.then (res=> res.data.data)
     },
     addDislike: function(idHistory,idDog){
-        return axios.post(this.baseUrl + '/adddislike', { idHistory, idDog })
+        return axios.post(this.baseUrl + '/dislike', { idHistory, idDog })
         	.then (res=> res.data.data)
     },
-    itsLiked: function(idHistory,idDog){
-        return axios.get(this.baseUrl + '/itsliked/' + idHistory + '/' + idDog)
+    deleteLike: function(idHistory,idDog){
+        return axios.delete(this.baseUrl + '/like', {params:{ idHistory: idHistory, idDog: idDog }})
             .then (res=> res.data.data)
     },
-    itsDisliked: function(idHistory,idDog){
-        return axios.get(this.baseUrl + '/itsdisliked/' + idHistory + '/' + idDog)
+    deleteDislike: function(idHistory,idDog){
+        return axios.delete(this.baseUrl + '/dislike', {params:{ idHistory, idDog }})
             .then (res=> res.data.data)
     }
 }

@@ -43,11 +43,11 @@ class HistoryLogic {
         })
     }
 
-    itsLiked(_id,idDog){
-    	return historyData.itsLiked(_id,idDog)
+    deleteLike(_id, idDog){
+    	return historyData.deleteLike(_id, idDog)
     }
-    itsDisliked(_id,idDog){
-    	return historyData.itsDisliked(_id,idDog)
+    deleteDislike(_id, idDog){
+    	return historyData.deleteDislike(_id, idDog)
     }
 
 }

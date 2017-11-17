@@ -7,6 +7,7 @@ class BalloonCommentaries extends Component{
 				 marginButtonHistory buttonResize"
 				onClick={this.props.handlerShowHideComment}
 			>
+			{this.props.commentsNumber}
 			</button>
 		)
 	}

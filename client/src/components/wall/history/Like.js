@@ -23,22 +23,26 @@ class Like extends Component{
 			this.setLiked(false)
 	}
 
-	handlerAddLike = () =>{
-		HistoriesApi.addLike(this.props.idHistory, this.props.myIdDog)
-		this.setLiked(true)
+	componentWillMount(){
+		this.itsLiked(this.props.likes, this.props.myIdDog)
+	}
+	componentWillReceiveProps(nextPops){
+		this.itsLiked(nextPops.likes, nextPops.myIdDog)
 	}
 
-	componentDidMount(){
-		this.itsLiked(this.props.likes, this.props.myIdDog)
-	}
-	componentWillReceiveProps(){
-		this.itsLiked(this.props.likes, this.props.myIdDog)
+	handlerLike = (liked) =>{
+		if(liked){
+			HistoriesApi.deleteLike(this.props.idHistory, this.props.myIdDog)
+		}else{
+			HistoriesApi.addLike(this.props.idHistory, this.props.myIdDog)
+		}
+		this.setLiked(!liked)
 	}
 
 	render(){
 		return (
-			<button className={this.state.liked ? 'like outlineNone borderButtonHistory marginButtonHistory' : 'like outlineNone borderButtonHistory marginButtonHistory toBeat'}
-				onClick={this.handlerAddLike}
+			<button className={this.state.liked ? 'like outlineNone borderButtonHistory marginButtonHistory toBeat' : 'like outlineNone borderButtonHistory marginButtonHistory liked'}
+				onClick={() =>{this.handlerLike(this.state.liked)}}
 				>
 			</button>
 		)

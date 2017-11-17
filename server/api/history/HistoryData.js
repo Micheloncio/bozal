@@ -82,6 +82,7 @@ class HistoryData {
                 .catch(reject)
         })
     }
+
     addLike(_id, idDog){
         return new Promise((resolve, reject) => {
             if (!_id)
@@ -91,13 +92,30 @@ class HistoryData {
                 throw new Error('no idDog provided')
 
             History.update(
-                {_id}, 
-                { $push: { likes: idDog } }
+                    {_id}, 
+                    { $push: { likes: idDog } }
                 )
                 .then(resolve)
                 .catch(reject)
         })
     }
+    deleteLike(_id, idDog){
+        return new Promise((resolve, reject) => {
+            if (!_id)
+                throw new Error('no id provided')
+
+            if (!idDog)
+                throw new Error('no idDog provided')
+
+            History.update(
+                    {_id}, 
+                    { $pull: { likes: idDog } }
+                )
+                .then(resolve)
+                .catch(reject)
+        })
+    }
+
     itsDisliked(_id,idDog){
         return new Promise((resolve, reject) => {
             if (!_id)
@@ -122,6 +140,22 @@ class HistoryData {
             History.update(
                 {_id}, 
                 { $push: { dislikes: idDog } }
+                )
+                .then(resolve)
+                .catch(reject)
+        })
+    }
+    deleteDislike(_id, idDog){
+        return new Promise((resolve, reject) => {
+            if (!_id)
+                throw new Error('no id provided')
+
+            if (!idDog)
+                throw new Error('no idDog provided')
+
+            History.update(
+                {_id}, 
+                { $pull: { dislikes: idDog } }
                 )
                 .then(resolve)
                 .catch(reject)

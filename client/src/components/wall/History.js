@@ -40,13 +40,17 @@ class History extends Component{
 									idHistory = {this.props.history._id}
 									myIdDog = {this.props.myDogProfile.id}
 									likes = {this.props.history.likes}
+									nameDog = {this.props.history.nameDog}
 								/>
 								<BalloonCommentaries
 									handlerShowHideComment = {this.handlerShowHideComment}
+									commentsNumber = {this.props.history.comments.length}
 								/>
 								<Dislike
 									idHistory = {this.props.history._id}
 									myIdDog = {this.props.myDogProfile.id}
+									dislikes = {this.props.history.dislikes}
+									nameDog = {this.props.history.nameDog}
 								/>
 							</div>
 							<div className="col-xs-10 col-md-8 col-lg-6 col-xs-offset-0 col-md-offset-1 col-lg-offset-1">

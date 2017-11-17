@@ -56,8 +56,8 @@ class Commentaries extends Component{
 	componentDidMount(){
 		this.setComments(this.props.comments)
 	}
-	componentWillReceiveProps(){
-		this.setComments(this.props.comments)
+	componentWillReceiveProps(nextProps){
+		this.setComments(nextProps.comments)
 	}
 
 	setComments = (comments) => {

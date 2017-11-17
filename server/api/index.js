@@ -84,15 +84,32 @@ historyRouter.route('/addcomment')
         })
     })
 
-historyRouter.route('/addlike')
+historyRouter.route('/like')
     .post((req, res) => {
         const { idHistory, idDog } = req.body
         historyLogic.addLikeIfNotIt(idHistory, idDog)
-            .then(like => {
+            .then(histories => {
                 res.json({
                     status: 'OK',
                     message: 'like pushed successfully',
-                    data: like
+                    data: histories
+                })
+            })
+        .catch(err => {
+            res.json({
+                status: 'KO',
+                message: err.message
+            })
+        })
+    })
+    .delete((req, res) => {
+        const { idHistory, idDog } = req.query
+        historyLogic.deleteLike(idHistory, idDog)
+            .then(histories => {
+                res.json({
+                    status: 'OK',
+                    message: 'like deleted successfully',
+                    data: histories
                 })
             })
         .catch(err => {
@@ -103,15 +120,15 @@ historyRouter.route('/addlike')
         })
     })
 
-historyRouter.route('/adddislike')
+historyRouter.route('/dislike')
     .post((req, res) => {
         const { idHistory, idDog } = req.body
             historyLogic.addDislikeIfNotIt(idHistory, idDog)
-                .then(dislike => {
+                .then(histories => {
                     res.json({
                         status: 'OK',
                         message: 'like pushed successfully',
-                        data: dislike
+                        data: histories
                     })
                 })
             .catch(err => {
@@ -121,43 +138,22 @@ historyRouter.route('/adddislike')
                 })
             })
     })
-
-historyRouter.route('/itsliked/:idhistory/:iddog')
-    .get((req, res) => {
-        const { idhistory, iddog } = req.params
-        historyLogic.itsLiked(idhistory, iddog)
-            .then(liked => {
+    .delete((req, res) => {
+        const { idHistory, idDog } = req.query
+        historyLogic.deleteDislike(idHistory, idDog)
+            .then(histories => {
                 res.json({
                     status: 'OK',
-                    message: 'liked true',
-                    data: liked
+                    message: 'dislike deleted successfully',
+                    data: histories
                 })
             })
-            .catch(err => {
-                res.json({
-                    status: 'KO',
-                    message: err.message
-                })
+        .catch(err => {
+            res.json({
+                status: 'KO',
+                message: err.message
             })
-    })
-
-historyRouter.route('/itsdisliked/:idhistory/:iddog')
-    .get((req, res) => {
-        const { idhistory, iddog } = req.params
-        historyLogic.itsDisliked(idhistory, iddog)
-            .then(disliked => {
-                res.json({
-                    status: 'OK',
-                    message: 'disliked true',
-                    data: disliked
-                })
-            })
-            .catch(err => {
-                res.json({
-                    status: 'KO',
-                    message: err.message
-                })
-            })
+        })
     })
 
 historyRouter.route('/last24hours')

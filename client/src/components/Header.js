@@ -18,7 +18,7 @@ class Header extends Component {
 						<ul className="nav navbar-nav">
 							<li><NavLink className="navlink" to='/'>Home</NavLink></li>
 							<li><NavLink className="navlink" to='/create-user'>Create user</NavLink></li>
-							<li><NavLink className="navlink" to='/wall'>Pasear</NavLink></li>
+							<li><NavLink className="navlink" to='/wall'>Walk</NavLink></li>
 						</ul>
 					</div>
 				</div>
