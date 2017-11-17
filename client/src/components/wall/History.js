@@ -15,6 +15,8 @@ class History extends Component{
 
 		this.state={
 			showComments: false,
+			liked: false,
+			disliked: false
 		}
 	}
 
@@ -25,8 +27,36 @@ class History extends Component{
       		this.setState({'showComments': true})
 	}
 
-	componentWillReceiveProps(){
+	setLiked = (liked) =>{
+		this.setState({liked})
+	}
+	setDisliked = (disliked) =>{
+		this.setState({disliked})
+	}
+
+	itsLiked = (likes, myIdDog) =>{
+		const itsLiked = likes.some(like=> like === myIdDog )
+		if(itsLiked)
+			this.setLiked(true)
+		else
+			this.setLiked(false)
+	}
+	itsDisliked = (dislikes, myIdDog) =>{
+		const itsDisliked = dislikes.some(dislike=> dislike === myIdDog )
+		if(itsDisliked)
+			this.setDisliked(true)
+		else
+			this.setDisliked(false)
+	}
+
+	componentWillMount(){
+		this.itsLiked(this.props.history.likes, this.props.myDogProfile.id)
+		this.itsDisliked(this.props.history.dislikes, this.props.myDogProfile.id)
+	}
+	componentWillReceiveProps(nextPops){
 		this.setState({'showComments': false})
+		this.itsLiked(nextPops.history.likes, nextPops.myDogProfile.id)
+		this.itsDisliked(nextPops.history.dislikes, nextPops.myDogProfile.id)
 	}
 	
 
@@ -41,6 +71,8 @@ class History extends Component{
 									myIdDog = {this.props.myDogProfile.id}
 									likes = {this.props.history.likes}
 									nameDog = {this.props.history.nameDog}
+									setLiked = {this.setLiked} 
+									liked = {this.state.liked}
 								/>
 								<BalloonCommentaries
 									handlerShowHideComment = {this.handlerShowHideComment}
@@ -51,6 +83,8 @@ class History extends Component{
 									myIdDog = {this.props.myDogProfile.id}
 									dislikes = {this.props.history.dislikes}
 									nameDog = {this.props.history.nameDog}
+									setDisliked = {this.setDisliked} 
+									disliked = {this.state.disliked}
 								/>
 							</div>
 							<div className="col-xs-10 col-md-8 col-lg-6 col-xs-offset-0 col-md-offset-1 col-lg-offset-1">

@@ -116,6 +116,10 @@
 /**
 *IMAGES LOAD:
 */
+.backgroundComentarie{
+	background-color: #E1E4DF;
+	border-radius: 0px 4px 4px 4px;
+}
 .namePlate{
 	background-image: url("../../images/plate.png");
 	width: 215px;

@@ -5,13 +5,13 @@
 
 }
 .backgroundBeach{
-	background-image: url('../../images/beach.jpg');
+	background-image: linear-gradient(#FFFFFF,#F7ECC0,#F4F8C0,#D4B682, #8F6215);
 }
 .backgroundHome{
 	background: linear-gradient(white, skyblue, skyblue);
 }
 .backgroundMountain{
-	background: linear-gradient(#F7ECC0,#F4F8C0,#D4B682, #8F6215);
+	background: linear-gradient(#FFFFFF,#959994,#85EB6C, #3CE013);
 }
 .containerSticky{
 	position: sticky;

@@ -15,19 +15,11 @@ class Dislike extends Component{
 		this.setState({disliked})
 	}
 
-	itsDisliked = (dislikes, myIdDog) =>{
-		const itsDisliked = dislikes.some(dislike=> dislike === myIdDog )
-		if(itsDisliked)
-			this.setDisliked(true)
-		else
-			this.setDisliked(false)
-	}
-
 	componentWillMount(){
-		this.itsDisliked(this.props.dislikes, this.props.myIdDog)
+		this.setDisliked(this.props.disliked)
 	}
-	componentWillReceiveProps(nextPops){
-		this.itsDisliked(nextPops.dislikes, nextPops.myIdDog)
+	componentWillReceiveProps(nextProps){
+		this.setDisliked(nextProps.disliked)
 	}
 
 	handlerDislike = (disliked) =>{
@@ -37,6 +29,7 @@ class Dislike extends Component{
 			HistoriesApi.addDislike(this.props.idHistory, this.props.myIdDog)
 		}
 		this.setDisliked(!disliked)
+		this.props.setDisliked(!disliked)
 	}
 	render(){
 		return (

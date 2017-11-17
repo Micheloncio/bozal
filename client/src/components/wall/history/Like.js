@@ -15,19 +15,11 @@ class Like extends Component{
 		this.setState({liked})
 	}
 
-	itsLiked = (likes, myIdDog) =>{
-		const itsLiked = likes.some(like=> like === myIdDog )
-		if(itsLiked)
-			this.setLiked(true)
-		else
-			this.setLiked(false)
-	}
-
 	componentWillMount(){
-		this.itsLiked(this.props.likes, this.props.myIdDog)
+		this.setLiked(this.props.liked)
 	}
 	componentWillReceiveProps(nextPops){
-		this.itsLiked(nextPops.likes, nextPops.myIdDog)
+		this.setLiked(nextPops.liked)
 	}
 
 	handlerLike = (liked) =>{
@@ -37,6 +29,7 @@ class Like extends Component{
 			HistoriesApi.addLike(this.props.idHistory, this.props.myIdDog)
 		}
 		this.setLiked(!liked)
+		this.props.setLiked(!liked)
 	}
 
 	render(){

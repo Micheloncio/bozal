@@ -5,7 +5,16 @@ class AddHistory extends Component{
 	render(){
 		return (
 			<div className="addHistory containerAddHistory translateDown cursorPointer">
-				<p className="textAddHistory textAddHistoryCenter">+</p>
+				<div className="container-fluid">
+					<div className="row">
+						<div className="col-xs-6">
+							<div className="iconAddHistory glyphicon glyphicon-plus" />
+						</div>
+						<div className="col-xs-6">
+							<div className="iconCamHistory glyphicon glyphicon-camera" /> 
+						</div>
+					</div>
+				</div>
 			</div>
 		)
 	}

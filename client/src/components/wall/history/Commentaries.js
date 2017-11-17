@@ -70,12 +70,15 @@ class Commentaries extends Component{
 				<div className="container-fluid">
 					<div className="row">
 						<div className="verticalScroll">
-							{this.state.comments.map((comment,index) =><p key={index}>
-									<strong>
-										{comment.dog.name}
-									</strong> 
+							{this.state.comments.map((comment,index) =><div>
+									<label className="backgroundComentarie" key={index}>
+										<strong>
+											{comment.dog.name}
+										</strong> 
 										: {comment.comment}
-									</p>
+										&nbsp;
+									</label>
+								</div>
 							)}
 						</div>
 					</div>
