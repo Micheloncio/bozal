@@ -1,3 +1,4 @@
+
 .containerTag{
 	display: inline-block;
 	position: sticky;
@@ -14,6 +15,54 @@
 	top:30px;
 	text-align: center;
 	transition:  0.3s ease-in-out 0s;
+}
+
+/**
+*MODAL:
+*/
+.marginLeftNewHistory{
+	margin-left: 5px;
+}
+.modal-container {
+  position: relative;
+}
+.modal-container .modal, .modal-container .modal-backdrop {
+  position: absolute;
+}
+.radioNewHistory{
+	background-color: lightgreen;
+	border-radius: 3px;
+	margin: 5px 10px 5px 20px;
+	padding: 5px;
+}
+.textboxNewHistory{
+	width: 90%;
+	margin-left: 10px;
+	border-radius: 5px;
+}
+.checkError{
+	color:red;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.custom-modal{
+	width:40%;
+}
+@media (max-width: 900px) {
+  .custom-modal {
+	width:70%;
+  }
+}
+@media (max-width: 800px) {
+  .custom-modal {
+	width:80%;
+  }
+}
+@media (max-width: 700px) {
+  .custom-modal {
+	width:100%;
+  }
 }
 /**
 *IMAGES LOAD:

@@ -22,7 +22,7 @@ class Dislike extends Component{
 		this.setDisliked(nextProps.disliked)
 	}
 
-	handlerDislike = (disliked) =>{
+	deleteOrAddLike = (disliked) =>{
 		if(disliked){
 			HistoriesApi.deleteDislike(this.props.idHistory, this.props.myIdDog)
 		}else{
@@ -31,10 +31,14 @@ class Dislike extends Component{
 		this.setDisliked(!disliked)
 		this.props.setDisliked(!disliked)
 	}
+	
+	handleDislike(disliked){
+		this.deleteOrAddLike(disliked)
+	}
 	render(){
 		return (
 			<button className={this.state.disliked ? 'disliked outlineNone borderButtonHistory marginButtonHistory buttonResize' : 'dislike outlineNone borderButtonHistory marginButtonHistory buttonResize'}
-				onClick={() =>{this.handlerDislike(this.state.disliked)}}
+				onClick={() =>{this.handleDislike(this.state.disliked)}}
 				>
 			</button>
 		)

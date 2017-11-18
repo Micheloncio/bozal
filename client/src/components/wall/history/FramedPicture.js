@@ -11,7 +11,7 @@ class FramedPicture extends Component{
 					imgDog = {this.props.imgDog}
 				/>
 				<NamePlate 
-					nameDog = {this.props.nameDog}
+					description = {this.props.description}
 				/>
 			</div>
 		)

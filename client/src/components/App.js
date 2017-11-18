@@ -5,7 +5,6 @@ import '../styles/App.css';
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
-import CreateBalloon from './CreateBalloon'
 
 class App extends Component {
   render() {

@@ -12,89 +12,58 @@ class Wall extends Component{
 		super(props)
 
 		this.state = {
+			initialTag:'home',
 			myDogProfile:{
 				id:'5a0c8cbadb862d35284ca890',
 				name: 'Lua'
 				},
 			histories:[],
-			tags:{
-				currentTag: 'home',
-				nextTag: 'beach',
-				afterTag: 'mountain'
-			},
-			background: "backgroundWall backgroundHome"
+			background: 'backgroundWall backgroundHome'
 		}
 	}
 
-	componentWillMount(){
-		this.loadHistories(this.state.tags.currentTag)
+	setBackground = (background) =>{
+		this.setState({background})
+	}
+	setHistories = (histories) =>{
+		this.setState({histories})
 	}
 
-	loadHistories = (tag) => {
-		HistoriesApi.getLast24HoursHistoriesByTag(tag)
-			.then(histories =>{
-				this.setState({histories})
-			})
-			.catch()
-	}
-
-
-	selectBackground(newCurrentTag){
-
-		switch(newCurrentTag){
-			case "home":
-				this.setBackground("backgroundWall backgroundHome")
+	selectBackground(currentTag){
+		switch(currentTag){
+			case 'home':
+				this.setBackground('backgroundWall backgroundHome')
 				break
-			case "beach":
-				this.setBackground("backgroundWall backgroundBeach")
+			case 'beach':
+				this.setBackground('backgroundWall backgroundBeach')
 				break
-			case "mountain":
-				this.setBackground("backgroundWall backgroundMountain")
+			case 'mountain':
+				this.setBackground('backgroundWall backgroundMountain')
 				break
 			default:
-				this.setBackground("backgroundWall backgroundHome")
+				this.setBackground('backgroundWall backgroundHome')
 				break
 		}		
 	}
 
-	setBackground =(background)=>{
-		this.setState({background})
+	loadHistoriesByTagFromApi = (tag) => {
+		HistoriesApi.getLast24HoursHistoriesByTag(tag)
+			.then(histories =>{
+				this.setHistories(histories || [])
+			})
+			.catch()
 	}
 
-	handlerNextTag =(e)=>{
-		e.preventDefault()
-
-		const newCurrentTag = this.state.tags.nextTag
-		
-		this.selectBackground(newCurrentTag)
-		
-		this.setState({
-			tags:{
-				nextTag: this.state.tags.afterTag,
-				afterTag: this.state.tags.currentTag,
-				currentTag: newCurrentTag			
-			}
-		})
-
-		this.loadHistories(newCurrentTag)
+	changeWallBy(currentTag){
+		this.selectBackground(currentTag)
+		this.loadHistoriesByTagFromApi(currentTag)
+	}
+	componentDidMount(){
+		this.loadHistoriesByTagFromApi(this.state.initialTag)
 	}
 
-	handlerAfterTag =(e)=>{
-		e.preventDefault()
-
-		let newCurrentTag = this.state.tags.afterTag
-
-		this.selectBackground(newCurrentTag)
-
-		this.setState({
-			tags:{
-				afterTag: this.state.tags.nextTag,
-				nextTag: this.state.tags.currentTag,
-				currentTag: newCurrentTag	
-			}
-		})
-
-		this.loadHistories(newCurrentTag)
+	handleApplyNewCurrentTag =(newCurrentTag)=>{
+		this.changeWallBy(newCurrentTag)
 	}
 
 	render(){
@@ -104,11 +73,12 @@ class Wall extends Component{
 				<div className="container-fluid containerSticky">
 					<div className="row">
 						<div className="col-xs-12 col-md-12">
+							
 							<NavBarWall 
-								tags = {this.state.tags}
-								handlerNextTag = {this.handlerNextTag}
-								handlerAfterTag = {this.handlerAfterTag}
+								handleApplyNewCurrentTag = {this.handleApplyNewCurrentTag}
+								myDogProfile = {this.state.myDogProfile}
 							/>
+
 						</div>
 					</div>
 				</div>
@@ -116,10 +86,12 @@ class Wall extends Component{
 					<div className="row">
 						{this.state.histories.map((history,index) =>  ( 
 									<div className="col-xs-12 col-sm-6 col-md-6" key={index}>
+										
 										<History 
 											history = {history}
 											myDogProfile = {this.state.myDogProfile}
 										/>
+
 									</div>
 								))
 						}

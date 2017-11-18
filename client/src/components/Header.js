@@ -3,8 +3,6 @@ import { NavLink } from 'react-router-dom'
 
 import '../styles/Header.css'
 
-import logo from '../images/logo.png'
-
 class Header extends Component {
 
 	render(){
@@ -19,6 +17,7 @@ class Header extends Component {
 							<li><NavLink className="navlink" to='/'>Home</NavLink></li>
 							<li><NavLink className="navlink" to='/create-user'>Create user</NavLink></li>
 							<li><NavLink className="navlink glyphicon glyphicon-road" to='/wall'>Walk</NavLink></li>
+							<li><NavLink className="navlink" to='/getimage'>Get image</NavLink></li>
 						</ul>
 					</div>
 				</div>

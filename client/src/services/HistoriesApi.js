@@ -3,6 +3,10 @@ const axios = require('axios')
 const HistoriesApi = {
     baseUrl: 'http://localhost:3000/history',
 
+    createHistory: function(nameDog, photo, idDog, tag, description){
+        return axios.post(this.baseUrl, { nameDog, photo, idDog, tag, description})
+            .then (res=> res.data.data)
+    },
     getLast24HoursHistoriesByTag: function(tag){
         return axios.get(this.baseUrl + '/listbytag/' + tag)
         	.then (res=> res.data.data)

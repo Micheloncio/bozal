@@ -20,13 +20,9 @@ class History extends Component{
 		}
 	}
 
-	handlerShowHideComment = () => {
-    	if(this.state.showComments)
-      		this.setState({'showComments': false})
-    	else
-      		this.setState({'showComments': true})
+	setShowComments = (showComments) =>{
+		this.setState({showComments})
 	}
-
 	setLiked = (liked) =>{
 		this.setState({liked})
 	}
@@ -49,14 +45,20 @@ class History extends Component{
 			this.setDisliked(false)
 	}
 
+	handleShowHideComment = () => {
+    	this.setShowComments(!this.state.showComments)
+	}
+
+	checkLikeAndDislike(likes,dislikes,myIdDog){
+		this.itsLiked(likes, myIdDog)
+		this.itsDisliked(dislikes, myIdDog)
+	}
 	componentWillMount(){
-		this.itsLiked(this.props.history.likes, this.props.myDogProfile.id)
-		this.itsDisliked(this.props.history.dislikes, this.props.myDogProfile.id)
+		this.checkLikeAndDislike(this.props.history.likes, this.props.history.dislikes, this.props.myDogProfile.id)
 	}
 	componentWillReceiveProps(nextPops){
-		this.setState({'showComments': false})
-		this.itsLiked(nextPops.history.likes, nextPops.myDogProfile.id)
-		this.itsDisliked(nextPops.history.dislikes, nextPops.myDogProfile.id)
+		this.setShowComments(false)
+		this.checkLikeAndDislike(nextPops.history.likes, nextPops.history.dislikes, nextPops.myDogProfile.id)
 	}
 	
 
@@ -75,7 +77,7 @@ class History extends Component{
 									liked = {this.state.liked}
 								/>
 								<BalloonCommentaries
-									handlerShowHideComment = {this.handlerShowHideComment}
+									handleShowHideComment = {this.handleShowHideComment}
 									commentsNumber = {this.props.history.comments.length}
 								/>
 								<Dislike
@@ -89,8 +91,7 @@ class History extends Component{
 							</div>
 							<div className="col-xs-10 col-md-8 col-lg-6 col-xs-offset-0 col-md-offset-1 col-lg-offset-1">
 								<FramedPicture 
-
-									nameDog = {this.props.history.nameDog}
+									description = {this.props.history.description}
 									imgDog = {this.props.history.photo}
 								/>
 								<Commentaries
@@ -98,7 +99,7 @@ class History extends Component{
 									comments = {this.props.history.comments}
 									idHistory = {this.props.history._id}
 									show = {this.state.showComments}
-									handlerShowHideComment = {this.handlerShowHideComment}
+									handleShowHideComment = {this.handleShowHideComment}
 								/>
 							</div>
 							<div className="col-xs-offset-0 col-md-offset-1 col-lg-offset-1">

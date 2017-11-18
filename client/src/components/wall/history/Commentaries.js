@@ -8,7 +8,8 @@ class Commentaries extends Component{
 
 		this.state={
 			textbox: "",
-			comments:[]
+			comments:[],
+			maxLength: 50
 		}
 	}
 	
@@ -17,27 +18,25 @@ class Commentaries extends Component{
 			textbox:text
 		})
 	}
+	setComments = (comments) => {
+		this.setState({comments})
+	}
 
-	changeTextbox = (e) => {
+	handleChangeTextbox = (e) => {
 		this.setTextBox(e.target.value)	
 	}
 
-	handlerAddComment = (e) => {
-		e.preventDefault()
-		this.addComment()
+	componentDidMount(){
+		this.setComments(this.props.comments)
+	}
+	componentWillReceiveProps(nextProps){
+		this.setComments(nextProps.comments)
 	}
 
 	addComment(){
 		HistoriesApi.addComment(this.props.idHistory, this.state.textbox, this.props.myDogProfile.id)
 		this.updateComments(this.props.idHistory, this.state.textbox, this.props.myDogProfile.name)
 		this.setTextBox('')
-	}
-
-	onKeyPressed = (e) => {
-		if(e.key == 'Enter')
-			{
-				this.addComment()
-			}
 	}
 
 	updateComments = (_id,comment, name) => {
@@ -53,25 +52,22 @@ class Commentaries extends Component{
 		this.setComments(comments)
 	}
 
-	componentDidMount(){
-		this.setComments(this.props.comments)
-	}
-	componentWillReceiveProps(nextProps){
-		this.setComments(nextProps.comments)
-	}
-
-	setComments = (comments) => {
-		this.setState({comments})
-	}
+	handleonKeyPressed = (e) => {
+		if(e.key === 'Enter'){
+			if(this.state.textbox){
+					this.addComment()
+			}
+		}
+	}	
 
 	render(){
-		return (
+		return(
 			<div className={this.props.show ? 'showComments': 'hideComments'}>
 				<div className="container-fluid">
 					<div className="row">
 						<div className="verticalScroll">
-							{this.state.comments.map((comment,index) =><div>
-									<label className="backgroundComentarie" key={index}>
+							{this.state.comments.map((comment,index) =><div key={index}>
+									<label className="backgroundComentarie">
 										<strong>
 											{comment.dog.name}
 										</strong> 
@@ -84,11 +80,13 @@ class Commentaries extends Component{
 					</div>
 					
 					<div className="row">
-						<textarea className="outlineNone areatext_Comentaries" 
-							placeholder="Write here your comment..."
-							onChange={this.changeTextbox}
-							onKeyPress={this.onKeyPressed}
+						<textarea
+							maxLength={this.state.maxLength}
 							value={this.state.textbox}
+							onChange={this.handleChangeTextbox}
+							onKeyPress={this.handleonKeyPressed}
+							placeholder="Write here your comment..."	
+							className="outlineNone areatext_Comentaries"						
 						/>
 					</div>	
 				</div>

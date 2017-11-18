@@ -5,7 +5,7 @@ class BalloonCommentaries extends Component{
 		return (
 			<button className="balloonCommentaries outlineNone borderButtonHistory
 				 marginButtonHistory buttonResize"
-				onClick={this.props.handlerShowHideComment}
+				onClick={this.props.handleShowHideComment}
 			>
 			{this.props.commentsNumber}
 			</button>

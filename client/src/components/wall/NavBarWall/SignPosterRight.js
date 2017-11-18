@@ -5,7 +5,7 @@ class SignPosterRight extends Component{
 	render(){
 		return (
 			<div className="containerTag signPostRight rotateLeft cursorPointer" 
-			onClick={this.props.handlerNextTag}
+			onClick={() => this.props.handleLoadNewCurrentTags(this.props.tag)}
 			>
 				<p className="textTag textTagRight">
 					{this.props.tag.toUpperCase()}

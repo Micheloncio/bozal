@@ -34,7 +34,6 @@
 /**
 *POSITIONS:
 */
-
 .framedPicturePosition{
 	position: absolute;
     text-align: center;
@@ -51,11 +50,19 @@
 }
 .namePlateText{
 	position: absolute;
-	font-size: 30px;
+	font-size: 24px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+/**
+*FILTER
+*/
+/*.filterGray{
+	filter: grayscale(80%);
+	z-index: -3;
+}*/
+
 /**
 *MARGINS:
 */
@@ -106,12 +113,6 @@
   	animation-iteration-count: infinite;
   	animation-direction: alternate;
 }
-.toBeat:hover{
-	transition:  0.5s ease-in-out 0s;
-	transform: scale(1) !important;
-	animation-iteration-count: 1;
-}
-
 
 /**
 *IMAGES LOAD:

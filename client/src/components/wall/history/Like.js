@@ -22,20 +22,24 @@ class Like extends Component{
 		this.setLiked(nextPops.liked)
 	}
 
-	handlerLike = (liked) =>{
-		if(liked){
+	deleteOrAddLike = (liked) =>{
+		if(liked)
 			HistoriesApi.deleteLike(this.props.idHistory, this.props.myIdDog)
-		}else{
+		else
 			HistoriesApi.addLike(this.props.idHistory, this.props.myIdDog)
-		}
+
 		this.setLiked(!liked)
 		this.props.setLiked(!liked)
+	}
+
+	handleLike = (liked) =>{
+		this.deleteOrAddLike(liked)
 	}
 
 	render(){
 		return (
 			<button className={this.state.liked ? 'like outlineNone borderButtonHistory marginButtonHistory toBeat' : 'like outlineNone borderButtonHistory marginButtonHistory liked'}
-				onClick={() =>{this.handlerLike(this.state.liked)}}
+				onClick={() =>{this.handleLike(this.state.liked)}}
 				>
 			</button>
 		)
