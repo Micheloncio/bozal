@@ -58,11 +58,9 @@
 /**
 *FILTER
 */
-/*.filterGray{
-	filter: grayscale(80%);
-	z-index: -3;
-}*/
-
+.filterGray100{
+	filter: grayscale(100%);
+}
 /**
 *MARGINS:
 */
