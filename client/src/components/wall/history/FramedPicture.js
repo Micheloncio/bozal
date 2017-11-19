@@ -4,30 +4,16 @@ import Photo from './Photo'
 import NamePlate from './NamePlate'
 
 class FramedPicture extends Component{
-	constructor(){
-		super()
-		this.state={
-			gray:true
-		}
-	}
-
-	setGray = (gray) =>{
-		this.setState({gray})
-	}
-
-	componentWillReceiveProps(){
-		this.setGray(true)
-	}
 
 	handleHover = () =>{
-		this.setGray(false)
+		this.props.handleSetGray(false)
 	}
 
 	render(){
 		return (
 			<div 
 				className={
-					this.state.gray 
+					this.props.gray 
 					? 
 					"framedPicturePosition filterGray100" 
 					: 

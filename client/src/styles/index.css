@@ -12,3 +12,7 @@ body {
 .outlineNone{outline: none;}
 
 .outlineGreen{outline: green outset 2px;}
+
+.displayInline{display:inline;}
+
+.displayBlock{display: block;}

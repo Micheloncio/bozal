@@ -16,7 +16,8 @@ class History extends Component{
 		this.state={
 			showComments: false,
 			liked: false,
-			disliked: false
+			disliked: false,
+			gray:true
 		}
 	}
 
@@ -28,6 +29,9 @@ class History extends Component{
 	}
 	setDisliked = (disliked) =>{
 		this.setState({disliked})
+	}
+	setGray = (gray) =>{
+		this.setState({gray})
 	}
 
 	itsLiked = (likes, myIdDog) =>{
@@ -48,6 +52,9 @@ class History extends Component{
 	handleShowHideComment = () => {
     	this.setShowComments(!this.state.showComments)
 	}
+	handleSetGray = (bool) =>{
+		this.setGray(bool)
+	}
 
 	checkLikeAndDislike(likes,dislikes,myIdDog){
 		this.itsLiked(likes, myIdDog)
@@ -58,6 +65,7 @@ class History extends Component{
 	}
 	componentWillReceiveProps(nextPops){
 		this.setShowComments(false)
+		this.setGray(true)
 		this.checkLikeAndDislike(nextPops.history.likes, nextPops.history.dislikes, nextPops.myDogProfile.id)
 	}
 	
@@ -93,6 +101,8 @@ class History extends Component{
 								<FramedPicture 
 									description = {this.props.history.description}
 									imgDog = {this.props.history.photo}
+									handleSetGray = {this.handleSetGray}
+									gray = {this.state.gray}
 								/>
 								<Commentaries
 									myDogProfile = {this.props.myDogProfile}

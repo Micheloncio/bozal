@@ -4,9 +4,9 @@ import {Row, Col, Image, Modal, Button, FormGroup, Radio } from 'react-bootstrap
 
 import CapitalLetter from '../../../utilities/CapitalLetter'
 
-import tochoFoto from './tochoFoto'
-
 import HistoriesApi from '../../../services/HistoriesApi'
+
+import GetImage from './GetImage'
 
 class NewHistory extends Component{
 	constructor(){
@@ -18,6 +18,9 @@ class NewHistory extends Component{
 			maxLength: 12,
 			tagError: false,
 			actionError: false,
+			photoError: false,
+			modalShow: false,
+			dogPhoto:''
 		}
 	}
 
@@ -33,6 +36,15 @@ class NewHistory extends Component{
 	setActionError = (actionError) => {
 		this.setState({actionError})
 	}
+	setPhotoError = (photoError) => {
+		this.setState({photoError})
+	}
+	setmodalShow = (modalShow) => {
+		this.setState({modalShow})
+	}
+	setDogPhoto = (dogPhoto) =>{
+		this.setState({dogPhoto})
+	}
 
 	checkSelectedTag = () => {
 		if(this.state.selectedTag)
@@ -42,9 +54,13 @@ class NewHistory extends Component{
 		if(this.state.textbox)
 			return true
 	}
+	checkDogPhoto = () => {
+		if(this.state.dogPhoto)
+			return true
+	}
 
 	allAround = () =>{
-		if(this.state.selectedTag && this.state.textbox)
+		if(this.state.selectedTag && this.state.textbox && this.state.dogPhoto)
 			return true
 	}
 
@@ -59,6 +75,11 @@ class NewHistory extends Component{
 		else
 			this.setActionError(false)
 
+		if(!this.checkDogPhoto())
+			this.setPhotoError(true)
+		else
+			this.setPhotoError(false)
+
 		if(this.allAround())
 			return true
 	}
@@ -66,7 +87,7 @@ class NewHistory extends Component{
 	createNewHistory(){
 		return HistoriesApi.createHistory(
 			this.props.myDogProfile.name, 
-			tochoFoto, 
+			this.state.dogPhoto, 
 			this.props.myDogProfile.id, 
 			this.state.selectedTag, 
 			this.state.textbox
@@ -90,6 +111,12 @@ class NewHistory extends Component{
 	handleChangeTextbox = (e) =>{
 		this.setTextbox(e.target.value)
 	}
+	handleShowHideAddPhoto = () => {
+		this.setmodalShow(!this.state.modalShow)
+	}
+	handleSetDogPhoto = (dogPhoto) =>{
+		this.setDogPhoto(dogPhoto)
+	}
 	render(){
 		return (
 					<Modal {...this.props}>
@@ -101,7 +128,38 @@ class NewHistory extends Component{
 	        			<Modal.Body>  
 	        				<Row>
 			        			<Col xs={12} md={12}>
-			        				<input type="file" accept="image/*" onChange={this.getImage} className="marginLeftNewHistory"/>
+			        				<h4 className={this.state.photoError ? "checkError marginLeftNewHistory displayInline" : "marginLeftNewHistory displayInline"}>
+			        					Click button for add new photo:
+			        				</h4>
+			        				<Button 
+			        					className="marginLeftNewHistory"
+			        					onClick={this.handleShowHideAddPhoto}
+			        					>
+			        					Add photo
+			        				</Button>
+			        				{this.state.modalShow 
+										? 
+										<GetImage 
+											show={this.state.modalShow} 
+											onHide={this.handleShowHideAddPhoto}
+											handleSetDogPhoto={this.handleSetDogPhoto}
+											dialogClassName="custom-modal"
+										/>
+										:
+										undefined
+									}
+									{this.state.dogPhoto
+										?
+										<img
+											className="displayBlock marginLeftNewHistory"
+											src={this.state.dogPhoto} 
+											width="256px" 
+											height="256px">
+										</img>
+										:
+										undefined
+									}
+			        				
 			        			</Col>
 			                </Row>
 		        			<Row>
