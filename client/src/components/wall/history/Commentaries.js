@@ -65,6 +65,16 @@ class Commentaries extends Component{
 			<div className={this.props.show ? 'showComments': 'hideComments'}>
 				<div className="container-fluid">
 					<div className="row">
+						<div className="col-xs-2 col-xs-offset-10">
+							<button 
+								className="borderButtonHistory btnX buttonResize outlineNone"
+								onClick={this.props.handleShowHideComment}
+								>
+								x
+							</button>
+						</div>
+					</div>
+					<div className="row">
 						<div className="verticalScroll">
 							{this.state.comments.map((comment,index) =><div key={index}>
 									<label className="backgroundComentarie">

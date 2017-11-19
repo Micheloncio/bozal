@@ -38,7 +38,7 @@ class HistoryData {
             if(!tag)
                     throw new Error('no tag provided')
 
-            History.find({tag})
+            History.find({tag},null,{sort: '-date'})
                 .then(histories=>{
                     Dog.populate(histories, {path: 'comments.dog', select:'name'})
                         .then(resolve)
