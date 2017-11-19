@@ -2,7 +2,7 @@ const History = require('./HistorySchema')
 const Dog = require('../dog/DogSchema')
 
 class HistoryData {
-	create(nameDog, photo, idDog, _tag) {
+	create(nameDog, photo, idDog, tag, description) {
         return new Promise((resolve, reject) => {
             if (!nameDog)
                 throw new Error('no dog name provided')
@@ -13,12 +13,13 @@ class HistoryData {
             if (!idDog)
                 throw new Error('no idDog provided')
 
-            if(!_tag)
+            if(!tag)
             	throw new Error('no tag provided')
 
-            const tag = _tag.toLowerCase()
+            if(!description)
+                throw new Error('no description provided')
 
-            const history = new History({ nameDog, photo, idDog, tag })
+            const history = new History({ nameDog, photo, idDog, tag, description })
 
             history.save()
                 .then(resolve)
@@ -32,12 +33,10 @@ class HistoryData {
         return History.find({ date:{$gt: (Date.now() - millis) }})
     }
 
-    listByTag(_tag) {
+    listByTag(tag) {
         return new Promise((resolve, reject) => {
-            if(!_tag)
+            if(!tag)
                     throw new Error('no tag provided')
-
-            const tag = _tag.toLowerCase()
 
             History.find({tag})
                 .then(histories=>{

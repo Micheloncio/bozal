@@ -1,13 +1,15 @@
 const historyData = new(require('./HistoryData'))
 
 class HistoryLogic {
-	create(nameDog, photo, idDog, tag){
-		return historyData.create(nameDog, photo, idDog, tag)
+	create(nameDog, photo, idDog, _tag, description){
+        const tag = _tag.toLowerCase()
+		return historyData.create(nameDog, photo, idDog, tag, description)
 	}
 	listLast24Hours() {
         return historyData.listLastGivenHours(24)
     }
-    listByTag(tag){
+    listByTag(_tag){
+        const tag = _tag.toLowerCase()
     	return historyData.listByTag(tag)
     }
 	addComent(idHistory, comment, idDog){

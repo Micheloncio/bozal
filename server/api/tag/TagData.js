@@ -26,7 +26,11 @@ class TagData {
     }
 
     listTags(){
-        return Tag.find({}, 'name -_id').exec()
+        return new Promise((resolve, reject) => {
+            Tag.find({}, 'name -_id')
+                .then(resolve)
+                .catch(reject)
+        })  
     }
 }
 

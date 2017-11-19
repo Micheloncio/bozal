@@ -15,6 +15,9 @@ class TagLogic {
                 .catch(reject)
         })
     }
+    listTags(){
+        return tagData.listTags()
+    }
 }
 
 module.exports = TagLogic

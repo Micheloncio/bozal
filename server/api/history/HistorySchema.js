@@ -7,7 +7,8 @@ const Dog = mongoose.model('Dog');
 const HistorySchema = new Schema({
 	idDog: String,
 	nameDog: String,
-	tag: [String],
+	tag: String,
+	description: String,
 	date:{ type: Date, default: Date.now },
 	popularity: { type: Number, default: 0 },
 	likes: [String],

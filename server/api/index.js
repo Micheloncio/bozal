@@ -46,10 +46,10 @@ const historyRouter = express.Router()
 
 historyRouter.route('/')
     .post((req, res) => {
-        const { nameDog, photo, idDog, tag } = req.body
+        const { nameDog, photo, idDog, tag, description } = req.body
 
         tagLogic.createIfNotExistTag(tag)
-            .then(() => historyLogic.create(nameDog, photo, idDog, tag)
+            .then(() => historyLogic.create(nameDog, photo, idDog, tag, description)
                 .then(history => {
                     res.json({
                         status: 'OK',
@@ -197,7 +197,30 @@ historyRouter.route('/listByTag/:tag')
 
 app.use('/history', historyRouter)
 
-console.log(`Connecting History API db on url ${process.env.DB_URL}`)
+const tagRouter = express.Router()
+
+tagRouter.route('/')
+    .get((req, res) => {
+        tagLogic.listTags()
+            .then(tags => {
+                res.json({
+                    status: 'OK',
+                    message: 'tags listed successfully',
+                    data: tags
+                })
+            })
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
+
+
+app.use('/tags', tagRouter)
+
+console.log(`Connecting API db on url ${process.env.DB_URL}`)
 
 const mongoose = require('mongoose')
 mongoose.Promise = global.Promise
