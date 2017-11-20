@@ -16,7 +16,14 @@ class Header extends Component {
 						<ul className="nav navbar-nav">
 							<li><NavLink className="navlink" to='/'>Home</NavLink></li>
 							<li><NavLink className="navlink" to='/create-user'>Create user</NavLink></li>
-							<li><NavLink className="navlink glyphicon glyphicon-road" to='/wall'>Walk</NavLink></li>
+							<li><NavLink className="navlink" to='/my-dogs'>My Dogs</NavLink></li>
+							<li>
+								<NavLink 
+									className="navlink glyphicon glyphicon-road margin_top-1px" 
+									to='/wall'>
+									Walk
+								</NavLink>
+							</li>
 						</ul>
 					</div>
 				</div>

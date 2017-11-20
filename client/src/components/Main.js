@@ -4,6 +4,7 @@ import {Route} from 'react-router-dom'
 import Home from './Home'
 import CreateUser from './CreateUser'
 import Wall from './wall/Wall'
+import MyDogs from './mydogs/MyDogs'
 
 class Main extends Component{
 	render(){
@@ -11,6 +12,7 @@ class Main extends Component{
 			<div>
 				<Route exact path='/' component={Home}/>
 	          	<Route path='/create-user' component={CreateUser}/>
+	          	<Route path='/my-dogs' component={MyDogs}/>
 	          	<Route path='/wall' component={Wall}/>
 			</div>
 		)

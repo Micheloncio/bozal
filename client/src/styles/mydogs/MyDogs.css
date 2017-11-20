@@ -1,0 +1,17 @@
+.backgroundMyDogs{
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 650px;
+	margin-top: -20px;
+	background-image: url('../../images/notebook.png');
+}
+@media (max-width: 900px) {
+  .backgroundMyDogs {
+	background-image: none;
+  }
+}
+.noDogsText{
+	margin-top: 30%;
+	font-size: 28px;
+	color:gray;
+}

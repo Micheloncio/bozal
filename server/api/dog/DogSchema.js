@@ -7,7 +7,7 @@ const DogSchema = new Schema({
 		idUser: String,
 		idBreed: String,
 		wheight: Number,
-		birdDate: Date,
+		birthdate: Date,
 		photos: [String],//MongoDB acepta hasta 16mb
 		level: { type: Number, default: 1 },
 		points: { type: Number, default: 20 },

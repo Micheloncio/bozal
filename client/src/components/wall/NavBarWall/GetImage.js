@@ -29,9 +29,10 @@ class GetImage extends Component{
   	handleGetImage = (e) =>{
   		this.setImage(URL.createObjectURL(e.target.files[0]))
   	}
-  	handleSavePhoto = () =>{
+  	handleSavePhoto = (e) =>{
+  		e.preventDefault()
+  		this.props.onHide()
 		this.props.handleSetDogPhoto(this.state.croppedImage)
-		this.props.onHide()
   	}
 	render(){
 		return (

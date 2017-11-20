@@ -2,7 +2,7 @@
 	background-position: center;
 	background-repeat: repeat-y;
 	padding-bottom: 120px;
-
+	min-height: 700px;
 }
 .backgroundBeach{
 	background-image: linear-gradient(#FFFFFF,#F7ECC0,#F4F8C0,#D4B682, #8F6215);

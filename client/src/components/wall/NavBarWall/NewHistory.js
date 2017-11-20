@@ -94,8 +94,9 @@ class NewHistory extends Component{
 		)
 	}
 
-	handleCreateHistory = () =>{
+	handleCreateHistory = (e) =>{
 		if(this.checkNewHistory()){
+			e.target.disabled = true
 			this.createNewHistory()
 				.then(res=>{
 					this.props.handleLoadNewCurrentTags(this.state.selectedTag)
@@ -209,7 +210,7 @@ class NewHistory extends Component{
 					</Row>
 
 						<Modal.Footer>
-							{this.state.tagError || this.state.actionError
+							{this.state.tagError || this.state.actionError || this.state.photoError
 								? 
 								<h5 className="checkError">Red fields required  </h5> 
 								: undefined

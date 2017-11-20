@@ -1,0 +1,9 @@
+
+.containerAddDog{
+	display: inline-block;
+	position: sticky;
+	margin-top: -50px;
+	top:30px;
+	transition:  0.3s ease-in-out 0s;
+	z-index: 1;
+}
