@@ -34,7 +34,7 @@ class Commentaries extends Component{
 	}
 
 	addComment(){
-		HistoriesApi.addComment(this.props.idHistory, this.state.textbox, this.props.myDogProfile.id)
+		HistoriesApi.addComment(this.props.idHistory, this.state.textbox, this.props.myDogProfile._id)
 		this.updateComments(this.props.idHistory, this.state.textbox, this.props.myDogProfile.name)
 		this.setTextBox('')
 	}

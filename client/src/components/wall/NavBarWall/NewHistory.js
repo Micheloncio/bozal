@@ -6,7 +6,7 @@ import CapitalLetter from '../../../utilities/CapitalLetter'
 
 import HistoriesApi from '../../../services/HistoriesApi'
 
-import GetImage from './GetImage'
+import GetImage from '../../commons/GetImage'
 
 class NewHistory extends Component{
 	constructor(){
@@ -88,7 +88,7 @@ class NewHistory extends Component{
 		return HistoriesApi.createHistory(
 			this.props.myDogProfile.name, 
 			this.state.dogPhoto, 
-			this.props.myDogProfile.id, 
+			this.props.myDogProfile._id, 
 			this.state.selectedTag, 
 			this.state.textbox
 		)
@@ -130,7 +130,7 @@ class NewHistory extends Component{
 	        				<Row>
 			        			<Col xs={12} md={12}>
 			        				<h4 className={this.state.photoError ? "checkError marginLeftNewHistory displayInline" : "marginLeftNewHistory displayInline"}>
-			        					Click button for add new photo:
+			        					Click button to add new photo:
 			        				</h4>
 			        				<Button 
 			        					className="marginLeftNewHistory"

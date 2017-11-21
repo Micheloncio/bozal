@@ -61,12 +61,12 @@ class History extends Component{
 		this.itsDisliked(dislikes, myIdDog)
 	}
 	componentWillMount(){
-		this.checkLikeAndDislike(this.props.history.likes, this.props.history.dislikes, this.props.myDogProfile.id)
+		this.checkLikeAndDislike(this.props.history.likes, this.props.history.dislikes, this.props.myDogProfile._id)
 	}
 	componentWillReceiveProps(nextPops){
 		this.setShowComments(false)
 		this.setGray(true)
-		this.checkLikeAndDislike(nextPops.history.likes, nextPops.history.dislikes, nextPops.myDogProfile.id)
+		this.checkLikeAndDislike(nextPops.history.likes, nextPops.history.dislikes, nextPops.myDogProfile._id)
 	}
 	
 
@@ -78,7 +78,7 @@ class History extends Component{
 							<div className="col-xs-2 col-md-1 col-lg-1 col-xs-offset-0 col-md-offset-1 col-lg-offset-3">
 								<Like
 									idHistory = {this.props.history._id}
-									myIdDog = {this.props.myDogProfile.id}
+									myIdDog = {this.props.myDogProfile._id}
 									likes = {this.props.history.likes}
 									nameDog = {this.props.history.nameDog}
 									setLiked = {this.setLiked} 
@@ -90,7 +90,7 @@ class History extends Component{
 								/>
 								<Dislike
 									idHistory = {this.props.history._id}
-									myIdDog = {this.props.myDogProfile.id}
+									myIdDog = {this.props.myDogProfile._id}
 									dislikes = {this.props.history.dislikes}
 									nameDog = {this.props.history.nameDog}
 									setDisliked = {this.setDisliked} 

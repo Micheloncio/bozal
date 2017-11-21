@@ -13,10 +13,6 @@ class Wall extends Component{
 
 		this.state = {
 			initialTag:'home',
-			myDogProfile:{
-				id:'5a0c8cbadb862d35284ca890',
-				name: 'Lua'
-				},
 			histories:[],
 			background: 'backgroundWall backgroundHome'
 		}
@@ -76,7 +72,7 @@ class Wall extends Component{
 							
 							<NavBarWall 
 								handleApplyNewCurrentTag = {this.handleApplyNewCurrentTag}
-								myDogProfile = {this.state.myDogProfile}
+								myDogProfile = {this.props.myDogProfile}
 							/>
 
 						</div>
@@ -89,7 +85,7 @@ class Wall extends Component{
 										
 										<History 
 											history = {history}
-											myDogProfile = {this.state.myDogProfile}
+											myDogProfile = {this.props.myDogProfile}
 										/>
 
 									</div>

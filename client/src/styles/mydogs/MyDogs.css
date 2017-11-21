@@ -1,17 +1,38 @@
 .backgroundMyDogs{
 	background-position: center;
+	background-size: cover;
 	background-repeat: no-repeat;
 	min-height: 650px;
 	margin-top: -20px;
 	background-image: url('../../images/notebook.png');
 }
-@media (max-width: 900px) {
-  .backgroundMyDogs {
-	background-image: none;
-  }
-}
 .noDogsText{
 	margin-top: 30%;
 	font-size: 28px;
 	color:gray;
+}
+
+.dogListContainer{
+	margin-top: 50px;
+	text-align: left;
+}
+.elementDogList{
+	width: 100%;
+	margin-top: 10px;
+	border: 1px solid black;
+	border-radius: 5px;
+	font-size: 24px;
+}
+.elementDogList:hover{
+	background-color: lightgrey;
+}
+@media (max-width: 1120px) {
+  .elementDogList {font-size: 20px;}
+}
+@media (max-width: 770px) {
+  .backgroundMyDogs {background-image: none;}  
+}
+@media (max-width: 900px) {
+  .elementDogList {font-size: 16px;}
+  
 }

@@ -1,0 +1,34 @@
+
+.btnDogProfileContainer{
+	text-align: left;
+	margin-top: 40px;
+	margin-left: 20px;
+}
+.btnDogProfileFormat{
+	background-color: transparent;
+	border: none;
+	font-size: 36px;
+	transition: 0.3s ease-in-out 0s;
+}
+.btnDogProfileFormat:hover{
+	transform: scale(1.4);
+}
+.h1DogProfile{
+	color:black;
+	margin-top: 40px;
+}
+.imageDogProfile{
+	border: 5px solid #80D845;
+}
+
+.dogGeneralContainer{
+	text-align: center;
+}
+.dogDetailContainer{
+	text-align: left;
+}
+@media (max-width: 992px){
+	.dogGeneralContainer{
+		text-align: left;
+	}
+}
