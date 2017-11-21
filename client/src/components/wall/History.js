@@ -50,7 +50,8 @@ class History extends Component{
 	}
 
 	handleShowHideComment = () => {
-    	this.setShowComments(!this.state.showComments)
+		if(this.props.myDogProfile._id)
+    		this.setShowComments(!this.state.showComments)
 	}
 	handleSetGray = (bool) =>{
 		this.setGray(bool)

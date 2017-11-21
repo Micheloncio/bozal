@@ -34,6 +34,7 @@ class AddDog extends Component{
 							onHide={this.handleShowHideNewDog}
 							dialogClassName="custom-modal"
 							idUser={this.props.idUser}
+							loadDogs={this.props.loadDogs}
 						/>
 						:
 						undefined

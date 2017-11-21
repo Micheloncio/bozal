@@ -5,7 +5,7 @@ import '../../styles/mydogs/MyDogs.css'
 import DogProfile from './DogProfile'
 import NavBarMyDog from './NavBarMyDog/NavBarMyDog'
 import NoDogsYet from './NoDogsYet'
-import DogList from './DogList'
+import DogList from './DogList/DogList'
 
 import DogsApi from '../../services/DogsApi'
 
@@ -34,6 +34,11 @@ class MyDogs extends Component{
 			})
 			.catch()
 	}
+	deleteDogs = (idDog) =>{
+		const filteredDogs = this.state.dogs.filter(dog =>{
+									return dog._id !==	idDog})
+		this.setDogs(filteredDogs)
+	}
 
 	setMainDog = (dog,itsSelect) =>{
 		this.props.setDogSelected(dog)
@@ -58,7 +63,8 @@ class MyDogs extends Component{
 				<div className="container-fluid">
 					<div className="row">
 						<NavBarMyDog 
-							idUser={this.props.idUser}/>
+							idUser={this.props.idUser}
+							loadDogs={this.loadDogs}/>
 					</div>		
 					{this.props.anyDogSelected
 						? 
@@ -71,7 +77,8 @@ class MyDogs extends Component{
 								? 
 								<DogList
 									dogs={this.state.dogs}
-									selectADog={this.selectADog}/> 
+									selectADog={this.selectADog}
+									deleteDogs={this.deleteDogs}/> 
 								: 
 								<NoDogsYet/>
 							}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import {Row, Col, Image, Modal, Button, FormGroup, Radio } from 'react-bootstrap'
+import {Row, Col, Image, Modal, Button, FormGroup } from 'react-bootstrap'
 
 import DogsApi from '../../../../services/DogsApi'
 
@@ -16,6 +16,8 @@ class NewDog extends Component{
 		this.state={
 			name:'',
 			nameError: false,
+			chip:'',
+			chipError: false,
 			breed:'',
 			breedError:false,
 			gender:'',
@@ -31,6 +33,8 @@ class NewDog extends Component{
 
 	setName = (name) => {this.setState({name})}
 	setNameError = (nameError) => {this.setState({nameError})}
+	setChip = (chip) => {this.setState({chip})}
+	setChipError = (chipError) => {this.setState({chipError})}
 	setBreed = (breed) => {this.setState({breed})}
 	setBreedError = (breedError) => {this.setState({breedError})}
 	setGender= (gender) => {this.setState({gender})}
@@ -44,6 +48,10 @@ class NewDog extends Component{
 
 	checkName = () => {
 		if(this.state.name)
+			return true
+	}
+	checkChip = () => {
+		if(this.state.chip)
 			return true
 	}
 	checkBreed = () => {
@@ -68,7 +76,7 @@ class NewDog extends Component{
 	}
 
 	allAround = () =>{
-		if(this.state.name && this.state.breed && this.state.gender && this.state.bithdate && this.state.weight && this.state.dogPhoto)
+		if(this.state.name && this.state.chip && this.state.breed && this.state.gender && this.state.bithdate && this.state.weight && this.state.dogPhoto)
 			return true
 	}
 
@@ -78,6 +86,11 @@ class NewDog extends Component{
 			this.setNameError(true)
 		else
 			this.setNameError(false)
+
+		if(!this.checkChip())
+			this.setChipError(true)
+		else
+			this.setChipError(false)
 
 		if(!this.checkBreed())
 			this.setBreedError(true)
@@ -109,13 +122,7 @@ class NewDog extends Component{
 	}
 
 	createNewDog(){
-		//return DogsApi.createDog()
-		console.log("Se puede crear!!")
-		console.log(`Name: ${this.state.name}
-					breed: ${this.state.breed}
-					gender: ${this.state.gender}
-					bithdate: ${this.state.bithdate} 
-					weight: ${this.state.weight}`)
+		return DogsApi.createDog(this.state.name, this.props.idUser, this.state.chip, this.state.breed, this.state.gender, this.state.bithdate, this.state.weight, this.state.dogPhoto)
 	}
 
 	handleCreateDog = (e) =>{
@@ -123,6 +130,7 @@ class NewDog extends Component{
 			e.target.disabled = true
 			this.createNewDog()
 				.then(res=>{
+					this.props.loadDogs(this.props.idUser)
 					this.props.onHide()
 				})
 				.catch(console.error)
@@ -131,6 +139,9 @@ class NewDog extends Component{
 
 	handleChangeName = (e) =>{
 		this.setName(e.target.value)
+	}
+	handleChangeChip = (e) =>{
+		this.setChip(e.target.value)
 	}
 	handleChangeBreed = (e) =>{
 		this.setBreed(e.target.value)
@@ -167,6 +178,11 @@ class NewDog extends Component{
 			        					label="Name:"
 			        					error={this.state.nameError}
 			        					handleChange={this.handleChangeName}
+			        					inputType="text"/>
+			        				<NewDogField 
+			        					label="Chip:"
+			        					error={this.state.chipError}
+			        					handleChange={this.handleChangeChip}
 			        					inputType="text"/>
 			        				<NewDogSelectBreed 
 			        					label="Breed:"

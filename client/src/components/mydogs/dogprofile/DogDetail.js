@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+import CapitalLetter from '../../../utilities/CapitalLetter'
+
 class DogDetail extends Component{
 	constructor(){
 		super()
@@ -31,7 +33,10 @@ class DogDetail extends Component{
 		return(
 			<div className="container-fluid dogDetailContainer">
 				<div className="row">
-					<h2>Breed: {this.props.dog.idBreed.toUpperCase()}</h2>
+					<h2>Breed: {this.props.dog.idBreed.name}</h2>
+				</div>
+				<div className="row">
+					<h2>Gender: {CapitalLetter(this.props.dog.gender)}</h2>
 				</div>
 				<div className="row">
 					<h2>Weight: {this.props.dog.weight} kg</h2>

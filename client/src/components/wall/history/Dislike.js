@@ -33,7 +33,8 @@ class Dislike extends Component{
 	}
 	
 	handleDislike(disliked){
-		this.deleteOrAddLike(disliked)
+		if(this.props.myIdDog)
+			this.deleteOrAddLike(disliked)
 	}
 	render(){
 		return (

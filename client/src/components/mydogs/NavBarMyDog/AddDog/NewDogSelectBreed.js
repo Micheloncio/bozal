@@ -2,7 +2,32 @@ import React, {Component} from 'react'
 
 import {Row, Col } from 'react-bootstrap'
 
+import BreedsApi from '../../../../services/BreedsApi'
+
 class NewDogSelectBreed extends Component{
+
+	constructor(){
+		super()
+		this.state={
+			breeds:[]
+		}
+	}
+
+	setBreeds(breeds){this.setState({breeds})}
+
+	loadBreeds = () => {
+		BreedsApi.listBreeds()
+			.then(breeds =>{
+				console.log(breeds)
+				this.setBreeds(breeds)
+			})
+			.catch(console.error)
+	}
+
+
+	componentDidMount(){
+		this.loadBreeds()
+	}
 
 	render(){
 		return (
@@ -16,8 +41,9 @@ class NewDogSelectBreed extends Component{
 					<Col xs={12} md={10}>
 						<select onChange={this.props.handleChange}>
 							<option value="" selected></option>
-			 				<option value="240">240</option>
-							<option value="150">150</option>
+							{this.state.breeds.map(breed =>{
+								return <option value={breed._id}>{breed.name}</option>
+							})}
 						</select>
 					</Col>
 				</Row>

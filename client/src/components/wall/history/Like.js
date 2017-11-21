@@ -33,7 +33,8 @@ class Like extends Component{
 	}
 
 	handleLike = (liked) =>{
-		this.deleteOrAddLike(liked)
+		if(this.props.myIdDog)
+			this.deleteOrAddLike(liked)
 	}
 
 	render(){

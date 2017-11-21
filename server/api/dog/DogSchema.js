@@ -7,6 +7,7 @@ const Schema = mongoose.Schema
 const DogSchema = new Schema({
 		name: String,
 		idUser: String,
+		chip: String,
 		idBreed: { type: Schema.ObjectId, ref: "Breed" },
 		gender: String,
 		weight: Number,

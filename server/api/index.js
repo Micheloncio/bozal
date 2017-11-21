@@ -21,9 +21,9 @@ const dogRouter = express.Router()
 
 dogRouter.route('/')
     .post((req, res) => {
-        const { name, idUser, idBreed, gender, weight,birthdate, profilePhoto } = req.body
+        const { name, idUser, chip, idBreed, gender, weight,birthdate, profilePhoto } = req.body
         
-        dogLogic.create(name, idUser, idBreed, gender, weight,birthdate, profilePhoto)
+        dogLogic.create(name, idUser, chip, idBreed, gender, weight,birthdate, profilePhoto)
             .then(dog => {
                 res.json({
                     status: 'OK',

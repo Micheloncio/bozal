@@ -16,7 +16,8 @@ class AddHistory extends Component{
 	}
 
 	handleShowHideNewHistory = () => {
-		this.setmodalShow(!this.state.modalShow)
+		if(this.props.myDogProfile._id)
+			this.setmodalShow(!this.state.modalShow)
 	}
 
 	render(){

@@ -12,7 +12,8 @@ class NavBarMyDog extends Component{
 				<div className="row">
 					<div className="col-xs-6 col-sm-3 col-md-2">
 						<AddDog 
-							idUser={this.props.idUser}/>
+							idUser={this.props.idUser}
+							loadDogs={this.props.loadDogs}/>
 					</div>
 					<div className="col-xs-6 col-sm-3 col-md-2">
 						<AddoptDog />

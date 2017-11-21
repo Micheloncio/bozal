@@ -12,7 +12,7 @@ class App extends Component {
 
 		this.state = {
 			config:{
-				idUser:'1',
+				idUser:'0',
 				anyDogSelected: false,
 				dogSelected:{}
 			}
