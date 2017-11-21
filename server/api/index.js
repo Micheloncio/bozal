@@ -13,6 +13,7 @@ app.use(bodyParser({ limit: '5mb' }))
 app.use(bodyParser.json())
 
 const dogLogic = new(require('./dog/DogLogic'))
+const breedLogic = new(require('./breed/BreedLogic'))
 const historyLogic = new(require('./history/HistoryLogic'))
 const tagLogic = new(require('./tag/TagLogic'))
 
@@ -20,10 +21,9 @@ const dogRouter = express.Router()
 
 dogRouter.route('/')
     .post((req, res) => {
+        const { name, idUser, idBreed, gender, weight,birthdate, profilePhoto } = req.body
         
-        const { name, idUser, idBreed, wheight,birthdate } = req.body
-        
-        dogLogic.create(name, idUser, idBreed, wheight,birthdate)
+        dogLogic.create(name, idUser, idBreed, gender, weight,birthdate, profilePhoto)
             .then(dog => {
                 res.json({
                     status: 'OK',
@@ -39,8 +39,50 @@ dogRouter.route('/')
             })
     })
 
+dogRouter.route('/:idUser')
+    .get((req, res) => {
+        const { idUser } = req.params
+        dogLogic.listDogsByUser(idUser)
+            .then(dogs => {
+                res.json({
+                    status: 'OK',
+                    message: 'dogs listed successfully',
+                    data: dogs
+                })
+            })
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
+
+
 
 app.use('/dog', dogRouter)
+
+const breedRouter = express.Router()
+
+breedRouter.route('/')
+    .get((req, res) => {
+        breedLogic.listBreeds()
+            .then(breeds => {
+                res.json({
+                    status: 'OK',
+                    message: 'breeds listed successfully',
+                    data: breeds
+                })
+            })
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
+
+app.use('/breed', breedRouter)
 
 const historyRouter = express.Router()
 
@@ -220,18 +262,18 @@ tagRouter.route('/')
 
 app.use('/tags', tagRouter)
 
-console.log(`Connecting API db on url ${process.env.DB_URL}`)
+console.log(`Connecting Yap API db on url ${process.env.DB_URL}`)
 
 const mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 mongoose.connect(process.env.DB_URL, { useMongoClient: true })
 
-console.log(`Starting History API on port ${process.env.PORT}`)
+console.log(`Starting Yap API on port ${process.env.PORT}`)
 
-app.listen(process.env.PORT, () => console.log('History API is up'))
+app.listen(process.env.PORT, () => console.log('Yap API is up'))
 
 process.on('SIGINT', () => {
-    console.log('\nStopping History API...')
+    console.log('\nStopping Yap API...')
 
     process.exit()
 })

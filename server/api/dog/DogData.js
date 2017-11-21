@@ -1,7 +1,7 @@
 const Dog = require('./DogSchema')
 
 class DogData {
-	create(name, idUser, idBreed, wheight,birthdate) {
+	create(name, idUser, idBreed, gender, weight, birthdate, profilePhoto) {
         return new Promise((resolve, reject) => {
             if (!name)
                 throw new Error('no dog name provided')
@@ -12,13 +12,19 @@ class DogData {
             if (!idBreed)
                 throw new Error('no idBreed provided')
 
-            if(!wheight)
-            	throw new Error('no wheight provided')
+            if(!gender)
+                throw new Error('no gender provided')
+
+            if(!weight)
+            	throw new Error('no weight provided')
 
             if(!birthdate)
             	throw new Error('no birthdate provided')
 
-            const dog = new Dog({ name, idUser, idBreed, wheight, birthdate })
+            if(!profilePhoto)
+                throw new Error('no profilePhoto provided')
+
+            const dog = new Dog({ name, idUser, idBreed, gender, weight, birthdate, profilePhoto })
 
             dog.save()
                 .then(resolve)
