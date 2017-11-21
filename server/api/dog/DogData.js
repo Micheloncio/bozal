@@ -49,6 +49,17 @@ class DogData {
 
         })
     }
+    deleteDog(_id){
+        return new Promise((resolve, reject) => {
+            if(!_id)
+                    throw new Error('no _id provided')
+
+            Dog.remove({_id})
+                .then(resolve)
+                .catch(reject)
+
+        })
+    }
 }
 
 module.exports = DogData

@@ -8,6 +8,9 @@ class DogLogic {
 	listDogsByUser(idUser){
 		return dogData.listDogsByUser(idUser)
 	}
+	deleteDog(_id){
+		return dogData.deleteDog(_id)
+	}
 }
 
 module.exports = DogLogic

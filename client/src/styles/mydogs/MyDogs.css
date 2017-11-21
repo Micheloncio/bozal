@@ -42,6 +42,7 @@
 	color:white;
 }
 .h2DeleteDog{
+	display: inline;
 	color:red;
 }
 @media (max-width: 1120px) {

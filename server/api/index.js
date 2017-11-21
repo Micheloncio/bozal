@@ -38,6 +38,24 @@ dogRouter.route('/')
                 })
             })
     })
+    .delete((req, res) => {
+        const { idDog } = req.query
+        dogLogic.deleteDog(idDog)
+            .then(dog => {
+                res.json({
+                    status: 'OK',
+                    message: 'dogs deleted successfully',
+                    data: dog
+                })
+            })
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
+
 
 dogRouter.route('/:idUser')
     .get((req, res) => {
@@ -57,7 +75,6 @@ dogRouter.route('/:idUser')
                 })
             })
     })
-
 
 
 app.use('/dog', dogRouter)

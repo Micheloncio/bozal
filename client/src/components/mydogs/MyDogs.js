@@ -34,7 +34,7 @@ class MyDogs extends Component{
 			})
 			.catch()
 	}
-	deleteDogs = (idDog) =>{
+	deleteDog = (idDog) =>{
 		const filteredDogs = this.state.dogs.filter(dog =>{
 									return dog._id !==	idDog})
 		this.setDogs(filteredDogs)
@@ -78,7 +78,7 @@ class MyDogs extends Component{
 								<DogList
 									dogs={this.state.dogs}
 									selectADog={this.selectADog}
-									deleteDogs={this.deleteDogs}/> 
+									deleteDog={this.deleteDog}/> 
 								: 
 								<NoDogsYet/>
 							}
