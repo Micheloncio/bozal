@@ -8,7 +8,6 @@
 
 .navbar-white{
 	background-color: white; 
-
 	border:5px solid black;
 }
 .navbrand{
@@ -22,7 +21,22 @@
 	font-size: 18px;
 	color:black;
 }
-
+@media (max-width: 876px){
+	.navlink{
+		font-size: 16px;
+	}
+	.navbrand{
+		font-size: 20px;
+	}
+}
+@media (max-width: 822px){
+	.navlink{
+		font-size: 15px;
+	}
+	.navbrand{
+		font-size: 18px;
+	}
+}
 .navlink:hover{
 	color:black;
 	background: linear-gradient(#AEF57F, #95BD86) !important;
@@ -47,4 +61,9 @@
 }
 .element_2_headerDog{
 	margin-top: -7px;
+}
+
+.HeaderSearchContainer{
+	margin-top: 10px;
+	border-radius: 5px;
 }

@@ -9,7 +9,7 @@ class HeaderDog extends Component {
 			<div className="HeaderDogContainer">
 			{this.props.config.anyDogSelected 
 				?
-				<div>
+				<div className="cursorPointer">
 					<p className="element_1_headerDog">
 						<strong>{this.props.config.dogSelected.name}</strong>
 					</p>

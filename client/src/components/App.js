@@ -5,6 +5,7 @@ import '../styles/App.css';
 import Header from './header/Header'
 import Main from './Main'
 import Footer from './Footer'
+import DogsApi from '../services/DogsApi'
 
 class App extends Component {
 	constructor(){
@@ -42,6 +43,7 @@ class App extends Component {
 				config:{...prevState.config, changedDog}
 			})
 		)
+		DogsApi.updatePoints(this.state.config.dogSelected._id, points)
 	}
 
   	render() {

@@ -3,11 +3,11 @@ const dogData = new(require('./DogData'))
 class DogLogic {
 	createDog(name, idUser, chip, idBreed, gender, weight,birthdate, profilePhoto){
 		const _gender = gender.toLowerCase()
-		return dogData.create(name, idUser, chip, idBreed, _gender, weight, birthdate, profilePhoto)
+		return dogData.createDog(name, idUser, chip, idBreed, _gender, weight, birthdate, profilePhoto)
 	}
 	updateDog(_id, name, chip, idBreed, _gender, weight, birthdate, profilePhoto){
 		const gender = _gender.toLowerCase()
-		return dogData.update(_id, name, chip, idBreed, gender, weight, birthdate, profilePhoto)
+		return dogData.updateDog(_id, name, chip, idBreed, gender, weight, birthdate, profilePhoto)
 	}
 	listDogsByUser(idUser){
 		return dogData.listDogsByUser(idUser)
@@ -16,7 +16,7 @@ class DogLogic {
 		return dogData.deleteDog(_id)
 	}
 	updatePoints(_id,points){
-		return updatePoints(_id,points)
+		return dogData.updatePoints(_id,points)
 	}
 }
 

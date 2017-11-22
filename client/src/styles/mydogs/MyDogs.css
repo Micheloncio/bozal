@@ -1,6 +1,7 @@
 .backgroundMyDogs{
+	background-image: url('../../images/mydogsbackground.png');
 	background-position: center;
-	background-size: cover;
+	background-size: 100% 125%;
 	background-repeat: no-repeat;
 	min-height: 650px;
 	margin-top: -20px;
@@ -20,25 +21,28 @@
 	width: 100%;
 	margin-top: 10px;
 	border: 1px solid black;
+	color: black;
 	border-radius: 5px;
 	font-size: 24px;
 	transition: 0.2s ease-in-out 0s;
 }
 .elementDogList:hover{
-	background-color: lightgrey;
+	background-color: #bfa894;
 }
 .btnEditDog{
 	margin-top: 2px;
 }
 .btnEditDog:hover{
-	background-color: yellow;
-	color:black;
+	background-color: #a58669;
+	border:black;
+	color:white;
 }
 .btnRemoveDog{
 	margin-top: 2px;
 }
 .btnRemoveDog:hover{
-	background-color: red;
+	background-color: #a58669;
+	border:black;
 	color:white;
 }
 .h2DeleteDog{
@@ -48,7 +52,7 @@
 @media (max-width: 1120px) {
   .elementDogList {font-size: 20px;}
 }
-@media (max-width: 770px) {
+@media (max-width: 991px) {
   .backgroundMyDogs {background-image: none;}  
 }
 @media (max-width: 900px) {

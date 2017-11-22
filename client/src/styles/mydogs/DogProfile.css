@@ -1,12 +1,13 @@
 
 .btnDogProfileContainer{
 	text-align: left;
-	margin-top: 40px;
+	margin-top: 30px;
 	margin-left: 20px;
 }
 .btnDogProfileFormat{
 	background-color: transparent;
 	border: none;
+	margin-left: 20%;
 	font-size: 36px;
 	transition: 0.3s ease-in-out 0s;
 }
@@ -15,10 +16,10 @@
 }
 .h1DogProfile{
 	color:black;
-	margin-top: 40px;
+	margin-top: 20px;
 }
 .imageDogProfile{
-	border: 5px solid #80D845;
+	border: 5px solid #4c3a2a;
 }
 
 .dogGeneralContainer{
@@ -26,6 +27,10 @@
 }
 .dogDetailContainer{
 	text-align: left;
+	margin-top: 100px;
+}
+.dogDetailContainer > div > p{
+	font-size: 20px;
 }
 @media (max-width: 992px){
 	.dogGeneralContainer{

@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import ReactTooltip from 'react-tooltip'
 
 import HistoriesApi from '../../../services/HistoriesApi'
 import Points from '../../../Points'
@@ -24,9 +25,10 @@ class Like extends Component{
 	}
 
 	deleteOrAddLike = (liked) =>{
-		if(liked)
+		if(liked){
 			HistoriesApi.deleteLike(this.props.idHistory, this.props.myIdDog)
-		else{
+			this.props.setPoints(-Points.like)
+		}else{
 			HistoriesApi.addLike(this.props.idHistory, this.props.myIdDog)
 			this.props.setPoints(Points.like)
 		}
@@ -42,10 +44,16 @@ class Like extends Component{
 
 	render(){
 		return (
-			<button className={this.state.liked ? 'like outlineNone borderButtonHistory marginButtonHistory toBeat' : 'like outlineNone borderButtonHistory marginButtonHistory liked'}
-				onClick={() =>{this.handleLike(this.state.liked)}}
-				>
-			</button>
+			<div>
+				<button 
+					data-tip={"Like +" + Points.like + " points"}
+					className={this.state.liked ? 'like outlineNone borderButtonHistory marginButtonHistory toBeat' : 'like outlineNone borderButtonHistory marginButtonHistory liked'}
+					onClick={() =>{this.handleLike(this.state.liked)}}
+					>
+				</button>
+				<ReactTooltip className="tooltip" place="top" effect="solid"/>
+			</div>
+			
 		)
 	}
 }

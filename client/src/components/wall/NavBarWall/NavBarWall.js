@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import ReactTooltip from 'react-tooltip'
 
 import '../../../styles/wall/NavBarWall.css'
 
@@ -99,6 +100,7 @@ class NavBarWall extends Component{
 									handleLoadNewCurrentTags = {this.handleLoadNewCurrentTags}
 								/>
 							</div>
+							
 					</div>
 					<div className="col-xs-12 col-sm-4 col-md-2 col-sm-offset-0 col-md-offset-3">
 						<SignPosterRight 

@@ -16,3 +16,8 @@ body {
 .displayInline{display:inline;}
 
 .displayBlock{display: block;}
+
+.tooltip{
+	border-radius: 25px !important;
+	opacity: 0.3 !important;
+}

@@ -15,7 +15,7 @@ class DogGeneral extends Component{
 				</div>
 				<div className="dogGeneralContainer">
 					<div className="row">
-						<h1 className="h1DogProfile">{this.props.dog.name.toUpperCase()}</h1>
+						<h1 className="h1DogProfile cursorDefault">{this.props.dog.name.toUpperCase()}</h1>
 					</div>
 					<div className="row">
 						<Image 

@@ -46,7 +46,7 @@ class DogList extends Component{
 				<div className="container-fluid dogListContainer">
 					{this.props.dogs.map((dog,index) =>{return (
 						<div key={index} className="row">
-							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+							<div className="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
 								<div onClick={()=>{this.props.selectADog(dog._id)}} className="outlineNone cursorPointer">
 									<div className="container-fluid">
 										<div className = "row elementDogList">
@@ -80,7 +80,7 @@ class DogList extends Component{
 									</div>
 								</div>
 							</div>
-							<div className="col-xs-offset-0 col-sm-offset-6 col-md-offset-6 col-lg-offset-6">
+							<div className="col-xs-offset-0 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
 							</div>
 							{this.state.modalDeleteShow === index+1
 								? 

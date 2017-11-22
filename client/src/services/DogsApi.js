@@ -18,7 +18,11 @@ const DogsApi = {
     deleteDog: function(idDog){
     	return axios.delete(this.baseUrl, {params:{ idDog: idDog }})
         	.then (res=> res.data.data)
-    }
+    },
+    updatePoints: function( idDog, points ){
+        return axios.put(this.baseUrl + '/points', { idDog, points })
+            .then (res=> res.data.data)
+    },
 }
 
 module.exports = DogsApi

@@ -77,7 +77,6 @@ dogRouter.route('/')
 dogRouter.route('/points')
     .put((req, res) => {
         const { idDog, points } = req.body
-        
         dogLogic.updatePoints(idDog,points)
             .then(dog => {
                 res.json({

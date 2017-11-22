@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 import '../../styles/mydogs/MyDogs.css'
 
-import DogProfile from './DogProfile'
+import DogProfile from './dogprofile/DogProfile'
 import NavBarMyDog from './NavBarMyDog/NavBarMyDog'
 import NoDogsYet from './NoDogsYet'
 import DogList from './DogList/DogList'
