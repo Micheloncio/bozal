@@ -15,11 +15,7 @@ class Main extends Component{
 	          	<Route path='/create-user' component={CreateUser}/>
 	          	<Route path='/my-dogs' render={() => ( 
 	          			<MyDogs
-	          				idUser = {this.props.config.idUser}
-	          				anyDogSelected={this.props.config.anyDogSelected}
-	          				dogSelected={this.props.config.dogSelected} 
-	          				setDogSelected={this.props.setDogSelected}
-	          				setAnyDogSelected={this.props.setAnyDogSelected}/> 
+	          				config={this.props.config}/> 
 	          		)}/>
 	          	<Route path='/wall' render={() => (
 	          			<Wall

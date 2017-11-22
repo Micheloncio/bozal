@@ -35,6 +35,37 @@ class DogData {
                 .catch(reject)
         })
     }
+    update(_id, name, chip, idBreed, gender, weight, birthdate, profilePhoto) {
+        return new Promise((resolve, reject) => {
+            if (!_id)
+                throw new Error('no dog _id provided')
+
+            if (!name)
+                throw new Error('no dog name provided')
+
+            if (!chip)
+                throw new Error('no dog chip provided')
+
+            if (!idBreed)
+                throw new Error('no idBreed provided')
+
+            if(!gender)
+                throw new Error('no gender provided')
+
+            if(!weight)
+                throw new Error('no weight provided')
+
+            if(!birthdate)
+                throw new Error('no birthdate provided')
+
+            if(!profilePhoto)
+                throw new Error('no profilePhoto provided')
+
+            Dog.update({_id},{ name, chip, idBreed, gender, weight, birthdate, profilePhoto })
+                .then(resolve)
+                .catch(reject)
+        })
+    }
     listDogsByUser(idUser){
         return new Promise((resolve, reject) => {
             if(!idUser)

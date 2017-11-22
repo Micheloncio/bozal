@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import '../styles/App.css';
 
-import Header from './Header'
+import Header from './header/Header'
 import Main from './Main'
 import Footer from './Footer'
 
@@ -14,26 +14,21 @@ class App extends Component {
 			config:{
 				idUser:'1',
 				anyDogSelected: false,
-				dogSelected:{}
+				dogSelected:{},
+				setDogSelected: (dogSelected)=>{this.setState(prevState=>({config:{...prevState.config, dogSelected}}))},
+				setAnyDogSelected: (anyDogSelected) =>{this.setState(prevState=>({config:{...prevState.config, anyDogSelected}}))}
 			}
 		}
 	}
 
-	setDogSelected = (dogSelected) =>{
-		this.setState(prevState=>({config:{...prevState.config, dogSelected}}))
-	}
-	setAnyDogSelected = (anyDogSelected) =>{
-		this.setState(prevState=>({config:{...prevState.config, anyDogSelected}}))
-	}
 
   	render() {
 	    return (
 	     	<div className="App">
-	          	<Header />
+	          	<Header 
+	          		config = {this.state.config}/>
 	          	<Main 
-	          		config = {this.state.config}
-	          		setDogSelected={this.setDogSelected}
-	          		setAnyDogSelected={this.setAnyDogSelected}/>
+	          		config = {this.state.config}/>
 	          	<Footer />
 	      </div>
 	    );

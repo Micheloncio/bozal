@@ -79,7 +79,11 @@ class Commentaries extends Component{
 							{this.state.comments.map((comment,index) =><div key={index}>
 									<label className="backgroundComentarie">
 										<strong>
-											{comment.dog.name}
+											{comment.dog 
+												? 
+												comment.dog.name
+												:
+												"Deleted Dog"}
 										</strong> 
 										: {comment.comment}
 										&nbsp;

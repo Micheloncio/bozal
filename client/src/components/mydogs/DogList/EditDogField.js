@@ -2,7 +2,14 @@ import React, {Component} from 'react'
 
 import {Row, Col } from 'react-bootstrap'
 
-class NewDogSelectGender extends Component{
+class EditDogField extends Component{
+	constructor(){
+		super()
+
+		this.state={
+			maxLength: 12
+		}
+	}
 
 	render(){
 		return (
@@ -14,11 +21,12 @@ class NewDogSelectGender extends Component{
 						</h4>
 					</Col>
 					<Col xs={12} md={10}>
-						<select onChange={this.props.handleChange} defaultValue="">
-							<option value=""></option>
-							<option value="Female">Female</option>
-			 				<option value="Male">Male</option>
-						</select>
+						<input 
+							maxLength={this.state.maxLength}
+							type={this.props.inputType} 
+							onChange={this.props.handleChange}
+							value={this.props.inputValue}
+						/>
 					</Col>
 				</Row>
 			</div>
@@ -26,4 +34,4 @@ class NewDogSelectGender extends Component{
 	}
 }
 
-export default NewDogSelectGender
+export default EditDogField

@@ -38,6 +38,24 @@ dogRouter.route('/')
                 })
             })
     })
+    .put((req, res) => {
+        const { idDog, name, chip, idBreed, gender, weight,birthdate, profilePhoto } = req.body
+        
+        dogLogic.update(idDog, name, chip, idBreed, gender, weight,birthdate, profilePhoto)
+            .then(dog => {
+                res.json({
+                    status: 'OK',
+                    message: 'dog created successfully',
+                    data: dog
+                })
+            })
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
     .delete((req, res) => {
         const { idDog } = req.query
         dogLogic.deleteDog(idDog)

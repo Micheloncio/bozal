@@ -85,12 +85,25 @@ class DogList extends Component{
 							{this.state.modalDeleteShow === index+1
 								? 
 								<DeleteModal 
-									show={this.state.modalDeleteShow} 
+									show={!!this.state.modalDeleteShow} 
 									onHide={this.handleDelete}
 									dialogClassName="custom-modal"
 									idDog={dog._id}
 									nameDog={dog.name}
 									deleteDog={this.props.deleteDog}
+								/>
+								:
+								undefined
+							}
+							{this.state.modalEditShow === index+1
+								? 
+								<EditModal 
+									show={!!this.state.modalEditShow} 
+									onHide={this.handleEdit}
+									dialogClassName="custom-modal"
+									dog={dog}
+									idUser={this.props.idUser}
+									loadDogs={this.props.loadDogs}
 								/>
 								:
 								undefined

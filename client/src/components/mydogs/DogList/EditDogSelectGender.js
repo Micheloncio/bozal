@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 import {Row, Col } from 'react-bootstrap'
 
-class NewDogSelectGender extends Component{
+class EditDogSelectGender extends Component{
 
 	render(){
 		return (
@@ -14,10 +14,10 @@ class NewDogSelectGender extends Component{
 						</h4>
 					</Col>
 					<Col xs={12} md={10}>
-						<select onChange={this.props.handleChange} defaultValue="">
+						<select onChange={this.props.handleChange} defaultValue={this.props.gender}>
 							<option value=""></option>
-							<option value="Female">Female</option>
-			 				<option value="Male">Male</option>
+							<option value="female">Female</option>
+			 				<option value="male">Male</option>
 						</select>
 					</Col>
 				</Row>
@@ -26,4 +26,4 @@ class NewDogSelectGender extends Component{
 	}
 }
 
-export default NewDogSelectGender
+export default EditDogSelectGender

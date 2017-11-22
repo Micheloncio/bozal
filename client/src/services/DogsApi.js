@@ -11,6 +11,10 @@ const DogsApi = {
         return axios.post(this.baseUrl, { name, idUser, chip, idBreed, gender, weight,birthdate, profilePhoto })
         	.then (res=> res.data.data)
     },
+    updateDog: function(name, idDog, chip, idBreed, gender, birthdate, weight, profilePhoto ){
+        return axios.put(this.baseUrl, { name, idDog, chip, idBreed, gender, weight,birthdate, profilePhoto })
+            .then (res=> res.data.data)
+    },
     deleteDog: function(idDog){
     	return axios.delete(this.baseUrl, {params:{ idDog: idDog }})
         	.then (res=> res.data.data)

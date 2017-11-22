@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import '../styles/Login.css'
 
 class Login extends Component{
+
 	render(){
 		return (
 			<div className="centerContent">
@@ -17,7 +18,10 @@ class Login extends Component{
 						    <td><input className="inputLogin" type="password"/></td> 
 						</tr>
 					</table>
-					<button className="btn btn-default btnalign">Entrar</button>
+					<button 
+						className="btn btn-default btnalign"
+						>Entrar
+					</button>
 				</div>
 			</div>	
 		)

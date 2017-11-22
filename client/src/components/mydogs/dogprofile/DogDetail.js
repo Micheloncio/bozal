@@ -16,10 +16,8 @@ class DogDetail extends Component{
 	}
 
 	loadDate = (birthdate) =>{
-		const date = new Date(birthdate)
-		const separator = '/'
-		const finalDate = date.getDate() + separator + (date.getMonth()+1) + separator + date.getFullYear()
-		this.setBithdate(finalDate)
+		const extractDate =  birthdate.substr(0,10)
+		this.setBithdate(extractDate)
 	}
 
 	componentDidMount(){

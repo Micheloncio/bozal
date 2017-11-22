@@ -41,8 +41,8 @@ class MyDogs extends Component{
 	}
 
 	setMainDog = (dog,itsSelect) =>{
-		this.props.setDogSelected(dog)
-		this.props.setAnyDogSelected(itsSelect)
+		this.props.config.setDogSelected(dog)
+		this.props.config.setAnyDogSelected(itsSelect)
 	}
 
 	selectADog = (idDog) =>{
@@ -54,7 +54,7 @@ class MyDogs extends Component{
 	}
 
 	componentDidMount(){
-		this.loadDogs(this.props.idUser)
+		this.loadDogs(this.props.config.idUser)
 	}
 
 	render(){
@@ -63,22 +63,24 @@ class MyDogs extends Component{
 				<div className="container-fluid">
 					<div className="row">
 						<NavBarMyDog 
-							idUser={this.props.idUser}
+							idUser={this.props.config.idUser}
 							loadDogs={this.loadDogs}/>
 					</div>		
-					{this.props.anyDogSelected
+					{this.props.config.anyDogSelected
 						? 
 						<DogProfile 
-							dog={this.props.dogSelected}
+							dog={this.props.config.dogSelected}
 							deselectADog= {this.deselectADog}/>
 						:
 						<div className="row">
 							{this.state.dogs.length 
 								? 
 								<DogList
+									idUser={this.props.config.idUser}
 									dogs={this.state.dogs}
 									selectADog={this.selectADog}
-									deleteDog={this.deleteDog}/> 
+									deleteDog={this.deleteDog}
+									loadDogs={this.loadDogs}/> 
 								: 
 								<NoDogsYet/>
 							}
