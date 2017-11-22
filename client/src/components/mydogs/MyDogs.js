@@ -41,8 +41,8 @@ class MyDogs extends Component{
 	}
 
 	setMainDog = (dog,itsSelect) =>{
-		this.props.config.setDogSelected(dog)
-		this.props.config.setAnyDogSelected(itsSelect)
+		this.props.setDogSelected(dog)
+		this.props.setAnyDogSelected(itsSelect)
 	}
 
 	selectADog = (idDog) =>{

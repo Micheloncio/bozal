@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 
 import HistoriesApi from '../../../services/HistoriesApi'
+import Points from '../../../Points'
 
 class Like extends Component{
 	constructor(props){
@@ -25,8 +26,10 @@ class Like extends Component{
 	deleteOrAddLike = (liked) =>{
 		if(liked)
 			HistoriesApi.deleteLike(this.props.idHistory, this.props.myIdDog)
-		else
+		else{
 			HistoriesApi.addLike(this.props.idHistory, this.props.myIdDog)
+			this.props.setPoints(Points.like)
+		}
 
 		this.setLiked(!liked)
 		this.props.setLiked(!liked)

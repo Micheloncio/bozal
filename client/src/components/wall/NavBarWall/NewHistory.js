@@ -7,6 +7,7 @@ import CapitalLetter from '../../../utilities/CapitalLetter'
 import HistoriesApi from '../../../services/HistoriesApi'
 
 import GetImage from '../../commons/GetImage'
+import Points from '../../../Points'
 
 class NewHistory extends Component{
 	constructor(){
@@ -97,6 +98,7 @@ class NewHistory extends Component{
 	handleCreateHistory = (e) =>{
 		if(this.checkNewHistory()){
 			e.target.disabled = true
+			this.props.setPoints(Points.addHistory)
 			this.createNewHistory()
 				.then(res=>{
 					this.props.handleLoadNewCurrentTags(this.state.selectedTag)

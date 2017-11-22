@@ -14,13 +14,35 @@ class App extends Component {
 			config:{
 				idUser:'1',
 				anyDogSelected: false,
-				dogSelected:{},
-				setDogSelected: (dogSelected)=>{this.setState(prevState=>({config:{...prevState.config, dogSelected}}))},
-				setAnyDogSelected: (anyDogSelected) =>{this.setState(prevState=>({config:{...prevState.config, anyDogSelected}}))}
+				dogSelected:{}
 			}
 		}
 	}
 
+	setDogSelected = (dogSelected)=>{
+		this.setState(prevState=>({
+				config:{...prevState.config, dogSelected}
+			})
+		)
+	}
+				
+	setAnyDogSelected = (anyDogSelected) =>{
+		this.setState(prevState=>({
+				config:{...prevState.config, anyDogSelected}
+			})
+		)
+	}
+	
+	setPoints = (addPoints)=>{
+		const points = this.state.config.dogSelected.points + addPoints
+		const changedDog = this.state.config.dogSelected
+		changedDog.points = points
+
+		this.setState(prevState=>({
+				config:{...prevState.config, changedDog}
+			})
+		)
+	}
 
   	render() {
 	    return (
@@ -28,7 +50,10 @@ class App extends Component {
 	          	<Header 
 	          		config = {this.state.config}/>
 	          	<Main 
-	          		config = {this.state.config}/>
+	          		config = {this.state.config}
+	          		setDogSelected={this.setDogSelected}
+	          		setAnyDogSelected={this.setAnyDogSelected}
+	          		setPoints={this.setPoints}/>
 	          	<Footer />
 	      </div>
 	    );

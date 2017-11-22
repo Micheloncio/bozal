@@ -95,6 +95,7 @@ class NavBarWall extends Component{
 								<AddHistory
 									tags = {this.state.allTags}
 									myDogProfile = {this.props.myDogProfile}
+									setPoints={this.props.setPoints}
 									handleLoadNewCurrentTags = {this.handleLoadNewCurrentTags}
 								/>
 							</div>

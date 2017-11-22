@@ -42,6 +42,7 @@ class AddHistory extends Component{
 							onHide={this.handleShowHideNewHistory}
 							dialogClassName="custom-modal"
 							tags = {this.props.tags}
+							setPoints={this.props.setPoints}
 							myDogProfile = {this.props.myDogProfile}
 							handleLoadNewCurrentTags = {this.props.handleLoadNewCurrentTags}
 						/>

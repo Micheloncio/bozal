@@ -2,7 +2,7 @@ const Dog = require('./DogSchema')
 const Breed = require('../breed/BreedSchema')
 
 class DogData {
-	create(name, idUser, chip, idBreed, gender, weight, birthdate, profilePhoto) {
+	createDog(name, idUser, chip, idBreed, gender, weight, birthdate, profilePhoto) {
         return new Promise((resolve, reject) => {
             if (!name)
                 throw new Error('no dog name provided')
@@ -35,7 +35,7 @@ class DogData {
                 .catch(reject)
         })
     }
-    update(_id, name, chip, idBreed, gender, weight, birthdate, profilePhoto) {
+    updateDog(_id, name, chip, idBreed, gender, weight, birthdate, profilePhoto) {
         return new Promise((resolve, reject) => {
             if (!_id)
                 throw new Error('no dog _id provided')
@@ -66,6 +66,17 @@ class DogData {
                 .catch(reject)
         })
     }
+    deleteDog(_id){
+        return new Promise((resolve, reject) => {
+            if(!_id)
+                    throw new Error('no _id provided')
+
+            Dog.remove({_id})
+                .then(resolve)
+                .catch(reject)
+
+        })
+    }
     listDogsByUser(idUser){
         return new Promise((resolve, reject) => {
             if(!idUser)
@@ -80,15 +91,17 @@ class DogData {
 
         })
     }
-    deleteDog(_id){
+    updatePoints(_id,points) {
         return new Promise((resolve, reject) => {
-            if(!_id)
-                    throw new Error('no _id provided')
+            if (!_id)
+                throw new Error('no dog _id provided')
 
-            Dog.remove({_id})
+            if (!points)
+                throw new Error('no dog points provided')
+
+            Dog.update({_id},{ points })
                 .then(resolve)
                 .catch(reject)
-
         })
     }
 }

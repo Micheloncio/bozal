@@ -72,6 +72,7 @@ class Wall extends Component{
 							
 							<NavBarWall 
 								handleApplyNewCurrentTag = {this.handleApplyNewCurrentTag}
+								setPoints={this.props.setPoints}
 								myDogProfile = {this.props.myDogProfile}
 							/>
 
@@ -85,8 +86,8 @@ class Wall extends Component{
 										
 										<History 
 											history = {history}
-											myDogProfile = {this.props.myDogProfile}
-										/>
+											setPoints={this.props.setPoints}
+											myDogProfile={this.props.myDogProfile}/>
 
 									</div>
 								))

@@ -36,11 +36,15 @@
 	border-radius: 5px;
 	background: linear-gradient(#AEF57F, #95BD86);
 	margin-top: 3px;
+	max-width: 200px;
 	height: 44px;
+}
+.element_0_headerDog{
+	margin-top: 13px;
 }
 .element_1_headerDog{
 	margin-top: 2px;
 }
 .element_2_headerDog{
-	margin-top: -5px;
+	margin-top: -7px;
 }

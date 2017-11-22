@@ -23,7 +23,7 @@ dogRouter.route('/')
     .post((req, res) => {
         const { name, idUser, chip, idBreed, gender, weight,birthdate, profilePhoto } = req.body
         
-        dogLogic.create(name, idUser, chip, idBreed, gender, weight,birthdate, profilePhoto)
+        dogLogic.createDog(name, idUser, chip, idBreed, gender, weight,birthdate, profilePhoto)
             .then(dog => {
                 res.json({
                     status: 'OK',
@@ -41,7 +41,7 @@ dogRouter.route('/')
     .put((req, res) => {
         const { idDog, name, chip, idBreed, gender, weight,birthdate, profilePhoto } = req.body
         
-        dogLogic.update(idDog, name, chip, idBreed, gender, weight,birthdate, profilePhoto)
+        dogLogic.updateDog(idDog, name, chip, idBreed, gender, weight,birthdate, profilePhoto)
             .then(dog => {
                 res.json({
                     status: 'OK',
@@ -74,6 +74,25 @@ dogRouter.route('/')
             })
     })
 
+dogRouter.route('/points')
+    .put((req, res) => {
+        const { idDog, points } = req.body
+        
+        dogLogic.updatePoints(idDog,points)
+            .then(dog => {
+                res.json({
+                    status: 'OK',
+                    message: 'dog created successfully',
+                    data: dog
+                })
+            })
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
 
 dogRouter.route('/:idUser')
     .get((req, res) => {

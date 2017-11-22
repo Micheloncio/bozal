@@ -14,6 +14,7 @@ class History extends Component{
 		super()
 
 		this.state={
+			idHistory:'',
 			showComments: false,
 			liked: false,
 			disliked: false,
@@ -21,6 +22,9 @@ class History extends Component{
 		}
 	}
 
+	setIdHistory = (idHistory) =>{
+		this.setState({idHistory})
+	}
 	setShowComments = (showComments) =>{
 		this.setState({showComments})
 	}
@@ -61,13 +65,26 @@ class History extends Component{
 		this.itsLiked(likes, myIdDog)
 		this.itsDisliked(dislikes, myIdDog)
 	}
+	checkIfItsSameHistory(newId){
+		if(this.state.idHistory === newId){
+			return true
+		}
+		return false
+	}
+
+	componentDidMount(){
+		this.setIdHistory(this.props.history._id)
+	}
 	componentWillMount(){
 		this.checkLikeAndDislike(this.props.history.likes, this.props.history.dislikes, this.props.myDogProfile._id)
 	}
-	componentWillReceiveProps(nextPops){
-		this.setShowComments(false)
-		this.setGray(true)
-		this.checkLikeAndDislike(nextPops.history.likes, nextPops.history.dislikes, nextPops.myDogProfile._id)
+	componentWillReceiveProps(nextProps){
+		if(!this.checkIfItsSameHistory(nextProps.history._id)){
+			this.setShowComments(false)
+			this.setGray(true)
+			this.checkLikeAndDislike(nextProps.history.likes, nextProps.history.dislikes, nextProps.myDogProfile._id)
+			this.setIdHistory(nextProps.history._id)
+		}
 	}
 	
 
@@ -79,6 +96,7 @@ class History extends Component{
 							<div className="col-xs-2 col-md-1 col-lg-1 col-xs-offset-0 col-md-offset-1 col-lg-offset-3">
 								<Like
 									idHistory = {this.props.history._id}
+									setPoints={this.props.setPoints}
 									myIdDog = {this.props.myDogProfile._id}
 									likes = {this.props.history.likes}
 									nameDog = {this.props.history.nameDog}
@@ -100,6 +118,9 @@ class History extends Component{
 							</div>
 							<div className="col-xs-10 col-md-8 col-lg-6 col-xs-offset-0 col-md-offset-1 col-lg-offset-1">
 								<FramedPicture 
+									idHistory = {this.props.history._id}
+									setPoints={this.props.setPoints}
+									myDogProfile = {this.props.myDogProfile}
 									description = {this.props.history.description}
 									imgDog = {this.props.history.photo}
 									handleSetGray = {this.handleSetGray}
@@ -107,6 +128,7 @@ class History extends Component{
 								/>
 								<Commentaries
 									myDogProfile = {this.props.myDogProfile}
+									setPoints={this.props.setPoints}
 									comments = {this.props.history.comments}
 									idHistory = {this.props.history._id}
 									show = {this.state.showComments}

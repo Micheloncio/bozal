@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 
 import HistoriesApi from '../../../services/HistoriesApi'
 
+import Points from '../../../Points'
+
 class Commentaries extends Component{
 	constructor(){
 		super()
@@ -56,6 +58,7 @@ class Commentaries extends Component{
 		if(e.key === 'Enter'){
 			if(this.state.textbox){
 					this.addComment()
+					this.props.setPoints(Points.comment)
 			}
 		}
 	}	
