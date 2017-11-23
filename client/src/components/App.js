@@ -16,6 +16,7 @@ class App extends Component {
 				idUser:'1',
 				anyDogSelected: false,
 				dogSelected:{},
+				myDogs:[],
 				tooltipShowed: true,
 				tooltipCss: 'tooltipShow'
 			}
@@ -24,8 +25,10 @@ class App extends Component {
 
 	setDogSelected = (dogSelected)=>{
 		this.setState(prevState=>({config:{...prevState.config, dogSelected}}))
-	}			
-	
+	}
+	setMyDogs = (myDogs)=>{
+		this.setState(prevState=>({config:{...prevState.config, myDogs}}))
+	}
 	setAnyDogSelected = (anyDogSelected) =>{
 		this.setState(prevState=>({config:{...prevState.config, anyDogSelected}}))
 	}
@@ -42,8 +45,7 @@ class App extends Component {
 		const changedDog = this.state.config.dogSelected
 		changedDog.points = points
 
-		this.setState(prevState=>({config:{...prevState.config, changedDog}})
-)
+		this.setState(prevState=>({config:{...prevState.config, changedDog}}))
 		DogsApi.updatePoints(this.state.config.dogSelected._id, points)
 	}
 
@@ -56,6 +58,18 @@ class App extends Component {
 		this.setTooltipShowed(!this.state.config.tooltipShowed)
 	}
 
+	loadDogs = (idUser) =>{
+		DogsApi.listDogsByUser(idUser)
+			.then(dogs =>{
+				this.setMyDogs(dogs || [])
+			})
+			.catch()
+	}
+
+	componentDidMount(){
+		this.loadDogs(this.state.config.idUser)
+	}
+
   	render() {
 	    return (
 	     	<div className="App">
@@ -65,8 +79,10 @@ class App extends Component {
 	          	<Main 
 	          		config = {this.state.config}
 	          		setDogSelected={this.setDogSelected}
+	          		setMyDogs={this.setMyDogs}
 	          		setAnyDogSelected={this.setAnyDogSelected}
-	          		setPoints={this.setPoints}/>
+	          		setPoints={this.setPoints}
+	          		loadDogs={this.loadDogs}/>
 	          	<Footer />
 	      </div>
 	    );

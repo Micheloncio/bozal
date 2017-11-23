@@ -125,7 +125,7 @@ class NewHistory extends Component{
 					<Modal {...this.props}>
 					
 	        				<Modal.Header closeButton>   
-	        					<h4>New history</h4>       					
+	        					<h4>New {this.props.myDogProfile.name} history</h4>       					
 	        				</Modal.Header>
 	        		<Row>
 	        			<Modal.Body>  

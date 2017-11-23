@@ -1,0 +1,31 @@
+import React, {Component} from 'react'
+import { NavLink } from 'react-router-dom'
+
+import '../../../styles/Switch.css'
+
+import HelpSwitcher from './HelpSwitcher'
+import SelectDog from './SelectDog'
+
+class HeaderConfig extends Component {
+
+	render(){
+		return (
+			<div className="HeaderConfigContainer">
+				<div className="container-fluid">
+					<div className="row">
+						<HelpSwitcher 
+							config = {this.props.config}
+							switchTooltipStatus={this.props.switchTooltipStatus}/>
+					</div>
+					<div className="row">
+						<SelectDog 
+							config = {this.props.config}
+							switchTooltipStatus={this.props.switchTooltipStatus}/>
+					</div>
+				</div>
+			</div>
+		)
+	}
+}
+
+export default HeaderConfig;

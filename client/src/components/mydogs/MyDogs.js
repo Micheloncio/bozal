@@ -20,24 +20,13 @@ class MyDogs extends Component{
 		}
 	}
 
-	setAnyDog = (anyDog) => {
-		this.setState({anyDog})
-	}
-	setDogs = (dogs) => {
-		this.setState({dogs})
-	}
+	setAnyDog = (anyDog) => {this.setState({anyDog})}
+	setDogs = (dogs) => {this.setState({dogs})}
 
-	loadDogs = (idUser) =>{
-		DogsApi.listDogsByUser(idUser)
-			.then(dogs =>{
-				this.setDogs(dogs || [])
-			})
-			.catch()
-	}
 	deleteDog = (idDog) =>{
 		const filteredDogs = this.state.dogs.filter(dog =>{
 									return dog._id !==	idDog})
-		this.setDogs(filteredDogs)
+		this.props.setMyDogs(filteredDogs)
 	}
 
 	setMainDog = (dog,itsSelect) =>{
@@ -54,7 +43,10 @@ class MyDogs extends Component{
 	}
 
 	componentDidMount(){
-		this.loadDogs(this.props.config.idUser)
+		this.setDogs(this.props.config.myDogs)
+	}
+	componentWillReceiveProps(nextProps){
+		this.setDogs(nextProps.config.myDogs)
 	}
 
 	render(){
@@ -64,7 +56,7 @@ class MyDogs extends Component{
 					<div className="row">
 						<NavBarMyDog 
 							idUser={this.props.config.idUser}
-							loadDogs={this.loadDogs}/>
+							loadDogs={this.props.loadDogs}/>
 					</div>		
 					{this.props.config.anyDogSelected
 						? 
@@ -81,7 +73,7 @@ class MyDogs extends Component{
 									dogs={this.state.dogs}
 									selectADog={this.selectADog}
 									deleteDog={this.deleteDog}
-									loadDogs={this.loadDogs}/> 
+									loadDogs={this.props.loadDogs}/> 
 								: 
 								<NoDogsYet/>
 							}

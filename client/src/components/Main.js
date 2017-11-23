@@ -17,7 +17,9 @@ class Main extends Component{
 	          			<MyDogs
 	          				config={this.props.config}
 	          				setDogSelected={this.props.setDogSelected}
-	          				setAnyDogSelected={this.props.setAnyDogSelected}/> 
+	          				setMyDogs={this.props.setMyDogs}
+	          				setAnyDogSelected={this.props.setAnyDogSelected}
+	          				loadDogs={this.props.loadDogs}/> 
 	          		)}/>
 	          	<Route path='/days-photo' component={DaysPhoto}/>
 	          	<Route path='/wall' render={() => (
