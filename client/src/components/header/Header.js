@@ -28,9 +28,10 @@ class Header extends Component {
 					</div>
 					<div className="col-xs-6 col-sm-3 col-md-3 col-lg-3">
 						<HeaderDog 
-								config = {this.props.config}/>
+								config = {this.props.config}
+								switchTooltipStatus={this.props.switchTooltipStatus}/>
 					</div>
-					<div className="col-xs-offset-0 col-sm-offset-0 col-md-2 col-lg-2">
+					<div className="hidden-xs hidden-sm col-md-2 col-lg-2">
 						<HeaderSearch />
 					</div>
 					</div>

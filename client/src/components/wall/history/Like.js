@@ -51,7 +51,7 @@ class Like extends Component{
 					onClick={() =>{this.handleLike(this.state.liked)}}
 					>
 				</button>
-				<ReactTooltip className="tooltip" place="top" effect="solid"/>
+				<ReactTooltip className={this.props.config.tooltipCss} place="top" effect="solid"/>
 			</div>
 			
 		)

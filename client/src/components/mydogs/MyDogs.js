@@ -76,6 +76,7 @@ class MyDogs extends Component{
 							{this.state.dogs.length 
 								? 
 								<DogList
+									config={this.props.config}
 									idUser={this.props.config.idUser}
 									dogs={this.state.dogs}
 									selectADog={this.selectADog}

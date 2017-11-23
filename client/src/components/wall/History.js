@@ -95,6 +95,7 @@ class History extends Component{
 						<div className="row">
 							<div className="col-xs-2 col-md-1 col-lg-1 col-xs-offset-0 col-md-offset-1 col-lg-offset-3">
 								<Like
+									config={this.props.config}
 									idHistory = {this.props.history._id}
 									setPoints={this.props.setPoints}
 									myIdDog = {this.props.myDogProfile._id}
@@ -104,11 +105,14 @@ class History extends Component{
 									liked = {this.state.liked}
 								/>
 								<BalloonCommentaries
+									config={this.props.config}
 									handleShowHideComment = {this.handleShowHideComment}
 									commentsNumber = {this.props.history.comments.length}
 								/>
 								<Dislike
+									config={this.props.config}
 									idHistory = {this.props.history._id}
+									setPoints={this.props.setPoints}
 									myIdDog = {this.props.myDogProfile._id}
 									dislikes = {this.props.history.dislikes}
 									nameDog = {this.props.history.nameDog}

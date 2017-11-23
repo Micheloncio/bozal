@@ -67,3 +67,20 @@
 	margin-top: 10px;
 	border-radius: 5px;
 }
+
+.HeaderConfigContainer{
+	position: relative;
+	border: 1px solid black;
+	border-radius: 5px;
+	margin-top: -11px;
+	width: 100%;
+	height: 100px;
+	z-index: 2;
+	background:linear-gradient(#95BD86, #AEF57F);
+}
+.textSwitchContainaer{
+	margin-top: 20px;
+}
+.switchContainer{
+	margin-top: 20px;
+}

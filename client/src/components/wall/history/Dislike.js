@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
+import ReactTooltip from 'react-tooltip'
 
 import HistoriesApi from '../../../services/HistoriesApi'
+
+import Points from '../../../Points'
 
 class Dislike extends Component{
 	constructor(props){
@@ -25,8 +28,10 @@ class Dislike extends Component{
 	deleteOrAddLike = (disliked) =>{
 		if(disliked){
 			HistoriesApi.deleteDislike(this.props.idHistory, this.props.myIdDog)
+			this.props.setPoints(-Points.dislike)
 		}else{
 			HistoriesApi.addDislike(this.props.idHistory, this.props.myIdDog)
+			this.props.setPoints(Points.dislike)
 		}
 		this.setDisliked(!disliked)
 		this.props.setDisliked(!disliked)
@@ -38,10 +43,15 @@ class Dislike extends Component{
 	}
 	render(){
 		return (
-			<button className={this.state.disliked ? 'disliked outlineNone borderButtonHistory marginButtonHistory buttonResize' : 'dislike outlineNone borderButtonHistory marginButtonHistory buttonResize'}
-				onClick={() =>{this.handleDislike(this.state.disliked)}}
-				>
-			</button>
+			<div>
+				<button 
+					data-tip={"Add dislike -" + Points.dislike + " points"}
+					className={this.state.disliked ? 'disliked outlineNone borderButtonHistory marginButtonHistory buttonResize' : 'dislike outlineNone borderButtonHistory marginButtonHistory buttonResize'}
+					onClick={() =>{this.handleDislike(this.state.disliked)}}
+					>
+				</button>
+				<ReactTooltip className={this.props.config.tooltipCss} place="top" effect="solid"/>
+			</div>
 		)
 	}
 }

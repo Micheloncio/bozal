@@ -22,6 +22,7 @@ class Main extends Component{
 	          	<Route path='/days-photo' component={DaysPhoto}/>
 	          	<Route path='/wall' render={() => (
 	          			<Wall
+	          				config={this.props.config}
 	          				myDogProfile={this.props.config.dogSelected}
 	          				setPoints={this.props.setPoints}/>
 

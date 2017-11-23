@@ -26,3 +26,12 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.tooltipShow{
+  border-radius: 25px !important;
+  opacity: 0.7 !important;
+}
+.tooltipHide{
+  border-radius: 25px !important;
+  opacity: 0 !important;
+}

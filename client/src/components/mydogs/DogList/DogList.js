@@ -1,5 +1,5 @@
-
 import React, {Component} from 'react'
+import ReactTooltip from 'react-tooltip'
 
 import CapitalLetter from '../../../utilities/CapitalLetter'
 
@@ -65,15 +65,21 @@ class DogList extends Component{
 											<div className="col-xs-12 col-md-4">
 												<div className="col-xs-12 col-md-6">
 													<button 
+														data-tip={"Edit this dog"}
+														data-delay-show='300'
 														onClick={(event) => this.handleEdit(event,index+1)}
 														className="glyphicon glyphicon-pencil outlineNone btnEditDog">
 													</button>
+													<ReactTooltip className={this.props.config.tooltipCss} place="top" effect="solid" delayShow={300}/>
 												</div>
 												<div className="col-xs-12 col-md-6">
 													<button 
+														data-tip={"Delete this dog"}
+														data-delay-show='300'
 														onClick={(event) => this.handleDelete(event,index+1)}
 														className="glyphicon glyphicon-remove outlineNone btnRemoveDog">
 													</button>
+													<ReactTooltip className={this.props.config.tooltipCss} place="top" effect="solid" delayShow={300}/>
 												</div>
 											</div>
 										</div>

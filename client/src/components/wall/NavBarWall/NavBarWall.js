@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import ReactTooltip from 'react-tooltip'
 
 import '../../../styles/wall/NavBarWall.css'
 
@@ -9,6 +8,7 @@ import SignPosterRight from './SignPosterRight'
 import AddHistory from './AddHistory'
 
 import TagsApi from '../../../services/TagsApi'
+
 
 class NavBarWall extends Component{
 	constructor(){
@@ -87,20 +87,19 @@ class NavBarWall extends Component{
 						/>
 					</div>
 					<div className="col-xs-12 col-sm-4 col-md-2 col-sm-offset-0 col-md-offset-3">
-							<div className="row">
-								<SignPosterCenter 
-									currentTag = {this.state.currentTag}
-								/>
-							</div>
-							<div className="row">
-								<AddHistory
-									tags = {this.state.allTags}
-									myDogProfile = {this.props.myDogProfile}
-									setPoints={this.props.setPoints}
-									handleLoadNewCurrentTags = {this.handleLoadNewCurrentTags}
-								/>
-							</div>
-							
+						<div className="row">
+							<SignPosterCenter 
+								currentTag = {this.state.currentTag}
+							/>
+						</div>
+						<div className="row">
+							<AddHistory
+								config={this.props.config}
+								tags = {this.state.allTags}
+								myDogProfile = {this.props.myDogProfile}
+								setPoints={this.props.setPoints}
+								handleLoadNewCurrentTags = {this.handleLoadNewCurrentTags}/>
+						</div>
 					</div>
 					<div className="col-xs-12 col-sm-4 col-md-2 col-sm-offset-0 col-md-offset-3">
 						<SignPosterRight 
