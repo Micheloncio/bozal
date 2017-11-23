@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import {Route} from 'react-router-dom'
 
-import Home from './Home'
-import CreateUser from './CreateUser'
+import Home from './home/Home'
 import Wall from './wall/Wall'
 import MyDogs from './mydogs/MyDogs'
 import DaysPhoto from './daysphoto/DaysPhoto'

@@ -29,6 +29,8 @@ class Header extends Component {
 					<div className="col-xs-6 col-sm-3 col-md-3 col-lg-3">
 						<HeaderDog 
 								config = {this.props.config}
+								setDogSelected={this.props.setDogSelected}
+								setAnyDogSelected={this.props.setAnyDogSelected}
 								switchTooltipStatus={this.props.switchTooltipStatus}/>
 					</div>
 					<div className="hidden-xs hidden-sm col-md-2 col-lg-2">

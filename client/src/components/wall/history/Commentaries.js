@@ -56,9 +56,11 @@ class Commentaries extends Component{
 
 	handleonKeyPressed = (e) => {
 		if(e.key === 'Enter'){
-			if(this.state.textbox){
+			if(this.props.myDogProfile._id){
+				if(this.state.textbox){
 					this.addComment()
 					this.props.setPoints(Points.comment)
+				}
 			}
 		}
 	}	

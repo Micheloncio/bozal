@@ -20,6 +20,8 @@ class HeaderConfig extends Component {
 					<div className="row">
 						<SelectDog 
 							config = {this.props.config}
+							setDogSelected={this.props.setDogSelected}
+							setAnyDogSelected={this.props.setAnyDogSelected}
 							switchTooltipStatus={this.props.switchTooltipStatus}/>
 					</div>
 				</div>

@@ -50,7 +50,7 @@
 	border-radius: 5px;
 	background: linear-gradient(#AEF57F, #95BD86);
 	margin-top: 3px;
-	max-width: 200px;
+	width: 200px;
 	height: 44px;
 }
 .element_0_headerDog{
@@ -69,11 +69,11 @@
 }
 
 .HeaderConfigContainer{
-	position: relative;
+	position: absolute;
 	border: 1px solid black;
 	border-radius: 5px;
-	margin-top: -11px;
-	width: 100%;
+	margin-top: -1px;
+	width: 200px;
 	height: 100px;
 	z-index: 2;
 	background:linear-gradient(#95BD86, #AEF57F);

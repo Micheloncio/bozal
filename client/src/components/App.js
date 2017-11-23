@@ -75,6 +75,8 @@ class App extends Component {
 	     	<div className="App">
 	          	<Header 
 	          		config = {this.state.config}
+	          		setDogSelected={this.setDogSelected}
+	          		setAnyDogSelected={this.setAnyDogSelected}
 	          		switchTooltipStatus={this.switchTooltipStatus}/>
 	          	<Main 
 	          		config = {this.state.config}
