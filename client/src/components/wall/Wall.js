@@ -38,7 +38,6 @@ class Wall extends Component{
 				break
 			default:
 				this.setBackground('backgroundWall backgroundHome')
-				break
 		}		
 	}
 

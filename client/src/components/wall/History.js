@@ -122,7 +122,9 @@ class History extends Component{
 							</div>
 							<div className="col-xs-10 col-md-8 col-lg-6 col-xs-offset-0 col-md-offset-1 col-lg-offset-1">
 								<FramedPicture 
+									config={this.props.config}
 									idHistory = {this.props.history._id}
+									idDog = {this.props.history.idDog}
 									setPoints={this.props.setPoints}
 									myDogProfile = {this.props.myDogProfile}
 									description = {this.props.history.description}

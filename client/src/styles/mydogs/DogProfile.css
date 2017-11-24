@@ -25,15 +25,109 @@
 .dogGeneralContainer{
 	text-align: center;
 }
-.dogDetailContainer{
+.dogDetailInfoContainer{
 	text-align: left;
-	margin-top: 100px;
+	margin-top: 80px;
 }
-.dogDetailContainer > div > p{
+.dogDetailInfoContainer > div > div > p{
 	font-size: 20px;
 }
+.dogDetailLevelContainer{
+	text-align: left;
+	margin-top: 30px;
+}
+.dogDetailLevelContainer > div > div > p{
+	font-size: 20px;
+}
+
 @media (max-width: 992px){
 	.dogGeneralContainer{
 		text-align: left;
 	}
+}
+.lvlAtribute_1_Container{
+	margin-top: 30px;
+}
+.lvlAtribute_2_Container{
+	margin-top: 10px;
+}
+.lvlAtribute_3_Container{
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+
+.popularity{
+	width: 107px;
+	height: 21px;
+}
+.popularity0{
+	display: inline-block;
+	background-image: url('../../images/stars0.png');
+}
+.popularity1{
+	display: inline-block;
+	background-image: url('../../images/stars1.png');
+}
+.popularity2{
+	display: inline-block;
+	background-image: url('../../images/stars2.png');
+}
+.popularity3{
+	display: inline-block;
+	background-image: url('../../images/stars3.png');
+}
+.popularity4{
+	display: inline-block;
+	background-image: url('../../images/stars4.png');
+}
+.popularity5{
+	display: inline-block;
+	background-image: url('../../images/stars5.png');
+}
+
+.agresivity{
+	width: 61px;
+	height: 21px;
+}
+.agresivity0{
+	display: inline-block;
+	background-image: url('../../images/danger0.png');
+}
+.agresivity1{
+	display: inline-block;
+	background-image: url('../../images/danger1.png');
+}
+.agresivity2{
+	display: inline-block;
+	background-image: url('../../images/danger2.png');
+}
+.agresivity3{
+	display: inline-block;
+	background-image: url('../../images/danger3.png');
+}
+
+
+.sociality{
+	width: 99px;
+	height: 21px;
+}
+.sociality0{
+	display: inline-block;
+	background-image: url('../../images/balloon0.png');
+}
+.sociality1{
+	display: inline-block;
+	background-image: url('../../images/balloon1.png');
+}
+.sociality2{
+	display: inline-block;
+	background-image: url('../../images/balloon2.png');
+}
+.sociality3{
+	display: inline-block;
+	background-image: url('../../images/balloon3.png');
+}
+.sociality4{
+	display: inline-block;
+	background-image: url('../../images/balloon4.png');
 }

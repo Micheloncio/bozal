@@ -67,20 +67,3 @@
 	margin-top: 10px;
 	border-radius: 5px;
 }
-
-.HeaderConfigContainer{
-	position: absolute;
-	border: 1px solid black;
-	border-radius: 5px;
-	margin-top: -1px;
-	width: 200px;
-	height: 100px;
-	z-index: 2;
-	background:linear-gradient(#95BD86, #AEF57F);
-}
-.textSwitchContainaer{
-	margin-top: 20px;
-}
-.switchContainer{
-	margin-top: 20px;
-}

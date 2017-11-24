@@ -61,6 +61,9 @@ class FramedPicture extends Component{
 				onMouseOver={this.handleHover}
 			>
 				<Photo 
+					config={this.props.config}
+					myDogProfile = {this.props.myDogProfile}
+					idDog = {this.props.idDog}
 					imgDog = {this.props.imgDog}
 				/>
 				<NamePlate 

@@ -18,7 +18,8 @@ class DogProfile extends Component{
 						deselectADog= {this.props.deselectADog}/>
 					</div>
 					<div className="col-md-6">
-						<DogDetail 
+						<DogDetail
+						config={this.props.config} 
 						dog={this.props.dog}/>
 					</div>
 				</div>

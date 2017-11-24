@@ -61,6 +61,7 @@ class MyDogs extends Component{
 					{this.props.config.anyDogSelected
 						? 
 						<DogProfile 
+							config={this.props.config}
 							dog={this.props.config.dogSelected}
 							deselectADog= {this.deselectADog}/>
 						:

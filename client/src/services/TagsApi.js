@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 const TagsApi = {
-    baseUrl: 'http://localhost:3000/tags',
+   	baseUrl: 'http://localhost:3000/tags',
 
     listTags: function(){
         return axios.get(this.baseUrl)
@@ -10,3 +10,4 @@ const TagsApi = {
 }
 
 module.exports = TagsApi
+

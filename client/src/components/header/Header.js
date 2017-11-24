@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { NavLink } from 'react-router-dom'
 
-import '../../styles/Header.css'
+import '../../styles/header/Header.css'
 
 import HeaderDog from './HeaderDog'
 import HeaderSearch from './HeaderSearch'

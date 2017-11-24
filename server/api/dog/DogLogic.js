@@ -9,6 +9,9 @@ class DogLogic {
 		const gender = _gender.toLowerCase()
 		return dogData.updateDog(_id, name, chip, idBreed, gender, weight, birthdate, profilePhoto)
 	}
+	retrieveDogById(_id){
+		return dogData.retrieveDogById(_id)
+	}
 	listDogsByUser(idUser){
 		return dogData.listDogsByUser(idUser)
 	}

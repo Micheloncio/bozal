@@ -25,13 +25,13 @@ class SelectDog extends Component {
 		return (
 			<div>
 				<div className="col-xs-6">
-					<div className="textSwitchContainaer">
+					<div>
 						Dog
 					</div>
 				</div>
 				<div className="col-xs-5">
-					<div className="switchContainer">
-						<select onChange={this.handleChange} defaultValue={this.props.config.dogSelected.name}>
+					<div className="selectDogContainer">
+						<select className="inputSelectDog" onChange={this.handleChange} defaultValue={this.props.config.dogSelected.name}>
 							<option value=""></option>
 							{this.props.config.myDogs.map((dog, index)=>{
 								return <option key={index} value={dog._id}>{dog.name}</option>

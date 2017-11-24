@@ -93,7 +93,7 @@ dogRouter.route('/points')
             })
     })
 
-dogRouter.route('/:idUser')
+dogRouter.route('/users/:idUser')
     .get((req, res) => {
         const { idUser } = req.params
         dogLogic.listDogsByUser(idUser)
@@ -102,6 +102,25 @@ dogRouter.route('/:idUser')
                     status: 'OK',
                     message: 'dogs listed successfully',
                     data: dogs
+                })
+            })
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
+
+dogRouter.route('/dog/:idDog')
+    .get((req, res) => {
+        const { idDog } = req.params
+        dogLogic.retrieveDogById(idDog)
+            .then(dog => {
+                res.json({
+                    status: 'OK',
+                    message: 'dogs listed successfully',
+                    data: dog
                 })
             })
             .catch(err => {

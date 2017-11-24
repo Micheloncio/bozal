@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { NavLink } from 'react-router-dom'
 
-import '../../../styles/Switch.css'
+import '../../../styles/header/HeaderConfig.css'
 
 import HelpSwitcher from './HelpSwitcher'
 import SelectDog from './SelectDog'

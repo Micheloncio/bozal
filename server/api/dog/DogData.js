@@ -77,6 +77,20 @@ class DogData {
 
         })
     }
+    retrieveDogById(_id){
+        return new Promise((resolve, reject) => {
+            if(!_id)
+                    throw new Error('no _id provided')
+
+            Dog.find({_id})
+                .then(dog=>{
+                    Breed.populate(dog, {path: 'idBreed'})
+                        .then(resolve)
+                    })
+                .catch(reject)
+
+        })
+    }
     listDogsByUser(idUser){
         return new Promise((resolve, reject) => {
             if(!idUser)

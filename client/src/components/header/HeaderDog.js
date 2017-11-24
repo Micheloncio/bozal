@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { NavLink } from 'react-router-dom'
+import ReactTooltip from 'react-tooltip'
 
 import HeaderConfig from './headerconfig/HeaderConfig'
 
@@ -21,7 +22,13 @@ class HeaderDog extends Component {
 	render(){
 		return (
 			<div>
-				<div className="HeaderDogContainer cursorPointer" onClick={this.handleSwitchConfigVisibility}>
+				<div 
+					data-tip 
+					data-for='headerDog' 
+					data-delay-show='300'
+					className="HeaderDogContainer cursorPointer" 
+					onClick={this.handleSwitchConfigVisibility}
+				>
 					{this.props.config.anyDogSelected 
 						?
 						<div>
@@ -39,6 +46,9 @@ class HeaderDog extends Component {
 						<p className="element_0_headerDog"><strong>No dog selected</strong></p>
 					}
 				</div>
+				<ReactTooltip id='headerDog' className={this.props.config.tooltipCss} place="bottom" effect="solid" delayShow={300}>
+					Click for see options
+				</ReactTooltip>
 				{this.state.showConfig 
 						?
 						<HeaderConfig 
