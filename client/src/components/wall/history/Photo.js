@@ -22,8 +22,8 @@ class Photo extends Component{
 
 	render(){
 		return (
-			<div onClick={this.handleShowHideDogProfile}>
-				<div>
+			<div>
+				<div onClick={this.handleShowHideDogProfile}>
 					<button className="borderButtonHistory blackFrame">
 					</button>
 				</div>
@@ -35,7 +35,8 @@ class Photo extends Component{
 					<DogProfileModal 
 						config={this.props.config}
 						show={this.state.modalShow} 
-						onHide={this.handleShowHideNewHistory}
+						onHide={this.handleShowHideDogProfile}
+						dialogClassName="dogProfileModal"
 						idDog = {this.props.idDog}
 						myDogProfile = {this.props.myDogProfile}
 					/>

@@ -28,15 +28,12 @@
 .dogDetailInfoContainer{
 	text-align: left;
 	margin-top: 80px;
-}
-.dogDetailInfoContainer > div > div > p{
 	font-size: 20px;
 }
+
 .dogDetailLevelContainer{
 	text-align: left;
 	margin-top: 30px;
-}
-.dogDetailLevelContainer > div > div > p{
 	font-size: 20px;
 }
 

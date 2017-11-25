@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ReactTooltip from 'react-tooltip'
+import swal from 'sweetalert2'
 
 import NewHistory from './NewHistory'
 import Points from '../../../Points'
@@ -17,10 +18,22 @@ class AddHistory extends Component{
 		this.setState({modalShow})
 	}
 
-	handleShowHideNewHistory = () => {
-		if(this.props.myDogProfile._id)
-			this.setmodalShow(!this.state.modalShow)
+	checkHasPoints(points){
+		if((this.props.config.dogSelected.points + points)>=0)
+			return true
+
+		return false
 	}
+
+	handleShowHideNewHistory = () => {
+		if(this.props.myDogProfile._id){
+			if(this.checkHasPoints(Points.addHistory)){
+				this.setmodalShow(!this.state.modalShow)
+			}else{
+				swal('Oops...', "You don't have enough points", 'error')
+			}
+		}
+	}	
 
 	render(){
 		return (
@@ -39,7 +52,7 @@ class AddHistory extends Component{
 				</div>
 				
 				<ReactTooltip id='AddHistory' className={this.props.config.tooltipCss} place="top" effect="float" delayShow={300}>
-					{"Share a dog's photo +" + Points.addHistory + " points"}
+					{"Share a dog's photo " + Points.addHistory + " points"}
 				</ReactTooltip>
 
 				{this.state.modalShow 

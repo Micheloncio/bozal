@@ -8,7 +8,7 @@ class BalloonCommentaries extends Component{
 		return (
 			<div>
 				<button 
-					data-tip={"Add comment +" + Points.comment + " points"}
+					data-tip={"Add comment " + Points.comment + " points"}
 					className="balloonCommentaries outlineNone borderButtonHistory marginButtonHistory buttonResize"
 					onClick={this.props.handleShowHideComment}
 				>

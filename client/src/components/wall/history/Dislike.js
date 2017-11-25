@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ReactTooltip from 'react-tooltip'
+import swal from 'sweetalert2'
 
 import HistoriesApi from '../../../services/HistoriesApi'
 
@@ -24,17 +25,28 @@ class Dislike extends Component{
 	componentWillReceiveProps(nextProps){
 		this.setDisliked(nextProps.disliked)
 	}
+	checkHasPoints(points){
+		if((this.props.config.dogSelected.points + points)>=0)
+			return true
 
+		return false
+	}
 	deleteOrAddLike = (disliked) =>{
 		if(disliked){
 			HistoriesApi.deleteDislike(this.props.idHistory, this.props.myIdDog)
 			this.props.setPoints(-Points.dislike)
+			this.setDisliked(!disliked)
+			this.props.setDisliked(!disliked)
 		}else{
-			HistoriesApi.addDislike(this.props.idHistory, this.props.myIdDog)
-			this.props.setPoints(Points.dislike)
+			if(this.checkHasPoints(Points.dislike)){
+				HistoriesApi.addDislike(this.props.idHistory, this.props.myIdDog)
+				this.props.setPoints(Points.dislike)
+				this.setDisliked(!disliked)
+				this.props.setDisliked(!disliked)
+			}else{
+				swal('Oops...', "You don't have enough points", 'error')
+			}
 		}
-		this.setDisliked(!disliked)
-		this.props.setDisliked(!disliked)
 	}
 	
 	handleDislike(disliked){
@@ -45,7 +57,7 @@ class Dislike extends Component{
 		return (
 			<div>
 				<button 
-					data-tip={"Add dislike -" + Points.dislike + " points"}
+					data-tip={"Add dislike " + Points.dislike + " points"}
 					className={this.state.disliked ? 'disliked outlineNone borderButtonHistory marginButtonHistory buttonResize' : 'dislike outlineNone borderButtonHistory marginButtonHistory buttonResize'}
 					onClick={() =>{this.handleDislike(this.state.disliked)}}
 					>

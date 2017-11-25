@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Image} from 'react-bootstrap'
+import {Image, Col} from 'react-bootstrap'
 
 import DogDetailInfoModal from './DogDetailInfoModal'
 import DogDetailLevelModal from './DogDetailLevelModal'
@@ -9,29 +9,23 @@ class DogDetailModal extends Component{
 	render(){
 		return(
 			<div className="container-fluid">
-				<div className="row">
-					<div className="col-xs-12 col-md-6 col-xs-offset-0 col-md-offset-4">
-						<Image 
-							className="imageDogProfile"
-							src={this.props.dog.profilePhoto} 
-							circle 
-							width="180px"
-							height="180px">
-						</Image>
-					</div>
-					<div className="col-xs-0 col-md-2">
-					</div>
+				<div className="textCenter">
+					<Image 
+						className="imageDogProfile"
+						src={this.props.dog.profilePhoto} 
+						circle 
+						width="180px"
+						height="180px">
+					</Image>
 				</div>
-				<div className="row">
-					<div className="col-xs-12 col-md-9 col-xs-offset-0 col-md-offset-3">
-						<DogDetailInfoModal
-							config={this.props.config} 
-							dog={this.props.dog}/>
-					</div>
-				</div>
-				<DogDetailLevelModal
-					config={this.props.config} 
-					dog={this.props.dog}/>
+				<Col xs={11} xsOffset={1}>
+					<DogDetailInfoModal
+						config={this.props.config} 
+						dog={this.props.dog}/>
+					<DogDetailLevelModal
+						config={this.props.config} 
+						dog={this.props.dog}/>
+				</Col>
 			</div>
 		)
 	}

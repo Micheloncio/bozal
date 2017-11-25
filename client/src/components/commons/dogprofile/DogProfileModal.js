@@ -38,8 +38,6 @@ class DogProfileModal extends Component{
 				</Modal.Header>
 			<Row>
 				<Modal.Body>  
-					<Row>
-		    			<Col xs={12} md={12}>
 		    				{this.state.dogToSee.name 
 		    					?
 			    				<DogDetailModal 
@@ -48,14 +46,7 @@ class DogProfileModal extends Component{
 								:
 								undefined
 		    				}
-		    			</Col>
-		            </Row>
-					<Row>
-		    			<Col xs={12} md={12}>
-							
 
-		    			</Col>
-		            </Row>
 				</Modal.Body>
 			</Row>
 				<Modal.Footer>

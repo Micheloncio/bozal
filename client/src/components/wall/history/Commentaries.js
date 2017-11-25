@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import swal from 'sweetalert2'
 
 import HistoriesApi from '../../../services/HistoriesApi'
 
@@ -54,12 +55,23 @@ class Commentaries extends Component{
 		this.setComments(comments)
 	}
 
+	checkHasPoints(points){
+		if((this.props.config.dogSelected.points + points)>=0)
+			return true
+
+		return false
+	}
+
 	handleonKeyPressed = (e) => {
 		if(e.key === 'Enter'){
 			if(this.props.myDogProfile._id){
 				if(this.state.textbox){
-					this.addComment()
-					this.props.setPoints(Points.comment)
+					if(this.checkHasPoints(Points.comment)){
+						this.addComment()
+						this.props.setPoints(Points.comment)
+					}else{
+						swal('Oops...', "You don't have enough points", 'error')
+					}
 				}
 			}
 		}

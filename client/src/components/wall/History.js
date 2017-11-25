@@ -71,6 +71,19 @@ class History extends Component{
 		}
 		return false
 	}
+	checkIfItsSameMyDogProfile(actualDog,newDog){
+		if(actualDog === newDog){
+			return true
+		}
+		return false
+	}
+
+	resetHistory = (nextProps) =>{
+		this.setShowComments(false)
+		this.setGray(true)
+		this.checkLikeAndDislike(nextProps.history.likes, nextProps.history.dislikes, nextProps.myDogProfile._id)
+		this.setIdHistory(nextProps.history._id)
+	}
 
 	componentDidMount(){
 		this.setIdHistory(this.props.history._id)
@@ -79,12 +92,8 @@ class History extends Component{
 		this.checkLikeAndDislike(this.props.history.likes, this.props.history.dislikes, this.props.myDogProfile._id)
 	}
 	componentWillReceiveProps(nextProps){
-		if(!this.checkIfItsSameHistory(nextProps.history._id)){
-			this.setShowComments(false)
-			this.setGray(true)
-			this.checkLikeAndDislike(nextProps.history.likes, nextProps.history.dislikes, nextProps.myDogProfile._id)
-			this.setIdHistory(nextProps.history._id)
-		}
+		if(!this.checkIfItsSameHistory(nextProps.history._id) || !this.checkIfItsSameMyDogProfile(this.props.myDogProfile, nextProps.myDogProfile))
+			this.resetHistory(nextProps)
 	}
 	
 
@@ -133,6 +142,7 @@ class History extends Component{
 									gray = {this.state.gray}
 								/>
 								<Commentaries
+									config={this.props.config}
 									myDogProfile = {this.props.myDogProfile}
 									setPoints={this.props.setPoints}
 									comments = {this.props.history.comments}

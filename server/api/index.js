@@ -16,6 +16,7 @@ const dogLogic = new(require('./dog/DogLogic'))
 const breedLogic = new(require('./breed/BreedLogic'))
 const historyLogic = new(require('./history/HistoryLogic'))
 const tagLogic = new(require('./tag/TagLogic'))
+const dayphotoLogic = new(require('./dayphoto/DayphotoLogic'))
 
 const dogRouter = express.Router()
 
@@ -155,6 +156,46 @@ breedRouter.route('/')
     })
 
 app.use('/breed', breedRouter)
+
+const dayphotoRouter = express.Router()
+
+dayphotoRouter.route('/')
+    .post((req, res) => {
+        const { idDog, nameDog, photo } = req.body
+
+        dayphotoLogic.create(idDog, nameDog, photo)
+            .then(dayphotos => {
+                res.json({
+                    status: 'OK',
+                    message: 'dayphoto created successfully',
+                    data: dayphotos
+                })
+            })
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
+    .get((req, res) => {
+        dayphotoLogic.listAll()
+            .then(dayphotos => {
+                res.json({
+                    status: 'OK',
+                    message: 'dayphotos listed successfully',
+                    data: dayphotos
+                })
+            })
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
+
+app.use('/dayphoto', dayphotoRouter)
 
 const historyRouter = express.Router()
 

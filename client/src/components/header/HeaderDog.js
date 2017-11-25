@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import ReactTooltip from 'react-tooltip'
 
 import HeaderConfig from './headerconfig/HeaderConfig'
+import OutsideClick from '../commons/OutsideClick'
 
 class HeaderDog extends Component {
 	constructor(){
@@ -15,13 +16,18 @@ class HeaderDog extends Component {
 	
 	setShowConfig(showConfig){this.setState({showConfig})}
 
+	handleHiddenConfig = () =>{
+		this.setShowConfig(false)
+	}
+
 	handleSwitchConfigVisibility = () => {
     	this.setShowConfig(!this.state.showConfig)
 	}
 
 	render(){
 		return (
-			<div>
+			<OutsideClick 
+				handleSwitchConfigVisibility={this.handleHiddenConfig}>
 				<div 
 					data-tip 
 					data-for='headerDog' 
@@ -59,7 +65,7 @@ class HeaderDog extends Component {
 						:
 						undefined
 					}
-			</div>
+			</OutsideClick>
 		)
 	}
 }

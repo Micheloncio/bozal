@@ -4,7 +4,7 @@ import {Route} from 'react-router-dom'
 import Home from './home/Home'
 import Wall from './wall/Wall'
 import MyDogs from './mydogs/MyDogs'
-import DaysPhoto from './daysphoto/DaysPhoto'
+import DailyContest from './dailycontest/DailyContest'
 
 class Main extends Component{
 
@@ -20,7 +20,12 @@ class Main extends Component{
 	          				setAnyDogSelected={this.props.setAnyDogSelected}
 	          				loadDogs={this.props.loadDogs}/> 
 	          		)}/>
-	          	<Route path='/days-photo' component={DaysPhoto}/>
+	          	<Route path='/daily-contest' render={() => (
+	          			<DailyContest
+	          				config={this.props.config}
+	          				myDogProfile={this.props.config.dogSelected}
+	          				setPoints={this.props.setPoints}/>
+	          		)}/>
 	          	<Route path='/wall' render={() => (
 	          			<Wall
 	          				config={this.props.config}

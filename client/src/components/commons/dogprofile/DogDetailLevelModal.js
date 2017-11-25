@@ -89,29 +89,29 @@ class DogDetailLevelModal extends Component{
 		return(
 			<div className="dogDetailLevelContainer">
 				<div className="row cursorDefault">
-					<div className="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+					<div className="col-xs-12">
 						<p><strong>Level: </strong>{this.props.dog.level}</p>
 					</div>
 				</div>
 				<div className="row cursorDefault">
-					<div className="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+					<div className="col-xs-12">
 						<p><strong>Points: </strong>{this.props.dog.points}</p>
 					</div>
 				</div>
 				<div className="row cursorDefault lvlAtribute_1_Container">
-					<div className="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+					<div className="col-xs-12">
 						<p className="displayInline"><strong>Popularity: </strong></p>
 						<div className={this.state.popularityClass}></div>
 					</div>
 				</div>
 				<div className="row cursorDefault lvlAtribute_2_Container">
-					<div className="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+					<div className="col-xs-12">
 						<p className="displayInline"><strong>Aggressivity: </strong></p>
 						<div className={this.state.agresivityClass}></div>
 					</div>
 				</div>
 				<div className="row cursorDefault lvlAtribute_3_Container">
-					<div className="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+					<div className="col-xs-12">
 						<p className="displayInline"><strong>Sociality: </strong></p>
 						<div className={this.state.socialityClass}></div>
 					</div>
