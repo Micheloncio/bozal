@@ -4,6 +4,9 @@ const express = require('express')
 
 const app = express()
 
+const compression = require('compression')
+app.use(compression())
+
 app.use(require('./cors'))
 
 const bodyParser = require('body-parser')
@@ -179,12 +182,49 @@ dayphotoRouter.route('/')
             })
     })
     .get((req, res) => {
-        dayphotoLogic.listAll()
-            .then(dayphotos => {
+        dayphotoLogic.retrieveRandomDayphoto()
+            .then(dayphoto => {
                 res.json({
                     status: 'OK',
                     message: 'dayphotos listed successfully',
-                    data: dayphotos
+                    data: dayphoto
+                })
+            })
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
+
+dayphotoRouter.route('/random/:id')
+    .get((req, res) => {
+        const { id } = req.params
+        dayphotoLogic.retrieveDifferentRandomDayphoto(id)
+            .then(dayphoto => {
+                res.json({
+                    status: 'OK',
+                    message: 'dayphotos listed successfully',
+                    data: dayphoto
+                })
+            })
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
+dayphotoRouter.route('/like')
+    .put((req, res) => {
+        const { idDayphoto } = req.body
+        dayphotoLogic.addLike(idDayphoto)
+            .then(dayphoto => {
+                res.json({
+                    status: 'OK',
+                    message: 'like added successfully',
+                    data: dayphoto
                 })
             })
             .catch(err => {

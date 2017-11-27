@@ -18,27 +18,24 @@ class AddHistory extends Component{
 		this.setState({modalShow})
 	}
 
-	checkHasPoints(points){
-		if((this.props.config.dogSelected.points + points)>=0)
-			return true
-
-		return false
-	}
-
-	handleShowHideNewHistory = () => {
+	handleShowNewHistory = () => {
 		if(this.props.myDogProfile._id){
-			if(this.checkHasPoints(Points.addHistory)){
-				this.setmodalShow(!this.state.modalShow)
+			if(Points.checkHasPoints(this.props.config.dogSelected.points, Points.addHistory)){
+				this.setmodalShow(true)
 			}else{
-				swal('Oops...', "You don't have enough points", 'error')
+				swal('Oops...', `You don't have enough points, you need ${-Points.addHistory} points to add a new history`, 'error')
 			}
 		}
-	}	
+	}
+
+	handleHideNewHistory=()=>{
+		this.setmodalShow(false)
+	}
 
 	render(){
 		return (
 			<div>
-				<div data-tip data-for='AddHistory' data-delay-show='300' onClick={this.handleShowHideNewHistory} className="addHistory containerAddHistory translateDown cursorPointer">
+				<div data-tip data-for='AddHistory' onClick={this.handleShowNewHistory} className="addHistory containerAddHistory translateDown cursorPointer">
 						<div className="container-fluid">
 							<div className="row">
 								<div className="col-xs-6">
@@ -51,7 +48,7 @@ class AddHistory extends Component{
 						</div>
 				</div>
 				
-				<ReactTooltip id='AddHistory' className={this.props.config.tooltipCss} place="top" effect="float" delayShow={300}>
+				<ReactTooltip id='AddHistory' className={this.props.config.tooltipCss} place="top" effect="float">
 					{"Share a dog's photo " + Points.addHistory + " points"}
 				</ReactTooltip>
 
@@ -59,7 +56,7 @@ class AddHistory extends Component{
 					? 
 					<NewHistory 
 						show={this.state.modalShow} 
-						onHide={this.handleShowHideNewHistory}
+						onHide={this.handleHideNewHistory}
 						dialogClassName="custom-modal"
 						tags = {this.props.tags}
 						setPoints={this.props.setPoints}

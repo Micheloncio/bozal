@@ -19,14 +19,39 @@ class DayphotoData {
                 .catch(reject)
         })
     }
-    listAll(){
-        return new Promise((resolve, reject) => {
 
-            Dayphoto.find()
-                .then(resolve)
-                .catch(reject)
+    retrieveRandomDayphoto(){
+        return new Promise((resolve, reject) => {
+            Dayphoto.count().exec(function (err, count) {
+                const random = Math.floor(Math.random()*count)
+                Dayphoto.find().skip(random).limit(1)
+                    .then(resolve)
+                    .catch(reject)
+            })
         })
     }
+    retrieveDifferentRandomDayphoto(_id){
+        return new Promise((resolve, reject) => {
+            Dayphoto.count().exec(function (err, count) {
+                const random = Math.floor(Math.random()*(count-1))
+                Dayphoto.find({_id: {$ne: _id}}).skip(random).limit(1)
+                    .then(resolve)
+                    .catch(reject)
+            })
+        })
+    }
+
+    addLike(_id){
+        return new Promise((resolve, reject) => {
+            if (!_id)
+                throw new Error('no id provided')
+
+            Dayphoto.findOneAndUpdate({_id}, {$inc : {'likes' : 1}})
+                .then(resolve)
+                .catch(reject)
+
+        })
+    }    
 }
 
 module.exports = DayphotoData

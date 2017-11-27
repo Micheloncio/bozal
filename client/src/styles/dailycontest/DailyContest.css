@@ -1,0 +1,38 @@
+.backgroundDaily{
+	background-position: center;
+	margin-top: -20px;
+	min-height: 670px;
+	background: linear-gradient(white, skyblue, skyblue);
+}
+
+.dailycontestContainer{
+	margin-top: 100px;
+}
+.vsDailyContainer{
+	margin-top: 150px;
+}
+.vsDailyText{
+	font-size: 72px;
+	color:black;
+}
+@media (max-width: 991px){
+	.vsDailyContainer{
+		margin-top: 0px;
+	}
+	.vsDailyText{
+		font-size: 48px;
+	}
+}
+.frameDailyContest{
+	position: absolute;
+	display: inline;
+	background-image: url('../../images/frame_daily.png');
+	width: 384px;
+	height: 384px;
+	z-index: 1;
+}
+
+.imageDailyContest{
+	position: relative;
+	z-index: 0;
+}

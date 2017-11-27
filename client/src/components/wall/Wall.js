@@ -81,7 +81,9 @@ class Wall extends Component{
 				</div>
 				<div className="container-fluid">
 					<div className="row">
-						{this.state.histories.map((history,index) =>  ( 
+						{this.state.histories.length
+							?
+							this.state.histories.map((history,index) =>  ( 
 									<div className="col-xs-12 col-sm-6 col-md-6" key={index}>
 										
 										<History 
@@ -92,6 +94,8 @@ class Wall extends Component{
 
 									</div>
 								))
+							:
+							<h1 className="marginTop200px">LOADING...</h1>
 						}
 					</div>
 				</div>

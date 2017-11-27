@@ -24,3 +24,11 @@
 .inputSelectDog{
 	width: 130px;
 }
+@media (max-width: 500px){
+	.HeaderConfigContainer{
+		width: 166px;
+	}
+	.inputSelectDog{
+		width: 100px;
+	}
+}

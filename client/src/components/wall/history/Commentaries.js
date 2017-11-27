@@ -55,22 +55,15 @@ class Commentaries extends Component{
 		this.setComments(comments)
 	}
 
-	checkHasPoints(points){
-		if((this.props.config.dogSelected.points + points)>=0)
-			return true
-
-		return false
-	}
-
 	handleonKeyPressed = (e) => {
 		if(e.key === 'Enter'){
 			if(this.props.myDogProfile._id){
 				if(this.state.textbox){
-					if(this.checkHasPoints(Points.comment)){
+					if(Points.checkHasPoints(this.props.config.dogSelected.points, Points.addHistory)){
 						this.addComment()
 						this.props.setPoints(Points.comment)
 					}else{
-						swal('Oops...', "You don't have enough points", 'error')
+						swal('Oops...', `You don't have enough points, you need ${-Points.comment} points to add a comment`, 'error')
 					}
 				}
 			}

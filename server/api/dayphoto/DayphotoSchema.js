@@ -7,7 +7,7 @@ const DayphotoSchema = new Schema({
 	nameDog: String,
 	badge: { type: String, default: 'none' },
 	date:{ type: Date, default: Date.now },
-	likes: [String],
+	likes: { type: Number, default: 0 },
 	photo: String
 })
 

@@ -4,8 +4,14 @@ class DayphotoLogic {
     create(idDog, nameDog, photo){
         return dayphotoData.create(idDog, nameDog, photo)
     }
-    listAll(){
-        return dayphotoData.listAll()
+    retrieveRandomDayphoto(){
+        return dayphotoData.retrieveRandomDayphoto()
+    }
+    retrieveDifferentRandomDayphoto(_id){
+        return dayphotoData.retrieveDifferentRandomDayphoto(_id)
+    }
+    addLike(_id){
+        return dayphotoData.addLike(_id)
     }
 
 }

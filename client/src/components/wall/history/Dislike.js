@@ -25,12 +25,7 @@ class Dislike extends Component{
 	componentWillReceiveProps(nextProps){
 		this.setDisliked(nextProps.disliked)
 	}
-	checkHasPoints(points){
-		if((this.props.config.dogSelected.points + points)>=0)
-			return true
 
-		return false
-	}
 	deleteOrAddLike = (disliked) =>{
 		if(disliked){
 			HistoriesApi.deleteDislike(this.props.idHistory, this.props.myIdDog)
@@ -38,13 +33,13 @@ class Dislike extends Component{
 			this.setDisliked(!disliked)
 			this.props.setDisliked(!disliked)
 		}else{
-			if(this.checkHasPoints(Points.dislike)){
+			if(Points.checkHasPoints(this.props.config.dogSelected.points, Points.addHistory)){
 				HistoriesApi.addDislike(this.props.idHistory, this.props.myIdDog)
 				this.props.setPoints(Points.dislike)
 				this.setDisliked(!disliked)
 				this.props.setDisliked(!disliked)
 			}else{
-				swal('Oops...', "You don't have enough points", 'error')
+				swal('Oops...', `You don't have enough points, you need ${-Points.dislike} points to add a dislike`, 'error')
 			}
 		}
 	}
