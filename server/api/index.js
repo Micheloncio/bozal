@@ -1,19 +1,20 @@
 require('dotenv').config()
 
 const express = require('express')
-
 const app = express()
-
-const compression = require('compression')
-app.use(compression())
 
 app.use(require('./cors'))
 
 const bodyParser = require('body-parser')
-
 app.use(bodyParser({ limit: '5mb' }))
-
 app.use(bodyParser.json())
+
+app.use(require('./passport')(process.env.SECRET))
+
+const passport = require('passport')
+const jwt = require('jsonwebtoken')
+const User = require('./users/UserSchema')
+
 
 const deliverBadges = require('./deliverBadges')
 
@@ -25,9 +26,43 @@ const historyLogic = new(require('./history/HistoryLogic'))
 const tagLogic = new(require('./tag/TagLogic'))
 const dayphotoLogic = new(require('./dayphoto/DayphotoLogic'))
 
+const authRouter = express.Router()
+
+authRouter.post('/register', (req, res) => {
+    const { username, password } = req.body
+
+    const user = new User({ username })
+
+    User.register(user, password, err => {
+        if (err) return res.json({
+            status: 'KO',
+            message: err.message
+        })
+
+        res.json({
+            status: 'OK',
+            message: 'user registered successfully'
+        })
+    })
+})
+
+authRouter.post('/login', passport.authenticate('local', { session: false }), (req, res) => {
+    const { _id: id, username } = req.user
+
+    const token = jwt.sign({ id, username }, process.env.SECRET)
+
+    res.json({
+        status: 'OK',
+        message: 'user authenticated successfully',
+        data: token
+    })
+})
+
+app.use('/auth', authRouter)
+
+
 const dogRouter = express.Router()
-
-
+dogRouter.use(passport.authenticate('jwt', { session: false }))
 
 dogRouter.route('/')
     .post((req, res) => {
@@ -164,6 +199,7 @@ dogRouter.route('/dog/:idDog')
 app.use('/dog', dogRouter)
 
 const breedRouter = express.Router()
+breedRouter.use(passport.authenticate('jwt', { session: false }))
 
 breedRouter.route('/')
     .get((req, res) => {
@@ -186,6 +222,7 @@ breedRouter.route('/')
 app.use('/breed', breedRouter)
 
 const dayphotoRouter = express.Router()
+dayphotoRouter.use(passport.authenticate('jwt', { session: false }))
 
 dayphotoRouter.route('/')
     .post((req, res) => {
@@ -283,6 +320,7 @@ dayphotoRouter.route('/like')
 app.use('/dayphoto', dayphotoRouter)
 
 const historyRouter = express.Router()
+historyRouter.use(passport.authenticate('jwt', { session: false }))
 
 historyRouter.route('/')
     .post((req, res) => {
@@ -438,6 +476,7 @@ historyRouter.route('/listByTag/:tag')
 app.use('/history', historyRouter)
 
 const tagRouter = express.Router()
+tagRouter.use(passport.authenticate('jwt', { session: false }))
 
 tagRouter.route('/')
     .get((req, res) => {
