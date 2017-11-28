@@ -118,6 +118,20 @@ class DogData {
                 .catch(reject)
         })
     }
+    searchDog(search){
+        return new Promise((resolve, reject) => {
+            if(!search)
+                    throw new Error('no search provided')
+
+            Dog.find({name:{$regex : "^" + search}})
+                .then(dog=>{
+                    Breed.populate(dog, {path: 'idBreed'})
+                        .then(resolve)
+                    })
+                .catch(reject)
+
+        })
+    }
 }
 
 module.exports = DogData

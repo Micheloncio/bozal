@@ -11,13 +11,18 @@ class DailyContest extends Component{
 	constructor(){
 		super()
 		this.state={
-			dayPhotos:[]
+			dayPhotos:[],
+			auxiliaryText:'Loading...'
 		}
 	}
 
 	setDayPhotos = (dayPhotos)=>{
 		this.setState({dayPhotos})
 	}
+	setAuxiliaryText = (auxiliaryText) =>{
+		this.setState({auxiliaryText})
+	}
+
 	pushPhotoToDayPhoto =(dayPhotoToPush) =>{
 		const newDayPhotos = this.state.dayPhotos
 		newDayPhotos.push(dayPhotoToPush)
@@ -33,8 +38,12 @@ class DailyContest extends Component{
 						.then(dayPhoto2 =>{
 							if(dayPhoto2.length){
 								this.pushPhotoToDayPhoto(dayPhoto2[0])
+							}else{
+								this.setAuxiliaryText('No photos to vote')
 							}
 						})
+				}else{
+					this.setAuxiliaryText('No photos to vote')
 				}
 			})
 	}
@@ -77,7 +86,7 @@ class DailyContest extends Component{
 	          					</div>
           					</div>
 			          		:
-			          		<h1 className="marginTop200px">LOADING...</h1>
+			          		<h1 className="marginTop200px">{this.state.auxiliaryText}</h1>
 			          	}
 		          	</div>
 		         </div>

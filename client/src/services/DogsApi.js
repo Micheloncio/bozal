@@ -27,6 +27,10 @@ const DogsApi = {
         return axios.put(this.baseUrl + '/points', { idDog, points })
             .then(res=> res.data.data)
     },
+    searchDogs: function(search){
+        return axios.get(this.baseUrl + '/search/' + search)
+            .then(res=> res.data.data)
+    }
 }
 
 module.exports = DogsApi

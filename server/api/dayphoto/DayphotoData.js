@@ -19,25 +19,48 @@ class DayphotoData {
                 .catch(reject)
         })
     }
-
-    retrieveRandomDayphoto(){
+    listAllByDogId(idDog){
         return new Promise((resolve, reject) => {
-            Dayphoto.count().exec(function (err, count) {
-                const random = Math.floor(Math.random()*count)
-                Dayphoto.find().skip(random).limit(1)
-                    .then(resolve)
-                    .catch(reject)
-            })
+            if (!idDog)
+                throw new Error('no idDog provided')
+
+            Dayphoto.find({idDog, badge:{$ne:''}})
+                .then(resolve)
+                .catch(reject)
         })
     }
-    retrieveDifferentRandomDayphoto(_id){
+    countAll(){
+        return Dayphoto.count({badge:''}).exec(function (err, count) {
+            return count
+        })
+    }
+    retrieveRandomDayphoto(random){
         return new Promise((resolve, reject) => {
-            Dayphoto.count().exec(function (err, count) {
-                const random = Math.floor(Math.random()*(count-1))
-                Dayphoto.find({_id: {$ne: _id}}).skip(random).limit(1)
+            Dayphoto.find({badge:''}).skip(random).limit(1)
+                .then(resolve)
+                .catch(reject)
+        })
+    }
+    retrieveDifferentRandomDayphoto(_id,random){
+        return new Promise((resolve, reject) => {
+                Dayphoto.find({_id: {$ne: _id},badge:''}).skip(random).limit(1)
                     .then(resolve)
                     .catch(reject)
-            })
+        })
+    }
+    listAllSortByLikes(){
+        return new Promise((resolve, reject) => {
+            Dayphoto.find({},'likes badge').sort({likes:-1})
+                .then(resolve)
+                .catch(reject)
+        })
+    }
+    
+    updateBadge(_id,badge){
+        return new Promise((resolve, reject) => {
+            Dayphoto.findOneAndUpdate({_id}, {$set:{'badge':badge}})
+                .then(resolve)
+                .catch(reject)
         })
     }
 

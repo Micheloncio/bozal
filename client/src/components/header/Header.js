@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import '../../styles/header/Header.css'
 
 import HeaderDog from './HeaderDog'
-import HeaderSearch from './HeaderSearch'
+import HeaderSearch from './headersearch/HeaderSearch'
 
 class Header extends Component {
 
@@ -34,7 +34,8 @@ class Header extends Component {
 								switchTooltipStatus={this.props.switchTooltipStatus}/>
 					</div>
 					<div className="hidden-xs hidden-sm col-md-2 col-lg-2">
-						<HeaderSearch />
+						<HeaderSearch 
+							config={this.props.config}/>
 					</div>
 					</div>
 				</div>

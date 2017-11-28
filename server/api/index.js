@@ -15,6 +15,10 @@ app.use(bodyParser({ limit: '5mb' }))
 
 app.use(bodyParser.json())
 
+const deliverBadges = require('./deliverBadges')
+
+deliverBadges()
+
 const dogLogic = new(require('./dog/DogLogic'))
 const breedLogic = new(require('./breed/BreedLogic'))
 const historyLogic = new(require('./history/HistoryLogic'))
@@ -22,6 +26,8 @@ const tagLogic = new(require('./tag/TagLogic'))
 const dayphotoLogic = new(require('./dayphoto/DayphotoLogic'))
 
 const dogRouter = express.Router()
+
+
 
 dogRouter.route('/')
     .post((req, res) => {
@@ -115,6 +121,25 @@ dogRouter.route('/users/:idUser')
                 })
             })
     })
+dogRouter.route('/search/:search')
+    .get((req, res) => {
+        const { search } = req.params
+        dogLogic.searchDog(search)
+            .then(dogs => {
+                res.json({
+                    status: 'OK',
+                    message: 'dogs listed successfully',
+                    data: dogs
+                })
+            })
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
+
 
 dogRouter.route('/dog/:idDog')
     .get((req, res) => {
@@ -198,6 +223,25 @@ dayphotoRouter.route('/')
             })
     })
 
+dayphotoRouter.route('/gallery/:idDog')
+    .get((req, res) => {
+        const { idDog } = req.params
+        dayphotoLogic.listAllByDogId(idDog)
+            .then(dayphotos => {
+                res.json({
+                    status: 'OK',
+                    message: 'dayphotos listed successfully',
+                    data: dayphotos
+                })
+            })
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
+
 dayphotoRouter.route('/random/:id')
     .get((req, res) => {
         const { id } = req.params
@@ -216,6 +260,7 @@ dayphotoRouter.route('/random/:id')
                 })
             })
     })
+
 dayphotoRouter.route('/like')
     .put((req, res) => {
         const { idDayphoto } = req.body

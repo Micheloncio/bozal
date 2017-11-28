@@ -4,6 +4,7 @@ import ReactTooltip from 'react-tooltip'
 
 import HeaderConfig from './headerconfig/HeaderConfig'
 import OutsideClick from '../commons/OutsideClick'
+import CapitalLetter from '../../utilities/CapitalLetter'
 
 class HeaderDog extends Component {
 	constructor(){
@@ -39,7 +40,7 @@ class HeaderDog extends Component {
 						?
 						<div>
 							<p className="element_1_headerDog">
-								<strong>{this.props.config.dogSelected.name}</strong>
+								<strong>{CapitalLetter(this.props.config.dogSelected.name)}</strong>
 							</p>
 							<p className="element_2_headerDog">
 								<strong>

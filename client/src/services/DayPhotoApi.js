@@ -7,6 +7,10 @@ const DayPhotoApi = {
         return axios.post(this.baseUrl, { idDog, nameDog, photo })
         	.then (res=> res.data.data)
     },
+    listAllByDogId:function(idDog){
+        return axios.get(this.baseUrl + '/gallery/' + idDog)
+            .then (res=> res.data.data)
+    },
     retrieveRandomDayphoto: function(){
         return axios.get(this.baseUrl)
         	.then (res=> res.data.data)

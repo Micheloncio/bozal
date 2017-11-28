@@ -1,7 +1,24 @@
 import React, {Component} from 'react'
 import {Image} from 'react-bootstrap'
 
+import Gallery from './Gallery'
+
 class DogGeneral extends Component{
+	constructor(){
+		super()
+
+		this.state={
+			modalShow: false,
+		}
+	}
+
+	setModalShow = (modalShow) => {
+		this.setState({modalShow})
+	}
+
+	handleSeeGallery=()=>{
+		this.setModalShow(!this.state.modalShow)
+	}
 
 	render(){
 		return(
@@ -26,6 +43,22 @@ class DogGeneral extends Component{
 							height="256px">
 						</Image>
 					</div>
+					<div className="row">
+						<button className="btn btn-info btnSeeGallery" onClick={this.handleSeeGallery}>
+							See gallery
+						</button>
+					</div>
+					{this.state.modalShow 
+					? 
+					<Gallery
+						show={this.state.modalShow} 
+						onHide={this.handleSeeGallery}
+						dialogClassName="custom-modal"
+						dog={this.props.dog}
+					/>
+					:
+					undefined
+					}
 				</div>
 			</div>
 		)

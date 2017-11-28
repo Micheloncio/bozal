@@ -56,10 +56,10 @@ class DogList extends Component{
 													{CapitalLetter(dog.name)}
 												</div>
 												<div className="col-xs-12 col-md-4">
-													Level:{dog.level}
+													Level: {dog.level}
 												</div>
 												<div className="col-xs-12 col-md-4">
-													Points:{dog.points}
+													Points: {dog.points}
 												</div>
 											</div>
 											<div className="col-xs-12 col-md-4">

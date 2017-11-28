@@ -6,6 +6,9 @@
 	min-height: 650px;
 	margin-top: -20px;
 }
+.btnSeeGallery{
+	margin-top: 30px;
+}
 .noDogsText{
 	margin-top: 30%;
 	font-size: 28px;
@@ -48,6 +51,12 @@
 .h2DeleteDog{
 	display: inline;
 	color:red;
+}
+@media (max-width: 1279px) {
+  .elementDogList {font-size: 22px;}
+}
+@media (max-width: 1204px) {
+  .elementDogList {font-size: 21px;}
 }
 @media (max-width: 1120px) {
   .elementDogList {font-size: 20px;}

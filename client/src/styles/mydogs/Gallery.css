@@ -1,0 +1,34 @@
+.frame-128{
+	position: absolute;
+	display: inline-block;
+	margin: 5px;
+	width: 128px;
+	height: 128px;
+	z-index: 1;
+}
+.frame-black-128{
+	background-image: url('../../images/frame_black_128.png');
+}
+.frame-gold-128{
+	background-image: url('../../images/frame_gold_128.png');
+}
+.frame-silver-128{
+	background-image: url('../../images/frame_silver_128.png');
+}
+.frame-bronze-128{
+	background-image: url('../../images/frame_bronze_128.png');
+}
+
+.img-gallery{
+	position: relative;
+	z-index: 0;
+	margin: 5px;
+	width: 128px;
+	height: 128px;
+}
+.img-xl{
+	position: relative;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+}

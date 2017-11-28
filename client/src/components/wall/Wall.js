@@ -14,7 +14,8 @@ class Wall extends Component{
 		this.state = {
 			initialTag:'home',
 			histories:[],
-			background: 'backgroundWall backgroundHome'
+			background: 'backgroundWall backgroundHome',
+			auxiliaryText:'Loading...'
 		}
 	}
 
@@ -23,6 +24,9 @@ class Wall extends Component{
 	}
 	setHistories = (histories) =>{
 		this.setState({histories})
+	}
+	setAuxiliaryText = (auxiliaryText) =>{
+		this.setState({auxiliaryText})
 	}
 
 	selectBackground(currentTag){
@@ -44,6 +48,9 @@ class Wall extends Component{
 	loadHistoriesByTagFromApi = (tag) => {
 		HistoriesApi.getLast24HoursHistoriesByTag(tag)
 			.then(histories =>{
+				if(!histories.length)
+					this.setAuxiliaryText('No photos on the ' + tag )
+
 				this.setHistories(histories || [])
 			})
 			.catch()
@@ -95,7 +102,7 @@ class Wall extends Component{
 									</div>
 								))
 							:
-							<h1 className="marginTop200px">LOADING...</h1>
+							<h1 className="marginTop200px">{this.state.auxiliaryText}</h1>
 						}
 					</div>
 				</div>

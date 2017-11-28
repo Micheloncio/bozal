@@ -118,7 +118,7 @@ class DogDetailLevel extends Component{
 						</p>
 						<div className={this.state.popularityClass}></div>
 						<ReactTooltip  id='popularity' className={this.props.config.tooltipCss} place="top" effect="solid">
-							<p>Get likes and win in <em>Day's photo</em></p>
+							<p>Get likes and win in <em>Daily contest</em></p>
 							<p>to increase your <strong>popularity</strong></p>
 						</ReactTooltip>
 					</div>
