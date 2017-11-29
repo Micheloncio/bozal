@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 
-import Login from './Login'
 import Cover from './Cover'
 
 class Home extends Component{
@@ -12,7 +11,6 @@ class Home extends Component{
 						<Cover />
 					</div>
 					<div className="col-md-6">
-						<Login />
 					</div>
 				</div>		
 			</div>

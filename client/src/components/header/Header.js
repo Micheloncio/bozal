@@ -7,6 +7,7 @@ import HeaderDog from './HeaderDog'
 import HeaderSearch from './headersearch/HeaderSearch'
 import Xtorage from '../../Xtorage'
 import Logout from './Logout'
+import Login from './Login'
 
 class Header extends Component {
 
@@ -24,7 +25,7 @@ class Header extends Component {
 							    </button>
 			               		<NavLink className="navbar-brand navbrand" to='/'>Yap Yap</NavLink>
 			               	</div>
-		               		<div className="navbar-collapse collapse" id="myNavbar">
+		               		<div className="collapse navbar-collapse" id="myNavbar">
 									{Xtorage.session.getObject('token') 
 										?
 										<ul className="nav navbar-nav">
@@ -39,35 +40,40 @@ class Header extends Component {
 									}
 							</div>
 						</div>
-						<div className="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+
 							{Xtorage.session.getObject('token') 
 							?
-							<HeaderDog 
+							<div className="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+								<HeaderDog 
 									config = {this.props.config}
 									setDogSelected={this.props.setDogSelected}
 									setAnyDogSelected={this.props.setAnyDogSelected}
 									switchTooltipStatus={this.props.switchTooltipStatus}/>
+							</div>
 							:
-							undefined
+							<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<Login />
+							</div>
 							}
-						</div>
-						<div className="hidden-xs hidden-sm col-md-2 col-lg-2">
+						
 							{Xtorage.session.getObject('token') 
 							?
-							<HeaderSearch 
-								config={this.props.config}/>
+							<div className="hidden-xs hidden-sm col-md-2 col-lg-2">
+								<HeaderSearch 
+									config={this.props.config}/>
+							</div>
 							:
 							undefined
 							}
-						</div>
-						<div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+						
 							{Xtorage.session.getObject('token') 
 							?
-							<Logout/>
+							<div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+								<Logout/>
+							</div>
 							:
 							undefined
 							}
-						</div>
 					</div>
 				</div>
 			</nav>

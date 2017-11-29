@@ -55,10 +55,12 @@ class Login extends Component{
 	render(){
 		return (
 			<div className="centerContent">
-				<div className="borderLogin">
 					<table className="tableLogin">
 						<tr>
-						    <td className="labelLogin">Usuario</td>
+						    <td className="labelLogin">Email</td>
+						    <td className="labelLogin">Password</td>
+						</tr>
+						<tr>	    
 						    <td>
 						    	<input 
 						    		className="inputLogin" 
@@ -66,9 +68,6 @@ class Login extends Component{
 						    		onChange={this.changeUsername}
 						    		value={this.state.username}/>
 						    </td> 
-						</tr>
-						<tr>
-						    <td className="labelLogin">Password</td>
 						    <td>
 						    	<input 
 						    		className="inputLogin" 
@@ -77,21 +76,22 @@ class Login extends Component{
 						    		onKeyPress={this.handleonKeyPressed}
 						    		value={this.state.password}/>
 						    </td> 
+						    <td>
+						    	<button 
+									onClick={this.handleLogin}
+									className="btn btn-success btnalign"
+									>
+									Login
+								</button>
+							</td>
 						</tr>
 					</table>
-					<button 
-						onClick={this.handleLogin}
-						className="btn btn-default btnalign"
-						>
-						Entrar
-					</button>
 					{this.state.redirect
 						?
 						<Redirect to='/my-dogs'/>
 						:
 						undefined
 					}
-				</div>
 			</div>	
 		)
 	}

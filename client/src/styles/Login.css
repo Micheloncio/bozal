@@ -11,20 +11,27 @@
 	border-radius: 10px
 }
 .tableLogin{
-	margin: auto;
+	text-align: left;
 }
 
 .
 .labelLogin{
-	text-align: right;
+	text-align: left;
 }
 
 .inputLogin{
 	margin-left: 10px;
-	width: 170px;
-	margin-top: 10px;
+	width: 150px;
+	margin-top: 5px;
+	margin-bottom: 2px;
 }
 .btnalign{
-	margin-top: 10px;
-	margin-left: 180px;
+	margin-left: 10px;
+	margin-top:-1px;
+	height: 30px;
+}
+@media (max-width: 458px) {
+  .inputLogin{
+  	width: 120px;
+  }
 }
