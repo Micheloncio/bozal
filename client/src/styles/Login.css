@@ -2,21 +2,13 @@
 .centerContent{
 	text-align: center;
 }
-.borderLogin{
-	background: linear-gradient(#9DE048,#68CF11); 
-	width: 300px;
-	padding: 20px;
-	margin: auto;
-	border: 1px solid black;
-	border-radius: 10px
-}
 .tableLogin{
 	text-align: left;
 }
 
-.
 .labelLogin{
 	text-align: left;
+	font-size: 12px;
 }
 
 .inputLogin{
@@ -27,7 +19,6 @@
 }
 .btnalign{
 	margin-left: 10px;
-	margin-top:-1px;
 	height: 30px;
 }
 @media (max-width: 458px) {

@@ -16,6 +16,7 @@ class Main extends Component{
       				setDogSelected={this.props.setDogSelected}
       				setMyDogs={this.props.setMyDogs}
       				setAnyDogSelected={this.props.setAnyDogSelected}
+                              setIdUser={this.props.setIdUser}
       				loadDogs={this.props.loadDogs}/>
       			<PrivateRouteMyDogs
       				config={this.props.config}

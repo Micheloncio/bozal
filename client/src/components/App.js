@@ -13,7 +13,7 @@ class App extends Component {
 
 		this.state = {
 			config:{
-				idUser:'1',
+				idUser:'',
 				anyDogSelected: false,
 				dogSelected:{},
 				myDogs:[],
@@ -22,7 +22,9 @@ class App extends Component {
 			}
 		}
 	}
-
+	setIdUser = (idUser) =>{
+		this.setState(prevState=>({config:{...prevState.config, idUser}}))
+	}
 	setDogSelected = (dogSelected)=>{
 		this.setState(prevState=>({config:{...prevState.config, dogSelected}}))
 	}
@@ -77,13 +79,16 @@ class App extends Component {
 	          		config = {this.state.config}
 	          		setDogSelected={this.setDogSelected}
 	          		setAnyDogSelected={this.setAnyDogSelected}
-	          		switchTooltipStatus={this.switchTooltipStatus}/>
+	          		switchTooltipStatus={this.switchTooltipStatus}
+	          		setIdUser={this.setIdUser}
+	          		loadDogs={this.loadDogs}/>
 	          	<Main 
 	          		config = {this.state.config}
 	          		setDogSelected={this.setDogSelected}
 	          		setMyDogs={this.setMyDogs}
 	          		setAnyDogSelected={this.setAnyDogSelected}
 	          		setPoints={this.setPoints}
+	          		setIdUser={this.setIdUser}
 	          		loadDogs={this.loadDogs}/>
 	          	<Footer />
 	      </div>

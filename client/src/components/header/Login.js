@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
+import jwt from 'jsonwebtoken'
 
 import '../../styles/Login.css'
 import UsersApi from '../../services/UsersApi'
@@ -36,6 +37,9 @@ class Login extends Component{
 		UsersApi.login(this.state.username,this.state.password)
 			.then(token =>{
 				Xtorage.session.setObject('token', { data: token })
+				const tokenDecoded = jwt.verify(token,'secretito-super-mega-secreto-que-nadie-sabe')
+				this.props.setIdUser(tokenDecoded.id)
+				this.props.loadDogs(tokenDecoded.id)
 				this.setRedirect(true)
 			})
 			.catch(err =>{
@@ -57,7 +61,7 @@ class Login extends Component{
 			<div className="centerContent">
 					<table className="tableLogin">
 						<tr>
-						    <td className="labelLogin">Email</td>
+						    <td className="labelLogin">User Name</td>
 						    <td className="labelLogin">Password</td>
 						</tr>
 						<tr>	    

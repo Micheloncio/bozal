@@ -7,6 +7,10 @@ const UsersApi = {
         return axios.post(this.baseUrl + '/login',{username, password})
         	.then (res=> res.data.data)
     },
+    register: function(username,password){
+    	 return axios.post(this.baseUrl + '/register',{username, password})
+        	.then (res=> res.data.data)	
+    }
 }
 
 export default UsersApi
