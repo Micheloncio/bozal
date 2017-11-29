@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import jwt from 'jsonwebtoken'
+import Xtorage from '../Xtorage'
 
 import '../styles/App.css';
 
@@ -69,7 +71,12 @@ class App extends Component {
 	}
 
 	componentDidMount(){
-		this.loadDogs(this.state.config.idUser)
+		const token = Xtorage.session.getObject('token')
+		if(token){
+			const tokenDecoded = jwt.verify(token.data,'secretito-super-mega-secreto-que-nadie-sabe')
+			this.setIdUser(tokenDecoded.id)
+			this.loadDogs(tokenDecoded.id)
+		}
 	}
 
   	render() {

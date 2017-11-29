@@ -12,6 +12,9 @@ class HistoryLogic {
         const tag = _tag.toLowerCase()
     	return historyData.listByTag(tag)
     }
+    listByIdDog(idDog){
+        return historyData.listByIdDog(idDog)
+    }
 	addComent(idHistory, comment, idDog){
 		return historyData.addComent(idHistory, comment, idDog)
     }

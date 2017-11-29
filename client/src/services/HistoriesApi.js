@@ -19,6 +19,10 @@ const HistoriesApi = {
         return axios.get(this.baseUrl + '/listbytag/' + tag, this.loadConfig())
         	.then (res=> res.data.data)
     },
+    listByIdDog: function(idDog){
+        return axios.get(this.baseUrl + '/gallery/' + idDog, this.loadConfig())
+            .then (res=> res.data.data)
+    },
     addComment: function(idHistory,comment,idDog){
         return axios.post(this.baseUrl + '/addcomment', { idHistory, comment, idDog }, this.loadConfig())
         	.then (res=> res.data.data)

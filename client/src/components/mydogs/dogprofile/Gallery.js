@@ -4,6 +4,7 @@ import {Row, Modal, Button } from 'react-bootstrap'
 import '../../../styles/mydogs/Gallery.css'
 
 import DayPhotoApi from '../../../services/DayPhotoApi'
+import HistoriesApi from '../../../services/HistoriesApi'
 
 import GalleryDayPhoto from './GalleryDayPhoto'
 
@@ -12,15 +13,27 @@ class Gallery extends Component{
 		super()
 		this.state = {
 			dayPhotos:[],
-			auxiliaryText:'Loading...'
+			historiesPhotos:[],
+			auxiliaryText:'Loading...',
+			textButton:'Show Histories',
+			showHistories:false
 		}
 	}
 
 	setDayPhotos = (dayPhotos) =>{
 		this.setState({dayPhotos})
 	}
+	setHistoriesPhotos = (historiesPhotos) =>{
+		this.setState({historiesPhotos})
+	}
 	setAuxiliaryText = (auxiliaryText) =>{
 		this.setState({auxiliaryText})
+	}
+	setTextButton = (textButton) =>{
+		this.setState({textButton})
+	}
+	setShowHistories = (showHistories) =>{
+		this.setState({showHistories})
 	}
 
 	loadDayPhotos = (idDog) =>{
@@ -32,9 +45,29 @@ class Gallery extends Component{
 				this.setDayPhotos(dayPhotos)
 			}) 
 	}
+	loadHistories = (idDog) =>{
+		HistoriesApi.listByIdDog(idDog)
+			.then(histories=>{
+				if(!histories.length)
+					this.setAuxiliaryText('You do not have any photo')
+
+				this.setHistoriesPhotos(histories)
+			})
+	}
+	handleSwitchPhotos = () =>{
+		if(this.state.showHistories){
+			this.setTextButton('Show Histories')
+			this.setShowHistories(false)
+		}else{
+			this.setTextButton('Show Days Photos')
+			this.setShowHistories(true)
+		}
+		
+	}
 
 	componentDidMount(){
 		this.loadDayPhotos(this.props.dog._id)
+		this.loadHistories(this.props.dog._id)
 	}
 
 	render(){
@@ -45,23 +78,57 @@ class Gallery extends Component{
 				</Modal.Header>
 			<Row>
 				<Modal.Body>  
-					{this.state.dayPhotos.length
+					<div className="textCenter">
+						<button 
+							className="btn btn-info"
+							onClick={this.handleSwitchPhotos}
+							>
+							{this.state.textButton}
+						</button>
+					</div>
+					{this.state.showHistories
 						?
-						<div className="text-center">
-							{this.state.dayPhotos.map((dayPhoto,index) =>{
-								return(
-									<div key={index} className="displayInlineBlock">
-										<div className="frame-128 frame-black-128">
-										</div>
-										<GalleryDayPhoto 
-											dayPhoto={dayPhoto}/>
-									</div>
-								)	
-							})}
+						<div>
+							{this.state.historiesPhotos.length
+								?
+								<div className="text-center">
+									{this.state.historiesPhotos.map((historyPhoto,index) =>{
+										return(
+											<div key={index} className="displayInlineBlock">
+												<div className="frame-128 frame-black-128">
+												</div>
+												<GalleryDayPhoto 
+													dayPhoto={historyPhoto}/>
+											</div>
+										)	
+									})}
+								</div>
+								:
+								<h1 className="text-center">{this.state.auxiliaryText}</h1>
+
+							}
 						</div>
 						:
-						<h1 className="text-center">{this.state.auxiliaryText}</h1>
+						<div>
+							{this.state.dayPhotos.length
+								?
+								<div className="text-center">
+									{this.state.dayPhotos.map((dayPhoto,index) =>{
+										return(
+											<div key={index} className="displayInlineBlock">
+												<div className="frame-128 frame-black-128">
+												</div>
+												<GalleryDayPhoto 
+													dayPhoto={dayPhoto}/>
+											</div>
+										)	
+									})}
+								</div>
+								:
+								<h1 className="text-center">{this.state.auxiliaryText}</h1>
 
+							}
+						</div>
 					}
 				</Modal.Body>
 			</Row>

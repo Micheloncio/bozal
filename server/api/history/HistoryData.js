@@ -47,6 +47,21 @@ class HistoryData {
 
         })
     }
+    listByIdDog(idDog) {
+        return new Promise((resolve, reject) => {
+            if(!idDog)
+                    throw new Error('no idDog provided')
+
+            History.find({idDog},null,{sort: '-date'})
+                .then(histories=>{
+                    Dog.populate(histories, {path: 'comments.dog', select:'name'})
+                        .then(resolve)
+                })
+                .catch(reject)
+
+        })
+    }
+
 
     addComent(_id, comment, idDog){
         return new Promise((resolve, reject) => {

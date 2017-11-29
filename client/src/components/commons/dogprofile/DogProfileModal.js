@@ -11,10 +11,13 @@ class DogProfileModal extends Component{
 		super()
 
 		this.state={
+			showDogToSee:false,
 			dogToSee:{}
 		}
 	}
-
+	setShowDogToSee = (showDogToSee) =>{
+		this.setState({showDogToSee})
+	}
 	setDogToSee = (dogToSee) =>{
 		this.setState({dogToSee})
 	} 	
@@ -22,7 +25,10 @@ class DogProfileModal extends Component{
 	loadDogProfile = (idDog) =>{
 		DogsApi.retrieveDogById(idDog)
 			.then(dog =>{
-				this.setDogToSee(dog[0])
+				if(dog[0]){
+					this.setDogToSee(dog[0])
+					this.setShowDogToSee(true)
+				}
 			})
 			.catch()
 	}
@@ -33,18 +39,23 @@ class DogProfileModal extends Component{
 	render(){
 		return (
 			<Modal {...this.props}>			
-				<Modal.Header closeButton>   
-					<h4 className="textCenter">{this.state.dogToSee.name ? this.state.dogToSee.name + " profile" : undefined}</h4>
+				<Modal.Header closeButton>  
+					{this.state.showDogToSee
+						?
+						<h4 className="textCenter">{this.state.dogToSee.name ? this.state.dogToSee.name + " profile" : undefined}</h4>
+						:
+						<h4 className="textCenter">No profile to show</h4>
+					}
 				</Modal.Header>
 			<Row>
 				<Modal.Body>  
-		    				{this.state.dogToSee.name 
+		    				{this.state.showDogToSee
 		    					?
 			    				<DogDetailModal 
 			    					config={this.props.config} 
 									dog={this.state.dogToSee}/>
 								:
-								undefined
+								<h4 className="textCenter">Dog deleted</h4>
 		    				}
 
 				</Modal.Body>

@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import CapitalLetter from '../../../utilities/CapitalLetter'
 
 class SelectDog extends Component {
 	setMainDog = (dog,itsSelect) =>{
@@ -30,10 +31,10 @@ class SelectDog extends Component {
 				</div>
 				<div className="col-xs-5">
 					<div className="selectDogContainer">
-						<select className="inputSelectDog" onChange={this.handleChange} defaultValue={this.props.config.dogSelected.name}>
+						<select className="inputSelectDog" onChange={this.handleChange} defaultValue={this.props.config.dogSelected._id}>
 							<option value=""></option>
 							{this.props.config.myDogs.map((dog, index)=>{
-								return <option key={index} value={dog._id}>{dog.name}</option>
+								return <option key={index} value={dog._id}>{CapitalLetter(dog.name)}</option>
 							})}
 						</select>
 					</div>

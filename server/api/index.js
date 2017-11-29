@@ -471,7 +471,24 @@ historyRouter.route('/listByTag/:tag')
                 })
             })
     })
-
+historyRouter.route('/gallery/:idDog')
+    .get((req, res) => {
+        const { idDog } = req.params
+        historyLogic.listByIdDog(idDog)
+            .then(histories => {
+                res.json({
+                    status: 'OK',
+                    message: 'histories listed successfully',
+                    data: histories
+                })
+            })
+            .catch(err => {
+                res.json({
+                    status: 'KO',
+                    message: err.message
+                })
+            })
+    })
 
 app.use('/history', historyRouter)
 

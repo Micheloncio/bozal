@@ -4,6 +4,7 @@ import swal from 'sweetalert2'
 import HistoriesApi from '../../../services/HistoriesApi'
 
 import Points from '../../../Points'
+import CapitalLetter from '../../../utilities/CapitalLetter'
 
 class Commentaries extends Component{
 	constructor(){
@@ -59,7 +60,7 @@ class Commentaries extends Component{
 		if(e.key === 'Enter'){
 			if(this.props.myDogProfile._id){
 				if(this.state.textbox){
-					if(Points.checkHasPoints(this.props.config.dogSelected.points, Points.addHistory)){
+					if(Points.checkHasPoints(this.props.config.dogSelected.points, Points.comment)){
 						this.addComment()
 						this.props.setPoints(Points.comment)
 					}else{
@@ -91,7 +92,7 @@ class Commentaries extends Component{
 										<strong>
 											{comment.dog 
 												? 
-												comment.dog.name
+												CapitalLetter(comment.dog.name)
 												:
 												"Deleted Dog"}
 										</strong> 

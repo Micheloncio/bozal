@@ -59,6 +59,14 @@ class DailyContest extends Component{
 					myDogProfile={this.props.myDogProfile}
 	          		setPoints={this.props.setPoints}/>
 	          	<div className="container-fluid">
+	          		<div className="row">
+	          			{this.state.dayPhotos.length > 1
+	          				?
+	          				<h3 className="cursorDefault">Vote for one of the two dogs</h3>
+	          				:
+	          				undefined
+	          			}
+	          		</div>
 	           		<div className="row">
 			          	{this.state.dayPhotos.length > 1
 			          		?
@@ -73,7 +81,7 @@ class DailyContest extends Component{
 	          					</div>
 	          					<div className="col-xs-12 col-md-2">
 	          						<div className="vsDailyContainer">
-          							<h1 className="displayInline vsDailyText">VS</h1>
+          							<h1 className="displayInline vsDailyText cursorDefault">VS</h1>
           							</div>
           						</div>
           						<div className="col-xs-12 col-md-5">

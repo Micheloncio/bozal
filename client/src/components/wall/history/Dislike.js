@@ -33,7 +33,7 @@ class Dislike extends Component{
 			this.setDisliked(!disliked)
 			this.props.setDisliked(!disliked)
 		}else{
-			if(Points.checkHasPoints(this.props.config.dogSelected.points, Points.addHistory)){
+			if(Points.checkHasPoints(this.props.config.dogSelected.points, Points.dislike)){
 				HistoriesApi.addDislike(this.props.idHistory, this.props.myIdDog)
 				this.props.setPoints(Points.dislike)
 				this.setDisliked(!disliked)
