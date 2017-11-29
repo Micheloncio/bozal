@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import {Row, Col, Image, Modal, Button } from 'react-bootstrap'
+import {Row, Col, Modal, Button } from 'react-bootstrap'
 
 import DogsApi from '../../../services/DogsApi'
 

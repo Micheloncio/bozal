@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Row, Col, Image, Modal, Button, FormGroup, Radio } from 'react-bootstrap'
+import {Row, Modal } from 'react-bootstrap'
 
 
 class GalleryDayPhotoXL extends Component{

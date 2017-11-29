@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Cropper from 'react-cropper';
-import {Row, Col, Image, Modal, Button, FormGroup, Radio } from 'react-bootstrap'
+import {Row, Col, Modal, Button } from 'react-bootstrap'
 
 import 'cropperjs/dist/cropper.css'
 

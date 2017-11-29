@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Row, Col, Image, Modal, Button, FormGroup } from 'react-bootstrap'
+import {Row, Modal, Button } from 'react-bootstrap'
 import swal from 'sweetalert2'
 
 import DayPhotoApi from '../../../services/DayPhotoApi'

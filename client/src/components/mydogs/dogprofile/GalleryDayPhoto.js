@@ -34,6 +34,8 @@ class GalleryDayPhoto extends Component{
 			case 'bronze':
 				this.setFrameClass('frame-128 frame-bronze-128')
 				break
+			default:
+				this.setFrameClass('frame-128 frame-black-128')
 		}
 	}
 

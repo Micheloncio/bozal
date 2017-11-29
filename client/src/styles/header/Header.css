@@ -3,7 +3,7 @@
 	position: sticky;
 	left:0px;
   	top:0px;
-  	z-index:2;
+  	z-index:3;
 }
 
 .navbar-white{
@@ -21,22 +21,6 @@
 	font-size: 18px;
 	color:black;
 }
-@media (max-width: 876px){
-	.navlink{
-		font-size: 16px;
-	}
-	.navbrand{
-		font-size: 20px;
-	}
-}
-@media (max-width: 822px){
-	.navlink{
-		font-size: 15px;
-	}
-	.navbrand{
-		font-size: 18px;
-	}
-}
 .navlink:hover{
 	color:black;
 	background: linear-gradient(#AEF57F, #95BD86) !important;
@@ -53,11 +37,6 @@
 	width: 200px;
 	height: 44px;
 }
-@media (max-width: 500px){
-	.HeaderDogContainer{
-		width: 166px;
-	}
-}
 
 .element_0_headerDog{
 	margin-top: 13px;
@@ -72,4 +51,44 @@
 .HeaderSearchContainer{
 	margin-top: 10px;
 	border-radius: 5px;
+}
+.btn_logout{
+	width: 47px;
+	height: 47px;
+	font-size: 20px;
+	background-color: white;
+}
+.btn_logout:hover{
+	background-color: #ECE8E8;
+}
+@media (max-width: 876px){
+	.navlink{
+		font-size: 16px;
+	}
+	.navbrand{
+		font-size: 20px;
+	}
+}
+@media (max-width: 822px){
+	.navlink{
+		font-size: 15px;
+	}
+	.navbrand{
+		font-size: 18px;
+	}
+	.btn_logout{
+		width: 30px;
+		margin-left: 15px;
+		padding-left:3px; 
+	}
+}
+@media (max-width: 755px){
+	.btn_logout{
+		margin-left: -15px;
+	}
+}
+@media (max-width: 500px){
+	.HeaderDogContainer{
+		width: 166px;
+	}
 }

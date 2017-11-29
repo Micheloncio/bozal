@@ -7,8 +7,6 @@ import NavBarMyDog from './NavBarMyDog/NavBarMyDog'
 import NoDogsYet from './NoDogsYet'
 import DogList from './DogList/DogList'
 
-import DogsApi from '../../services/DogsApi'
-
 class MyDogs extends Component{
 
 	constructor(){

@@ -77,7 +77,7 @@ class DogList extends Component{
 														data-tip={"Delete this dog"}
 														data-delay-show='300'
 														onClick={(event) => this.handleDelete(event,index+1)}
-														className="glyphicon glyphicon-remove outlineNone btnRemoveDog">
+														className="glyphicon glyphicon-trash outlineNone btnRemoveDog">
 													</button>
 													<ReactTooltip className={this.props.config.tooltipCss} place="top" effect="solid" delayShow={300}/>
 												</div>

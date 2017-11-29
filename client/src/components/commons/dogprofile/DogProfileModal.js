@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Row, Col, Image, Modal, Button, FormGroup, Radio } from 'react-bootstrap'
+import {Row, Modal, Button } from 'react-bootstrap'
 
 import DogsApi from '../../../services/DogsApi'
 import DogDetailModal from './DogDetailModal'

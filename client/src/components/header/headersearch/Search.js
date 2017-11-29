@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Row, Col, Image, Modal } from 'react-bootstrap'
+import {Row, Image, Modal } from 'react-bootstrap'
 
 import CapitalLetter from '../../../utilities/CapitalLetter'
 

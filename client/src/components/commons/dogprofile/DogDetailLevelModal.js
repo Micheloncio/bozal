@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 
-import CapitalLetter from '../../../utilities/CapitalLetter'
-
 class DogDetailLevelModal extends Component{
 	constructor(){
 		super()
@@ -19,9 +17,6 @@ class DogDetailLevelModal extends Component{
 
 	getPopularityClass = () =>{
 		switch(this.props.dog.popularity){
-			case 0: 
-				this.setPopularityClass("popularity0 popularity") 
-				break
 			case 1: 
 				this.setPopularityClass("popularity1 popularity")
 				break
@@ -36,14 +31,15 @@ class DogDetailLevelModal extends Component{
 				break
 			case 5: 
 				this.setPopularityClass("popularity5 popularity")
+				break
+			default: 
+				this.setPopularityClass("popularity0 popularity") 
+
 		}	
 	}
 
 	getAgresivityClass = () =>{
 		switch(this.props.dog.agresivity){
-			case 0: 
-				this.setAgresivityClass("agresivity0 agresivity") 
-				break
 			case 1: 
 				this.setAgresivityClass("agresivity1 agresivity")
 				break
@@ -52,14 +48,14 @@ class DogDetailLevelModal extends Component{
 				break
 			case 3: 
 				this.setAgresivityClass("agresivity3 agresivity")
+				break
+			default: 
+				this.setAgresivityClass("agresivity0 agresivity")
 		}	
 	}
 
 	getSocialityClass = () =>{
 		switch(this.props.dog.sociality){
-			case 0: 
-				this.setSocialityClass("sociality0 sociality") 
-				break
 			case 1: 
 				this.setSocialityClass("sociality1 sociality")
 				break
@@ -71,6 +67,10 @@ class DogDetailLevelModal extends Component{
 				break
 			case 4: 
 				this.setSocialityClass("sociality4 sociality")
+				break
+			default: 
+				this.setSocialityClass("sociality0 sociality") 
+
 		}	
 	}
 
