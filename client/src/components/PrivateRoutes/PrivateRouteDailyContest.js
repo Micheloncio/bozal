@@ -16,11 +16,15 @@ class PrivateRouteDailyContest extends Component{
 		          	<Route exact path='/daily-contest' render={() => ( 
 		          		<DailyContest
 	          				config={this.props.config}
-	          				myDogProfile={this.props.config.dogSelected}
+	          				myDogProfile={this.props.myDogProfile}
 	          				setPoints={this.props.setPoints}/>
 		          		)}/>
 		          	:
-		          	<Route exact path='/daily-contest' component={Home}/>
+		          	<Route exact path='/daily-contest' render={() => ( 
+		          			<Home
+		          				setIdUser={this.props.setIdUser}
+		          				loadDogs={this.props.loadDogs}/> 
+		          		)}/>
 	          	}
 			</div>
 		)

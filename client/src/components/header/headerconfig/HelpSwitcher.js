@@ -9,7 +9,7 @@ class HelpSwitcher extends Component {
 			<div>
 				<div className="col-xs-6">
 					<div className="textSwitchContainaer">
-						Show help
+						Help
 					</div>
 				</div>
 				<div className="col-xs-5">

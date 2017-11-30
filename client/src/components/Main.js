@@ -23,15 +23,20 @@ class Main extends Component{
       				setDogSelected={this.props.setDogSelected}
       				setMyDogs={this.props.setMyDogs}
       				setAnyDogSelected={this.props.setAnyDogSelected}
+                              setIdUser={this.props.setIdUser}
       				loadDogs={this.props.loadDogs}/> 
       			<PrivateRouteDailyContest
       				config={this.props.config}
       				myDogProfile={this.props.config.dogSelected}
-      				setPoints={this.props.setPoints}/>
+                              setIdUser={this.props.setIdUser}
+      				setPoints={this.props.setPoints}
+                              loadDogs={this.props.loadDogs}/>
       			<PrivateRouteWall
       				config={this.props.config}
       				myDogProfile={this.props.config.dogSelected}
-      				setPoints={this.props.setPoints}/>
+                              setIdUser={this.props.setIdUser}
+      				setPoints={this.props.setPoints}
+                              loadDogs={this.props.loadDogs}/>
 			</div>
 		)
 	}

@@ -16,14 +16,9 @@ class Header extends Component {
 			<nav className='navbar navbar-white navbar-fixed'>
 				<div className="container-fluid">
 					<div className="row">
-						<div className="col-xs-5 col-sm-8 col-md-6 col-lg-6">
+						<div className="col-xs-12 col-sm-8 col-md-6 col-lg-6">
 			               <div className="navbar-header">
-			               		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-			               			<span class="icon-bar"></span>
-							        <span class="icon-bar"></span>
-							        <span class="icon-bar"></span>
-							    </button>
-			               		<NavLink className="navbar-brand navbrand" to='/'>Yap Yap</NavLink>
+			               		<NavLink className="navbar-brand navbrand yapYap" to='/'>Yap Yap</NavLink>
 			               	</div>
 		               		<div className="collapse navbar-collapse" id="myNavbar">
 									{Xtorage.session.getObject('token') 
@@ -43,7 +38,7 @@ class Header extends Component {
 
 							{Xtorage.session.getObject('token') 
 							?
-							<div className="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+							<div className="col-xs-8 col-sm-3 col-md-3 col-lg-3">
 								<HeaderDog 
 									config = {this.props.config}
 									setDogSelected={this.props.setDogSelected}
@@ -70,8 +65,15 @@ class Header extends Component {
 						
 							{Xtorage.session.getObject('token') 
 							?
-							<div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-								<Logout/>
+							<div className="col-xs-4 col-sm-1 col-md-1 col-lg-1">
+								<button type="button" className="navbar-toggle hamburguer" data-toggle="collapse" data-target="#myNavbar">
+			               			<span className="icon-bar spanHamburguer"></span>
+							        <span className="icon-bar spanHamburguer"></span>
+							        <span className="icon-bar spanHamburguer"></span>
+							    </button>
+								<Logout
+									setDogSelected={this.props.setDogSelected}
+									setAnyDogSelected={this.props.setAnyDogSelected}/>
 							</div>
 							:
 							undefined

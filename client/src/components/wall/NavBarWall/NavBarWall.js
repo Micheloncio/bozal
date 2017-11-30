@@ -80,13 +80,13 @@ class NavBarWall extends Component{
 		return (
 			<div className="container-fluid">
 				<div className="row">
-					<div className="col-xs-12 col-sm-4 col-md-2">
+					<div className="col-xs-4 col-sm-4 col-md-2">
 						<SignPosterLeft 
 							tag = {this.state.beforeTag}
 							handleLoadNewCurrentTags = {this.handleLoadNewCurrentTags}
 						/>
 					</div>
-					<div className="col-xs-12 col-sm-4 col-md-2 col-sm-offset-0 col-md-offset-3">
+					<div className="col-xs-4 col-sm-4 col-md-2 col-sm-offset-0 col-md-offset-3">
 						<div className="row">
 							<SignPosterCenter 
 								currentTag = {this.state.currentTag}
@@ -101,7 +101,7 @@ class NavBarWall extends Component{
 								handleLoadNewCurrentTags = {this.handleLoadNewCurrentTags}/>
 						</div>
 					</div>
-					<div className="col-xs-12 col-sm-4 col-md-2 col-sm-offset-0 col-md-offset-3">
+					<div className="col-xs-4 col-sm-4 col-md-2 col-sm-offset-0 col-md-offset-3">
 						<SignPosterRight 
 							tag = {this.state.nextTag}
 							handleLoadNewCurrentTags = {this.handleLoadNewCurrentTags}

@@ -1,7 +1,7 @@
 .backgroundDaily{
 	background-position: center;
 	margin-top: -20px;
-	min-height: 670px;
+	height: 92vh;
 	background: linear-gradient(white, skyblue, skyblue);
 }
 

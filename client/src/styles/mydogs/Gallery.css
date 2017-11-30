@@ -18,7 +18,9 @@
 .frame-bronze-128{
 	background-image: url('../../images/frame_bronze_128.png');
 }
-
+.frame_history_128{
+	background-image: url('../../images/frame_history_128.png');
+}
 .img-gallery{
 	position: relative;
 	z-index: 0;

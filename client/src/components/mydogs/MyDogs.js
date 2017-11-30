@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import ReactTooltip from 'react-tooltip'
 
 import '../../styles/mydogs/MyDogs.css'
 
@@ -49,7 +50,13 @@ class MyDogs extends Component{
 
 	render(){
 		return(
+			<div className="backgroundDaily">
 			<div className="backgroundMyDogs">
+				<div className="bird" data-tip data-for='bird'>
+				</div>
+				<ReactTooltip  id='bird' className="tooltipBird" place="left" effect="solid">
+					<p><strong>Pio Pio</strong></p>
+				</ReactTooltip>
 				<div className="container-fluid">
 					<div className="row">
 						<NavBarMyDog 
@@ -79,6 +86,7 @@ class MyDogs extends Component{
 						</div>
 					}
 				</div>
+			</div>
 			</div>
 		)
 	}

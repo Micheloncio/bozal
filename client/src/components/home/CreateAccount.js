@@ -57,7 +57,6 @@ class CreateAccount extends Component{
 			.then(() =>{
 				UsersApi.login(this.state.username, this.state.password)
 					.then(token =>{
-						console.log(token)
 						Xtorage.session.setObject('token', { data: token })
 						const tokenDecoded = jwt.verify(token,'secretito-super-mega-secreto-que-nadie-sabe')
 						this.props.setIdUser(tokenDecoded.id)
@@ -77,7 +76,7 @@ class CreateAccount extends Component{
 
 	render(){
 		return (
-			<div className="centerContent">
+			<div className="centerContent marginTop50px">
 					<table className="tableCreateAccount">
 						<tr>
 							<th className="labelTitle" colspan="2">

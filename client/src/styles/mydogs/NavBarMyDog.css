@@ -2,7 +2,7 @@
 .containerAddDog{
 	display: inline-block;
 	position: sticky;
-	margin-top: -50px;
+	margin-top: -70px;
 	top:30px;
 	transition:  0.3s ease-in-out 0s;
 	z-index: 1;
@@ -14,4 +14,8 @@
 }
 .marginNewDogFields >h4{
 	display: inline;
+}
+.inputNewDog{
+	font-size: 12px;
+	width: 100%;
 }

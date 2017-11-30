@@ -16,11 +16,15 @@ class PrivateRouteWall extends Component{
 		          	<Route exact path='/wall' render={() => ( 
 		          		<Wall
 	          				config={this.props.config}
-	          				myDogProfile={this.props.config.dogSelected}
+	          				myDogProfile={this.props.myDogProfile}
 	          				setPoints={this.props.setPoints}/>
 		          		)}/>
 		          	:
-		          	<Route exact path='/wall' component={Home}/>
+		          	<Route exact path='/wall' render={() => ( 
+		          			<Home
+		          				setIdUser={this.props.setIdUser}
+		          				loadDogs={this.props.loadDogs}/> 
+		          		)}/>
 	          	}
 			</div>
 		)

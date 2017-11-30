@@ -6,7 +6,7 @@ class GalleryDayPhoto extends Component{
 	constructor(){
 		super()
 		this.state = {
-			frameClass:'frame-128 frame-black-128',
+			frameClass:'frame-128',
 			modalShow: false,
 		}
 	}
@@ -34,8 +34,11 @@ class GalleryDayPhoto extends Component{
 			case 'bronze':
 				this.setFrameClass('frame-128 frame-bronze-128')
 				break
-			default:
+			case 'none':
 				this.setFrameClass('frame-128 frame-black-128')
+				break
+			default:
+				this.setFrameClass('frame-128 frame_history_128')
 		}
 	}
 
@@ -45,6 +48,12 @@ class GalleryDayPhoto extends Component{
 
 	componentDidMount(){
 		this.loadFrame(this.props.dayPhoto.badge)
+	}
+	componentWillReceiveProps(nextProps){
+		if(nextProps.dayPhoto.badge)
+			this.loadFrame(nextProps.dayPhoto.badge)
+		else
+			this.loadFrame(undefined)
 	}
 
 	render(){

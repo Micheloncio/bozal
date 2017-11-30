@@ -1,9 +1,19 @@
-
+.hamburguer{
+	z-index:4 !important;
+	background: linear-gradient(#AEF57F, #95BD86);
+}
+.spanHamburguer{
+	z-index:5 !important;
+	background-color: white;
+}
 .navbar-fixed{
 	position: sticky;
 	left:0px;
   	top:0px;
   	z-index:3;
+}
+.yapYap{
+	display: inline;
 }
 
 .navbar-white{
@@ -80,6 +90,11 @@
 		width: 30px;
 		margin-left: 15px;
 		padding-left:3px; 
+	}
+}
+@media (max-width: 767px){
+	.yapYap{
+		display: none;
 	}
 }
 @media (max-width: 755px){

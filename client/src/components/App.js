@@ -70,7 +70,7 @@ class App extends Component {
 			.catch()
 	}
 
-	componentDidMount(){
+	componentDidMount(){		
 		const token = Xtorage.session.getObject('token')
 		if(token){
 			const tokenDecoded = jwt.verify(token.data,'secretito-super-mega-secreto-que-nadie-sabe')

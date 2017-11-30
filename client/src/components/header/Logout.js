@@ -16,6 +16,7 @@ class Logout extends Component {
 
 	handleLogout = () =>{
 		Xtorage.session.clear()
+		this.props.setAnyDogSelected(false)
 		this.setRedirect(true)
 	}
 	render(){

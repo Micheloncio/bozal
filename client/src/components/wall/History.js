@@ -89,7 +89,8 @@ class History extends Component{
 		this.setIdHistory(this.props.history._id)
 	}
 	componentWillMount(){
-		this.checkLikeAndDislike(this.props.history.likes, this.props.history.dislikes, this.props.myDogProfile._id)
+		if(this.props.myDogProfile)
+			this.checkLikeAndDislike(this.props.history.likes, this.props.history.dislikes, this.props.myDogProfile._id)
 	}
 	componentWillReceiveProps(nextProps){
 		if(!this.checkIfItsSameHistory(nextProps.history._id) || !this.checkIfItsSameMyDogProfile(this.props.myDogProfile, nextProps.myDogProfile))

@@ -32,13 +32,13 @@ class NewDogSelectBreed extends Component{
 		return (
 			<div className="marginNewDogFields">
 				<Row>
-					<Col xs={12} md={2}>
+					<Col xs={12} md={3}>
 						<h4 className={this.props.error ? "checkError" : undefined}>
 							{this.props.label}
 						</h4>
 					</Col>
-					<Col xs={12} md={10}>
-						<select onChange={this.props.handleChange} defaultValue="">
+					<Col xs={12} md={9}>
+						<select className="inputNewDog" onChange={this.props.handleChange} defaultValue="">
 							<option value=""></option>
 							{this.state.breeds.map((breed, index)=>{
 								return <option key={index} value={breed._id}>{breed.name}</option>

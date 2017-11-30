@@ -30,7 +30,18 @@ class Cover extends Component{
 	}
 	render(){
 		return (
-			<div className={this.state.imgClass} onClick={this.increaseCount}>
+			<div>
+				<p className="pCover">Yap Yap es una red perruna, donde los amigos de los perros pueden compartir
+				los momentos vividos junto a sus mascotas. Creando un perfil perruno podrás subir fotos, votar las 
+				fotos de otros perros, dejar comentarios y mucho más...
+				</p>
+				<p className="pCover2">
+				Pese a que no le deseamos el mal a ningún gato, esta plataforma web está enfocada únicamente a perros, y no permite
+				el registro de félinos debido a su carácter independiente y traicionero, muy muy
+				traicionero. 
+				</p>
+				<div className={this.state.imgClass} onClick={this.increaseCount}>
+				</div>
 			</div>
 		)
 	}

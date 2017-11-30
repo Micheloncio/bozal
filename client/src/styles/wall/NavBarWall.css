@@ -154,3 +154,72 @@
 .rotateRight:hover{
 	transform: rotate(-9deg);
 }
+
+@media (max-width: 630px) {
+	.signPostLeft {
+		background-image:linear-gradient(#95BD86, #AEF57F);
+		width: 100px;
+		height: 70px;
+		border-radius: 5px;
+	}
+  	.rotateRight:hover{
+		transform: rotate(0deg);
+	}
+  	.textTagLeft{
+		top: 50%;
+	    left: 50%;
+	    transform: translate(-55%, -5%) rotate(0deg);
+	}
+  	.signPostRight{
+	  	background-image:linear-gradient(#95BD86, #AEF57F);
+		width: 100px;
+		height: 70px;
+		border-radius: 5px;
+  	}
+  	.rotateLeft:hover{
+		transform: rotate(0deg);
+	}
+	.textTagRight{
+		top: 50%;
+	    left: 50%;
+	    transform: translate(-45%, -5%) rotate(0deg);
+	}
+	.signPostCenter{
+		display: none;
+	}
+	.addHistory{
+		background-image:linear-gradient(#95BD86, #AEF57F);
+		width: 135px;
+		height: 70px;
+		z-index: 1;
+		border-radius: 5px;
+	}
+	.containerAddHistory{
+		display: inline-block;
+		position: sticky;
+		margin-top: -30px;
+		margin-bottom: -40px;
+		top:0px;
+	}
+	.iconAddHistory{
+		position: absolute;
+		font-size: 22px;
+		font-weight: bold;
+		color:black;
+		top: 50%;
+	    left: 50%;
+	    transform: translate(20%, 150%);
+	}
+	.iconCamHistory{
+		position: absolute;
+		font-size: 32px;
+		font-weight: bold;
+		color:black;
+		top: 50%;
+	    left: 50%;
+	    transform: translate(-120%, 100%);
+	}
+	.translateDown:hover{
+		transform: translate(0px, 0px);
+	}
+}

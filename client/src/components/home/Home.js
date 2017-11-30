@@ -8,8 +8,10 @@ class Home extends Component{
 		return(
 			<div className="container">
 				<div className="row">
-					<div className="col-md-6">
+					<div className="col-md-5">
 						<Cover />
+					</div>
+					<div className="col-md-1">
 					</div>
 					<div className="col-md-6">
 						<CreateAccount 

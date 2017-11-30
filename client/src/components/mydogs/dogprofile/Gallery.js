@@ -95,8 +95,6 @@ class Gallery extends Component{
 									{this.state.historiesPhotos.map((historyPhoto,index) =>{
 										return(
 											<div key={index} className="displayInlineBlock">
-												<div className="frame-128 frame-black-128">
-												</div>
 												<GalleryDayPhoto 
 													dayPhoto={historyPhoto}/>
 											</div>
@@ -116,8 +114,6 @@ class Gallery extends Component{
 									{this.state.dayPhotos.map((dayPhoto,index) =>{
 										return(
 											<div key={index} className="displayInlineBlock">
-												<div className="frame-128 frame-black-128">
-												</div>
 												<GalleryDayPhoto 
 													dayPhoto={dayPhoto}/>
 											</div>

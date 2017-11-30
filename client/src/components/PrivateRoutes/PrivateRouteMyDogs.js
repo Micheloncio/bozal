@@ -22,7 +22,11 @@ class PrivateRouteMyDogs extends Component{
 		          				loadDogs={this.props.loadDogs}/> 
 		          		)}/>
 		          	:
-		          	<Route exact path='/my-dogs' component={Home}/>
+		          	<Route exact path='/my-dogs' render={() => ( 
+		          			<Home
+		          				setIdUser={this.props.setIdUser}
+		          				loadDogs={this.props.loadDogs}/> 
+		          		)}/>
 	          	}
 			</div>
 		)

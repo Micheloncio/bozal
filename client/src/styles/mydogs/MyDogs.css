@@ -6,6 +6,22 @@
 	min-height: 650px;
 	margin-top: -20px;
 }
+.bird{
+	background-image: url('../../images/bird.png');
+	position: relative;
+	margin-left: 85%;
+	width: 65px;
+	height: 39px;
+}
+.bird:hover{
+	background-image: url('../../images/bird_yellow.png');
+}
+.tooltipBird{
+  border-radius: 13px !important;
+  height: 35px !important;
+  opacity: 0.7 !important;
+  color:yellow !important;
+}
 .btnSeeGallery{
 	margin-top: 30px;
 }
@@ -26,7 +42,7 @@
 	border: 1px solid black;
 	color: black;
 	border-radius: 5px;
-	font-size: 24px;
+	font-size: 20px;
 	transition: 0.2s ease-in-out 0s;
 }
 .elementDogList:hover{
@@ -52,19 +68,17 @@
 	display: inline;
 	color:red;
 }
-@media (max-width: 1279px) {
-  .elementDogList {font-size: 22px;}
+@media (max-width: 1273px) {
+  .elementDogList {font-size: 19px;}
 }
-@media (max-width: 1204px) {
-  .elementDogList {font-size: 21px;}
-}
-@media (max-width: 1120px) {
-  .elementDogList {font-size: 20px;}
+@media (max-width: 1225px) {
+  .elementDogList {font-size: 17px;}
 }
 @media (max-width: 991px) {
-  .backgroundMyDogs {background-image: none;}  
+  .backgroundMyDogs {background-image: none;} 
+  .bird {display: none;}
 }
-@media (max-width: 900px) {
+@media (max-width: 1141px) {
   .elementDogList {font-size: 16px;}
   
 }
