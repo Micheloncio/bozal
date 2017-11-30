@@ -1,0 +1,7 @@
+.backgroundHomeHome{
+	background-position: center;
+	background-repeat: repeat-y;
+	margin-top: -20px;
+	min-height: 92vh;
+	background-image: linear-gradient(white, gray);
+}
