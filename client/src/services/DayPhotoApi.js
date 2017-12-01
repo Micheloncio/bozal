@@ -2,7 +2,7 @@ import Xtorage from '../Xtorage'
 import axios from 'axios'
 
 const DayPhotoApi = {
-   	baseUrl: 'http://localhost:3000/dayphoto',
+   	baseUrl: 'https://nameless-lowlands-64942.herokuapp.com/dayphoto',
 
     loadConfig: function(){
         const token = Xtorage.session.getObject('token')

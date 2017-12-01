@@ -43,7 +43,7 @@ class EditDogSelectBreed extends Component{
 					<Col xs={12} md={10}>
 						{this.state.itsLoad 
 							?
-							<select onChange={this.props.handleChange} defaultValue={this.props.breed}>
+							<select className="inputNewDog" onChange={this.props.handleChange} defaultValue={this.props.breed}>
 								<option value=""></option>
 								{this.state.breeds.map((breed, index)=>{
 									return <option key={index} value={breed._id}>{breed.name}</option>

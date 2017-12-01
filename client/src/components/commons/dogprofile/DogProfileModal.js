@@ -3,7 +3,7 @@ import {Row, Modal, Button } from 'react-bootstrap'
 
 import DogsApi from '../../../services/DogsApi'
 import DogDetailModal from './DogDetailModal'
-
+import CapitalLetter from '../../../utilities/CapitalLetter'
 
 
 class DogProfileModal extends Component{
@@ -12,7 +12,8 @@ class DogProfileModal extends Component{
 
 		this.state={
 			showDogToSee:false,
-			dogToSee:{}
+			dogToSee:{},
+			auxiliarText:'Loading...'
 		}
 	}
 	setShowDogToSee = (showDogToSee) =>{
@@ -20,14 +21,20 @@ class DogProfileModal extends Component{
 	}
 	setDogToSee = (dogToSee) =>{
 		this.setState({dogToSee})
+	}
+	setAuxiliarText = (auxiliarText) =>{
+		this.setState({auxiliarText})
 	} 	
 
 	loadDogProfile = (idDog) =>{
+		this.setAuxiliarText('Loading...')
 		DogsApi.retrieveDogById(idDog)
 			.then(dog =>{
 				if(dog[0]){
 					this.setDogToSee(dog[0])
 					this.setShowDogToSee(true)
+				}else{
+					this.setAuxiliarText('Dog deleted')
 				}
 			})
 			.catch()
@@ -42,7 +49,7 @@ class DogProfileModal extends Component{
 				<Modal.Header closeButton>  
 					{this.state.showDogToSee
 						?
-						<h4 className="textCenter">{this.state.dogToSee.name ? this.state.dogToSee.name + " profile" : undefined}</h4>
+						<h4 className="textCenter">{this.state.dogToSee.name ? CapitalLetter(this.state.dogToSee.name) + " profile" : undefined}</h4>
 						:
 						<h4 className="textCenter">No profile to show</h4>
 					}
@@ -55,7 +62,7 @@ class DogProfileModal extends Component{
 			    					config={this.props.config} 
 									dog={this.state.dogToSee}/>
 								:
-								<h4 className="textCenter">Dog deleted</h4>
+								<h4 className="textCenter">{this.state.auxiliarText}</h4>
 		    				}
 
 				</Modal.Body>

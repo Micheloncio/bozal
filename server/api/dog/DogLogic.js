@@ -7,8 +7,9 @@ class DogLogic {
 		return dogData.createDog(_name, idUser, chip, idBreed, _gender, weight, birthdate, profilePhoto)
 	}
 	updateDog(_id, name, chip, idBreed, _gender, weight, birthdate, profilePhoto){
+		const _name = name.toLowerCase()
 		const gender = _gender.toLowerCase()
-		return dogData.updateDog(_id, name, chip, idBreed, gender, weight, birthdate, profilePhoto)
+		return dogData.updateDog(_id, _name, chip, idBreed, gender, weight, birthdate, profilePhoto)
 	}
 	retrieveDogById(_id){
 		return dogData.retrieveDogById(_id)

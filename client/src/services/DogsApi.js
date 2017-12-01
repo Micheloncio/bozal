@@ -2,7 +2,7 @@ import Xtorage from '../Xtorage'
 import axios from 'axios'
 
 const DogsApi = {
-    baseUrl: 'http://localhost:3000/dog',
+    baseUrl: 'https://nameless-lowlands-64942.herokuapp.com/dog',
 
     loadConfig: function(){
         const token = Xtorage.session.getObject('token')

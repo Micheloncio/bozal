@@ -46,6 +46,8 @@ class Wall extends Component{
 	}
 
 	loadHistoriesByTagFromApi = (tag) => {
+		this.setHistories([])
+		this.setAuxiliaryText('Loading...')
 		HistoriesApi.getLast24HoursHistoriesByTag(tag)
 			.then(histories =>{
 				if(!histories.length)

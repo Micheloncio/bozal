@@ -2,7 +2,7 @@ import Xtorage from '../Xtorage'
 import axios from 'axios'
 
 const HistoriesApi = {
-    baseUrl: 'http://localhost:3000/history',
+    baseUrl: 'https://nameless-lowlands-64942.herokuapp.com/history',
 
     loadConfig: function(){
         const token = Xtorage.session.getObject('token')

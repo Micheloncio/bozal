@@ -15,6 +15,7 @@ class Gallery extends Component{
 			dayPhotos:[],
 			historiesPhotos:[],
 			auxiliaryText:'Loading...',
+			auxiliaryTextDayPhotos:'Loading...',
 			textButton:'Show Histories',
 			showHistories:false
 		}
@@ -29,6 +30,9 @@ class Gallery extends Component{
 	setAuxiliaryText = (auxiliaryText) =>{
 		this.setState({auxiliaryText})
 	}
+	setAuxiliaryTextDayPhotos = (auxiliaryTextDayPhotos) =>{
+		this.setState({auxiliaryTextDayPhotos})
+	}
 	setTextButton = (textButton) =>{
 		this.setState({textButton})
 	}
@@ -40,7 +44,7 @@ class Gallery extends Component{
 		DayPhotoApi.listAllByDogId(idDog)
 			.then(dayPhotos=>{
 				if(!dayPhotos.length)
-					this.setAuxiliaryText('You do not have any photo')
+					this.setAuxiliaryTextDayPhotos('You do not have any photo')
 
 				this.setDayPhotos(dayPhotos)
 			}) 
@@ -55,14 +59,20 @@ class Gallery extends Component{
 			})
 	}
 	handleSwitchPhotos = () =>{
+		this.setAuxiliaryText('Loading...')
+		this.setAuxiliaryTextDayPhotos('Loading...')
 		if(this.state.showHistories){
 			this.setTextButton('Show Histories')
 			this.setShowHistories(false)
+			if(!this.state.dayPhotos.length)
+				this.setAuxiliaryTextDayPhotos('You do not have any photo')
 		}else{
 			this.setTextButton('Show Days Photos')
 			this.setShowHistories(true)
+			if(!this.state.historiesPhotos.length)
+				this.setAuxiliaryTextDayPhotos('You do not have any photo')
 		}
-		
+
 	}
 
 	componentDidMount(){
@@ -121,7 +131,7 @@ class Gallery extends Component{
 									})}
 								</div>
 								:
-								<h1 className="text-center">{this.state.auxiliaryText}</h1>
+								<h1 className="text-center">{this.state.auxiliaryTextDayPhotos}</h1>
 
 							}
 						</div>

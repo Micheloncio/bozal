@@ -2,7 +2,7 @@ import Xtorage from '../Xtorage'
 import axios from 'axios'
 
 const TagsApi = {
-   	baseUrl: 'http://localhost:3000/tags',
+   	baseUrl: 'https://nameless-lowlands-64942.herokuapp.com/tags',
 
    	loadConfig: function(){
         const token = Xtorage.session.getObject('token')
