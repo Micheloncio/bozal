@@ -13,7 +13,7 @@
 
 # Yap Yap
 
-This repo contains full-stack project of a social network about dogs.
+This repo contains full-stack project of a social network about dogs. See demo: [Yap Yap](https://boiling-badlands-65486.herokuapp.com/#/)
 
 ## Motivation
 
